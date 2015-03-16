@@ -1,31 +1,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.sebinson</groupId>
-  <artifactId>sebinson-common</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>net.sebinson</groupId>
+	<artifactId>sebinson-common</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <name>sebinson-common</name>
-  <url>http://www.sebinson.net</url>
+	<name>sebinson-common</name>
+	<url>http://www.sebinson.net</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-       <maven-vesion>3.2.5</maven-vesion>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-vesion>3.2.5</maven-vesion>
 		<maven-compiler-plugin-version>3.2</maven-compiler-plugin-version>
-       <junit-version>4.11</junit-version>       
+		<junit-version>4.11</junit-version>
 		<jdk-version>1.8</jdk-version>
-		<lombok-version>1.16.2</lombok-version>		
-		<spring-version>4.1.4.RELEASE</spring-version>
-       <log4j-core-version>2.1</log4j-core-version>
-       <slf4j-log4j12-version>1.7.5</slf4j-log4j12-version>
+		<lombok-version>1.16.2</lombok-version>
+		<log4j-core-version>2.1</log4j-core-version>
+		<slf4j-log4j12-version>1.7.5</slf4j-log4j12-version>
 		<slf4j-api-version>1.7.5</slf4j-api-version>
 		<dom4j-version>1.6.1</dom4j-version>
-  </properties>
+	</properties>
 
-  <dependencies>
-    <dependency>
+	<dependencies>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit-version}</version>
@@ -36,7 +35,7 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok-version}</version>
 		</dependency>
-        <dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j-log4j12-version}</version>
@@ -46,7 +45,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>${slf4j-api-version}</version>
 		</dependency>
-       <dependency>
+		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4j-core-version}</version>
@@ -56,9 +55,9 @@
 			<artifactId>dom4j</artifactId>
 			<version>${dom4j-version}</version>
 		</dependency>
-  </dependencies>
-  
-  	<build>
+	</dependencies>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
