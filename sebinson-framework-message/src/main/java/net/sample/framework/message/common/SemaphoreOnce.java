@@ -1,0 +1,22 @@
+package net.sample.framework.message.common;
+
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public class SemaphoreOnce {
+    private final AtomicBoolean released = new AtomicBoolean(false);
+
+    private final Semaphore semaphore;
+
+    public SemaphoreOnce(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
+
+    public void release() {
+        if (this.semaphore != null) {
+            if (this.released.compareAndSet(false, true)) {
+                this.semaphore.release();
+            }
+        }
+    }
+}
