@@ -1,21 +1,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.sebinson</groupId>
 		<artifactId>sebinson-common</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <groupId>net.sebinson.common</groupId>
-  <artifactId>sebinson-common-redis</artifactId>
-  <packaging>jar</packaging>
+	<groupId>net.sebinson.common</groupId>
+	<artifactId>sebinson-common-redis</artifactId>
+	<packaging>jar</packaging>
 
-  <name>sebinson-common-redis</name>
-  <url>http://www.sebinson.net</url>
+	<name>sebinson-common-redis</name>
+	<url>http://www.sebinson.net</url>
 
-  <properties>
-  </properties>
+	<properties>
+	</properties>
 
-  <dependencies>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.101tec</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>${zkclient-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson-version}</version>
+		</dependency>
+	</dependencies>
+
 </project>
