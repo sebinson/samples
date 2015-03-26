@@ -1,4 +1,4 @@
-package net.sample.base.redis.log;
+package net.sebinson.common.redis.log;
 
 import org.apache.log4j.Logger;
 

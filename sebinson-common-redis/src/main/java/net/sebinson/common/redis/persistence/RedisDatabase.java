@@ -1,11 +1,10 @@
-package net.sample.base.redis.persistence;
+package net.sebinson.common.redis.persistence;
 
 import java.util.List;
 import java.util.Set;
 
-import net.sample.base.redis.innerTools.RedisPoolHelper;
-import net.sample.base.redis.log.RedisLog;
-
+import net.sebinson.common.redis.innerTools.RedisPoolHelper;
+import net.sebinson.common.redis.log.RedisLog;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.ScanParams;

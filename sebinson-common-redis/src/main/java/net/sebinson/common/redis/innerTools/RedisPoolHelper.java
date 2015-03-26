@@ -1,12 +1,11 @@
-package net.sample.base.redis.innerTools;
+package net.sebinson.common.redis.innerTools;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.I0Itec.zkclient.ZkClient;
 
-import net.sample.base.redis.log.RedisLog;
-
+import net.sebinson.common.redis.log.RedisLog;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;

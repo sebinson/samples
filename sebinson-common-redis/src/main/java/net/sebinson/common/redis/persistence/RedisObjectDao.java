@@ -1,8 +1,7 @@
-package net.sample.base.redis.persistence;
+package net.sebinson.common.redis.persistence;
 
-import net.sample.base.redis.innerTools.ObjectSerializer;
-import net.sample.base.redis.log.RedisLog;
-
+import net.sebinson.common.redis.innerTools.ObjectSerializer;
+import net.sebinson.common.redis.log.RedisLog;
 import redis.clients.jedis.Jedis;
 
 public class RedisObjectDao extends RedisDatabase {

@@ -1,9 +1,8 @@
-package net.sample.base.redis.persistence;
+package net.sebinson.common.redis.persistence;
 
 import java.util.List;
 
-import net.sample.base.redis.log.RedisLog;
-
+import net.sebinson.common.redis.log.RedisLog;
 import redis.clients.jedis.Jedis;
 
 public class RedisStringDao extends RedisDatabase {
