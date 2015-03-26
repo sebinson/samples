@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 日期时间处理工具类
- * @author frenn
+ *
+ * @author C
  *
  */
 public final class TimeUtil

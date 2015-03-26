@@ -14,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 生成有序UUID 如果每台机器每个进程每纳秒产生33519618个值
- * 至3084年12月12日前不重复(其实这个时间过后也不会重复，只是会数据溢出超出可控范围) PC机实测效率每秒可生成180万个UUID
  * 
  * @author C
  *
