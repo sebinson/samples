@@ -5,16 +5,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 
-public class SpringBeanUtils implements ApplicationContextAware
+public class SpringBeanUtil implements ApplicationContextAware
 {
 
-    private static SpringBeanUtils instance = null;
+    private static SpringBeanUtil instance = null;
 
-    public static SpringBeanUtils getInstance()
+    public static SpringBeanUtil getInstance()
     {
         if (instance == null)
         {
-            instance = new SpringBeanUtils();
+            instance = new SpringBeanUtil();
         }
         return instance;
     }
@@ -24,7 +24,7 @@ public class SpringBeanUtils implements ApplicationContextAware
     @Override
     public void setApplicationContext(ApplicationContext arg0) throws BeansException
     {
-        SpringBeanUtils.applicationContext = arg0;
+        SpringBeanUtil.applicationContext = arg0;
     }
 
     public ApplicationContext getApplicationContext()

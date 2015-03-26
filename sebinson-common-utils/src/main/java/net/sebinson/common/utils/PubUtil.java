@@ -13,7 +13,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class PubUtils
+public class PubUtil
 {
 
     /**
@@ -39,7 +39,7 @@ public class PubUtils
      */
     public static String getProjectLocalPath() throws UnsupportedEncodingException
     {
-        String path = PubUtils.class.getClassLoader().getResource("").getFile();
+        String path = PubUtil.class.getClassLoader().getResource("").getFile();
         path = URLDecoder.decode(path, "UTF-8");
         return path.substring(0, path.lastIndexOf("/WEB-INF"));
     }
@@ -58,7 +58,7 @@ public class PubUtils
         catch (Exception e)
         {
             //解决在CS项目中没有classes文件夹的问题
-            return PubUtils.class.getResourceAsStream(filename);
+            return PubUtil.class.getResourceAsStream(filename);
         }
     }
 

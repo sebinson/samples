@@ -6,7 +6,7 @@ import java.util.Map;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-public class JsonUtils {
+public class JsonUtil {
 
     public final static Gson gson;
 

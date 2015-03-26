@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  * @author frenn
  *
  */
-public final class TimeUtils
+public final class TimeUtil
 {
     public static final String FORMAT1 = "yyyy-MM-dd HH:mm:ss";
     public static final String FORMAT2 = "yyyy-MM-dd";
@@ -478,11 +478,11 @@ public final class TimeUtils
         Date firstDay = calendar.getTime();
         if ("firstDay".equalsIgnoreCase(returnType))
         {
-            day = TimeUtils.convertDateToString(firstDay, TimeUtils.FORMAT2);
+            day = TimeUtil.convertDateToString(firstDay, TimeUtil.FORMAT2);
         }
         else
         {
-            day = TimeUtils.convertDateToString(lastDay, TimeUtils.FORMAT2);
+            day = TimeUtil.convertDateToString(lastDay, TimeUtil.FORMAT2);
         }
         return day;
     }

@@ -20,9 +20,9 @@ import org.slf4j.LoggerFactory;
  * @author C
  *
  */
-public class UUID {
+public class UUIDUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(UUID.class);
+    private static final Logger logger = LoggerFactory.getLogger(UUIDUtil.class);
 
     private final static String mac = NUM32(Long.valueOf(GetMacs(), 16), 10);
     private final static String pid = NUM32(PID(), 3);
