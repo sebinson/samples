@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 public class RedisLog {
 
-    private static Logger log = Logger.getLogger("log_redis");
+    private static Logger log = Logger.getLogger("REDIS-LOG");
 
     public static synchronized void error(Object message, Throwable e) {
         log.error(message, e);
