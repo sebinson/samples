@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 public class RedisPoolHelper {
-    final public static String ZK_SERVER = "zk.sample.net:2181";
+    final public static String ZK_SERVER = "zk.sebinson.net:2181";
     final public static String CACHE_PATH = "/cache/redis/pools";
     private static Map<String, JedisPool> pools = new HashMap<String, JedisPool>();
     private static int maxIdle = 20;
@@ -45,7 +45,7 @@ public class RedisPoolHelper {
      * 获取连接池
      * 
      * @param id
-     *            例：redis.sample.net:6369:2
+     *            例：redis.sebinson.net:6369:2
      * @return
      */
     public static synchronized JedisPool getPool(String id) {
@@ -68,7 +68,7 @@ public class RedisPoolHelper {
     }
 
     /**
-     * 释放连接
+     * release connection
      * 
      * @param jedis
      * @param pool

@@ -23,14 +23,14 @@ public class RedisDatabase {
     /**
      * @param id
      *            <p>
-     *            数据库ID</br> 例：redis.sebinson.com:6369:2
+     *            Database ID</br> e.g.: redis.sebinson.com:6369:2
      */
     public RedisDatabase(String id) {
         this.pool = RedisPoolHelper.getPool(id);
     }
 
     /**
-     * 获取jedis 常用于操作较多的地方 用完之后，需要自行关闭
+     * Get jedis, After use need to close 
      * 
      * @return
      */
@@ -39,7 +39,7 @@ public class RedisDatabase {
     }
 
     /**
-     * 释放jedis
+     * Release jedis
      * 
      * @param jedis
      */
@@ -48,7 +48,7 @@ public class RedisDatabase {
     }
 
     public String getRedisError() {
-        return "Redis操作异常【" + Thread.currentThread().getStackTrace()[2].getMethodName() + "】";
+        return "Redis Exception [" + Thread.currentThread().getStackTrace()[2].getMethodName() + "]";
     }
 
     /**
