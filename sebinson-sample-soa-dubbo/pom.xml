@@ -8,7 +8,7 @@
 	</parent>
   <groupId>net.sebinson.sample.soa</groupId>
   <artifactId>sebinson-sample-soa-dubbo</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>sebinson-sample-soa-dubbo</name>
   <url>http://www.sebinson.net</url>
