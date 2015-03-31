@@ -1,291 +1,297 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sample.web.mis.persistence.mapper.SampleMenuMapper" >
-  <resultMap id="BaseResultMap" type="com.sample.web.mis.persistence.domain.SampleMenu" >
-    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
-    <result column="menu_code" property="menuCode" jdbcType="VARCHAR" />
-    <result column="menu_type" property="menuType" jdbcType="CHAR" />
-    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
-    <result column="menu_status" property="menuStatus" jdbcType="CHAR" />
-    <result column="menu_parent_id" property="menuParentId" jdbcType="VARCHAR" />
-    <result column="menu_order" property="menuOrder" jdbcType="INTEGER" />
-    <result column="menu_uri" property="menuUri" jdbcType="VARCHAR" />
-    <result column="menu_actions" property="menuActions" jdbcType="VARCHAR" />
-    <result column="menu_desc" property="menuDesc" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    menu_id, menu_code, menu_type, menu_name, menu_status, menu_parent_id, menu_order, 
-    menu_uri, menu_actions, menu_desc
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sample.web.mis.persistence.domain.SampleMenuExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from sample_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from sample_menu
-    where menu_id = #{menuId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sample_menu
-    where menu_id = #{menuId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.sample.web.mis.persistence.domain.SampleMenuExample" >
-    delete from sample_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.sample.web.mis.persistence.domain.SampleMenu" >
-    insert into sample_menu (menu_id, menu_code, menu_type, 
-      menu_name, menu_status, menu_parent_id, 
-      menu_order, menu_uri, menu_actions, 
-      menu_desc)
-    values (#{menuId,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, #{menuType,jdbcType=CHAR}, 
-      #{menuName,jdbcType=VARCHAR}, #{menuStatus,jdbcType=CHAR}, #{menuParentId,jdbcType=VARCHAR}, 
-      #{menuOrder,jdbcType=INTEGER}, #{menuUri,jdbcType=VARCHAR}, #{menuActions,jdbcType=VARCHAR}, 
-      #{menuDesc,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.sample.web.mis.persistence.domain.SampleMenu" >
-    insert into sample_menu
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        menu_id,
-      </if>
-      <if test="menuCode != null" >
-        menu_code,
-      </if>
-      <if test="menuType != null" >
-        menu_type,
-      </if>
-      <if test="menuName != null" >
-        menu_name,
-      </if>
-      <if test="menuStatus != null" >
-        menu_status,
-      </if>
-      <if test="menuParentId != null" >
-        menu_parent_id,
-      </if>
-      <if test="menuOrder != null" >
-        menu_order,
-      </if>
-      <if test="menuUri != null" >
-        menu_uri,
-      </if>
-      <if test="menuActions != null" >
-        menu_actions,
-      </if>
-      <if test="menuDesc != null" >
-        menu_desc,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        #{menuId,jdbcType=VARCHAR},
-      </if>
-      <if test="menuCode != null" >
-        #{menuCode,jdbcType=VARCHAR},
-      </if>
-      <if test="menuType != null" >
-        #{menuType,jdbcType=CHAR},
-      </if>
-      <if test="menuName != null" >
-        #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="menuStatus != null" >
-        #{menuStatus,jdbcType=CHAR},
-      </if>
-      <if test="menuParentId != null" >
-        #{menuParentId,jdbcType=VARCHAR},
-      </if>
-      <if test="menuOrder != null" >
-        #{menuOrder,jdbcType=INTEGER},
-      </if>
-      <if test="menuUri != null" >
-        #{menuUri,jdbcType=VARCHAR},
-      </if>
-      <if test="menuActions != null" >
-        #{menuActions,jdbcType=VARCHAR},
-      </if>
-      <if test="menuDesc != null" >
-        #{menuDesc,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.sample.web.mis.persistence.domain.SampleMenuExample" resultType="java.lang.Integer" >
-    select count(*) from sample_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sample_menu
-    <set >
-      <if test="record.menuId != null" >
-        menu_id = #{record.menuId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuCode != null" >
-        menu_code = #{record.menuCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuType != null" >
-        menu_type = #{record.menuType,jdbcType=CHAR},
-      </if>
-      <if test="record.menuName != null" >
-        menu_name = #{record.menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuStatus != null" >
-        menu_status = #{record.menuStatus,jdbcType=CHAR},
-      </if>
-      <if test="record.menuParentId != null" >
-        menu_parent_id = #{record.menuParentId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuOrder != null" >
-        menu_order = #{record.menuOrder,jdbcType=INTEGER},
-      </if>
-      <if test="record.menuUri != null" >
-        menu_uri = #{record.menuUri,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuActions != null" >
-        menu_actions = #{record.menuActions,jdbcType=VARCHAR},
-      </if>
-      <if test="record.menuDesc != null" >
-        menu_desc = #{record.menuDesc,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sample_menu
-    set menu_id = #{record.menuId,jdbcType=VARCHAR},
-      menu_code = #{record.menuCode,jdbcType=VARCHAR},
-      menu_type = #{record.menuType,jdbcType=CHAR},
-      menu_name = #{record.menuName,jdbcType=VARCHAR},
-      menu_status = #{record.menuStatus,jdbcType=CHAR},
-      menu_parent_id = #{record.menuParentId,jdbcType=VARCHAR},
-      menu_order = #{record.menuOrder,jdbcType=INTEGER},
-      menu_uri = #{record.menuUri,jdbcType=VARCHAR},
-      menu_actions = #{record.menuActions,jdbcType=VARCHAR},
-      menu_desc = #{record.menuDesc,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sample.web.mis.persistence.domain.SampleMenu" >
-    update sample_menu
-    <set >
-      <if test="menuCode != null" >
-        menu_code = #{menuCode,jdbcType=VARCHAR},
-      </if>
-      <if test="menuType != null" >
-        menu_type = #{menuType,jdbcType=CHAR},
-      </if>
-      <if test="menuName != null" >
-        menu_name = #{menuName,jdbcType=VARCHAR},
-      </if>
-      <if test="menuStatus != null" >
-        menu_status = #{menuStatus,jdbcType=CHAR},
-      </if>
-      <if test="menuParentId != null" >
-        menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
-      </if>
-      <if test="menuOrder != null" >
-        menu_order = #{menuOrder,jdbcType=INTEGER},
-      </if>
-      <if test="menuUri != null" >
-        menu_uri = #{menuUri,jdbcType=VARCHAR},
-      </if>
-      <if test="menuActions != null" >
-        menu_actions = #{menuActions,jdbcType=VARCHAR},
-      </if>
-      <if test="menuDesc != null" >
-        menu_desc = #{menuDesc,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where menu_id = #{menuId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sample.web.mis.persistence.domain.SampleMenu" >
-    update sample_menu
-    set menu_code = #{menuCode,jdbcType=VARCHAR},
-      menu_type = #{menuType,jdbcType=CHAR},
-      menu_name = #{menuName,jdbcType=VARCHAR},
-      menu_status = #{menuStatus,jdbcType=CHAR},
-      menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
-      menu_order = #{menuOrder,jdbcType=INTEGER},
-      menu_uri = #{menuUri,jdbcType=VARCHAR},
-      menu_actions = #{menuActions,jdbcType=VARCHAR},
-      menu_desc = #{menuDesc,jdbcType=VARCHAR}
-    where menu_id = #{menuId,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="net.sebinson.sample.web.mis.persistence.mapper.SampleMenuMapper">
+	<resultMap id="BaseResultMap" type="net.sebinson.sample.web.mis.persistence.domain.SampleMenu">
+		<id column="menu_id" property="menuId" jdbcType="VARCHAR" />
+		<result column="menu_code" property="menuCode" jdbcType="VARCHAR" />
+		<result column="menu_type" property="menuType" jdbcType="CHAR" />
+		<result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+		<result column="menu_status" property="menuStatus" jdbcType="CHAR" />
+		<result column="menu_parent_id" property="menuParentId" jdbcType="VARCHAR" />
+		<result column="menu_order" property="menuOrder" jdbcType="INTEGER" />
+		<result column="menu_uri" property="menuUri" jdbcType="VARCHAR" />
+		<result column="menu_actions" property="menuActions" jdbcType="VARCHAR" />
+		<result column="menu_desc" property="menuDesc" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		menu_id, menu_code, menu_type, menu_name, menu_status, menu_parent_id, menu_order,
+		menu_uri, menu_actions, menu_desc
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenuExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from sample_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sample_menu
+		where menu_id = #{menuId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from sample_menu
+		where menu_id = #{menuId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenuExample">
+		delete from sample_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenu">
+		insert into sample_menu (menu_id, menu_code, menu_type,
+		menu_name, menu_status, menu_parent_id,
+		menu_order, menu_uri, menu_actions,
+		menu_desc)
+		values (#{menuId,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, #{menuType,jdbcType=CHAR},
+		#{menuName,jdbcType=VARCHAR}, #{menuStatus,jdbcType=CHAR},
+		#{menuParentId,jdbcType=VARCHAR},
+		#{menuOrder,jdbcType=INTEGER}, #{menuUri,jdbcType=VARCHAR}, #{menuActions,jdbcType=VARCHAR},
+		#{menuDesc,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenu">
+		insert into sample_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				menu_id,
+			</if>
+			<if test="menuCode != null">
+				menu_code,
+			</if>
+			<if test="menuType != null">
+				menu_type,
+			</if>
+			<if test="menuName != null">
+				menu_name,
+			</if>
+			<if test="menuStatus != null">
+				menu_status,
+			</if>
+			<if test="menuParentId != null">
+				menu_parent_id,
+			</if>
+			<if test="menuOrder != null">
+				menu_order,
+			</if>
+			<if test="menuUri != null">
+				menu_uri,
+			</if>
+			<if test="menuActions != null">
+				menu_actions,
+			</if>
+			<if test="menuDesc != null">
+				menu_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				#{menuId,jdbcType=VARCHAR},
+			</if>
+			<if test="menuCode != null">
+				#{menuCode,jdbcType=VARCHAR},
+			</if>
+			<if test="menuType != null">
+				#{menuType,jdbcType=CHAR},
+			</if>
+			<if test="menuName != null">
+				#{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuStatus != null">
+				#{menuStatus,jdbcType=CHAR},
+			</if>
+			<if test="menuParentId != null">
+				#{menuParentId,jdbcType=VARCHAR},
+			</if>
+			<if test="menuOrder != null">
+				#{menuOrder,jdbcType=INTEGER},
+			</if>
+			<if test="menuUri != null">
+				#{menuUri,jdbcType=VARCHAR},
+			</if>
+			<if test="menuActions != null">
+				#{menuActions,jdbcType=VARCHAR},
+			</if>
+			<if test="menuDesc != null">
+				#{menuDesc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenuExample" resultType="java.lang.Integer">
+		select count(*) from sample_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update sample_menu
+		<set>
+			<if test="record.menuId != null">
+				menu_id = #{record.menuId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuCode != null">
+				menu_code = #{record.menuCode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuType != null">
+				menu_type = #{record.menuType,jdbcType=CHAR},
+			</if>
+			<if test="record.menuName != null">
+				menu_name = #{record.menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuStatus != null">
+				menu_status = #{record.menuStatus,jdbcType=CHAR},
+			</if>
+			<if test="record.menuParentId != null">
+				menu_parent_id = #{record.menuParentId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuOrder != null">
+				menu_order = #{record.menuOrder,jdbcType=INTEGER},
+			</if>
+			<if test="record.menuUri != null">
+				menu_uri = #{record.menuUri,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuActions != null">
+				menu_actions = #{record.menuActions,jdbcType=VARCHAR},
+			</if>
+			<if test="record.menuDesc != null">
+				menu_desc = #{record.menuDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update sample_menu
+		set menu_id = #{record.menuId,jdbcType=VARCHAR},
+		menu_code = #{record.menuCode,jdbcType=VARCHAR},
+		menu_type = #{record.menuType,jdbcType=CHAR},
+		menu_name =
+		#{record.menuName,jdbcType=VARCHAR},
+		menu_status = #{record.menuStatus,jdbcType=CHAR},
+		menu_parent_id = #{record.menuParentId,jdbcType=VARCHAR},
+		menu_order =
+		#{record.menuOrder,jdbcType=INTEGER},
+		menu_uri = #{record.menuUri,jdbcType=VARCHAR},
+		menu_actions = #{record.menuActions,jdbcType=VARCHAR},
+		menu_desc =
+		#{record.menuDesc,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenu">
+		update sample_menu
+		<set>
+			<if test="menuCode != null">
+				menu_code = #{menuCode,jdbcType=VARCHAR},
+			</if>
+			<if test="menuType != null">
+				menu_type = #{menuType,jdbcType=CHAR},
+			</if>
+			<if test="menuName != null">
+				menu_name = #{menuName,jdbcType=VARCHAR},
+			</if>
+			<if test="menuStatus != null">
+				menu_status = #{menuStatus,jdbcType=CHAR},
+			</if>
+			<if test="menuParentId != null">
+				menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
+			</if>
+			<if test="menuOrder != null">
+				menu_order = #{menuOrder,jdbcType=INTEGER},
+			</if>
+			<if test="menuUri != null">
+				menu_uri = #{menuUri,jdbcType=VARCHAR},
+			</if>
+			<if test="menuActions != null">
+				menu_actions = #{menuActions,jdbcType=VARCHAR},
+			</if>
+			<if test="menuDesc != null">
+				menu_desc = #{menuDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where menu_id = #{menuId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleMenu">
+		update sample_menu
+		set menu_code = #{menuCode,jdbcType=VARCHAR},
+		menu_type = #{menuType,jdbcType=CHAR},
+		menu_name =
+		#{menuName,jdbcType=VARCHAR},
+		menu_status = #{menuStatus,jdbcType=CHAR},
+		menu_parent_id = #{menuParentId,jdbcType=VARCHAR},
+		menu_order = #{menuOrder,jdbcType=INTEGER},
+		menu_uri =
+		#{menuUri,jdbcType=VARCHAR},
+		menu_actions = #{menuActions,jdbcType=VARCHAR},
+		menu_desc = #{menuDesc,jdbcType=VARCHAR}
+		where menu_id = #{menuId,jdbcType=VARCHAR}
+	</update>
 </mapper>

@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.sample.web.mis.persistence.mapper.SampleRoleMenuMapper" >
-  <resultMap id="BaseResultMap" type="com.sample.web.mis.persistence.domain.SampleRoleMenuKey" >
-    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
-    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    menu_id, role_id
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from sample_role_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuKey" >
-    delete from sample_role_menu
-    where menu_id = #{menuId,jdbcType=VARCHAR}
-      and role_id = #{roleId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuExample" >
-    delete from sample_role_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuKey" >
-    insert into sample_role_menu (menu_id, role_id)
-    values (#{menuId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuKey" >
-    insert into sample_role_menu
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        menu_id,
-      </if>
-      <if test="roleId != null" >
-        role_id,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="menuId != null" >
-        #{menuId,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.sample.web.mis.persistence.domain.SampleRoleMenuExample" resultType="java.lang.Integer" >
-    select count(*) from sample_role_menu
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sample_role_menu
-    <set >
-      <if test="record.menuId != null" >
-        menu_id = #{record.menuId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.roleId != null" >
-        role_id = #{record.roleId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sample_role_menu
-    set menu_id = #{record.menuId,jdbcType=VARCHAR},
-      role_id = #{record.roleId,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
+<mapper namespace="net.sebinson.sample.web.mis.persistence.mapper.SampleRoleMenuMapper">
+	<resultMap id="BaseResultMap" type="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuKey">
+		<id column="menu_id" property="menuId" jdbcType="VARCHAR" />
+		<id column="role_id" property="roleId" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem" open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		menu_id, role_id
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from sample_role_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuKey">
+		delete from sample_role_menu
+		where menu_id = #{menuId,jdbcType=VARCHAR}
+		and role_id = #{roleId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuExample">
+		delete from sample_role_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuKey">
+		insert into sample_role_menu (menu_id, role_id)
+		values (#{menuId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuKey">
+		insert into sample_role_menu
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				menu_id,
+			</if>
+			<if test="roleId != null">
+				role_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="menuId != null">
+				#{menuId,jdbcType=VARCHAR},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuExample" resultType="java.lang.Integer">
+		select count(*) from sample_role_menu
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update sample_role_menu
+		<set>
+			<if test="record.menuId != null">
+				menu_id = #{record.menuId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.roleId != null">
+				role_id = #{record.roleId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update sample_role_menu
+		set menu_id = #{record.menuId,jdbcType=VARCHAR},
+		role_id = #{record.roleId,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
 </mapper>
