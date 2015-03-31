@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import com.sample.common.tools.StringUtil;
+import net.sebinson.common.utils.StringUtil;
 
 public class UriUtil {
 
