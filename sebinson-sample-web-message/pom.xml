@@ -1,16 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.sebinson</groupId>
-		<artifactId>sebinson-sample</artifactId>
+		<groupId>net.sebinson.sample</groupId>
+		<artifactId>sebinson-sample-web</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>net.sebinson.sample</groupId>
-	<artifactId>sebinson-sample-web</artifactId>
+	<groupId>net.sebinson.sample.web</groupId>
+	<artifactId>sebinson-sample-web-message</artifactId>
 	<packaging>pom</packaging>
 
-	<name>sebinson-sample-web</name>
+	<name>sebinson-sample-web-message</name>
 	<url>http://www.sebinson.net</url>
 
 	<properties>
@@ -18,4 +19,8 @@
 
 	<dependencies>
 	</dependencies>
+	<modules>
+		<module>sebinson-sample-web-message-collection</module>
+		<module>sebinson-sample-web-message-distribution</module>
+	</modules>
 </project>

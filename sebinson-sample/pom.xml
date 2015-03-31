@@ -1,20 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>net.sebinson</groupId>
-        <artifactId>sebinson-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+		<artifactId>sebinson-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <artifactId>sebinson-sample</artifactId>
-  <packaging>pom</packaging>
+	<artifactId>sebinson-sample</artifactId>
+	<packaging>pom</packaging>
 
-  <name>sebinson-sample</name>
-  <url>http://www.sebinson.net</url>
+	<name>sebinson-sample</name>
+	<url>http://www.sebinson.net</url>
 
-  <properties>
-  </properties>
+	<properties>
+	</properties>
 
-  <dependencies>
-  </dependencies>
+	<dependencies>
+	</dependencies>
 </project>

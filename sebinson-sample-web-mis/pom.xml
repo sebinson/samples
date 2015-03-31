@@ -1,21 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-    <parent>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
 		<groupId>net.sebinson.sample</groupId>
-        <artifactId>sebinson-sample-web</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+		<artifactId>sebinson-sample-web</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <groupId>net.sebinson.sample.web</groupId>
-  <artifactId>sebinson-sample-web-mis</artifactId>
-  <packaging>pom</packaging>
+	<groupId>net.sebinson.sample.web</groupId>
+	<artifactId>sebinson-sample-web-mis</artifactId>
+	<packaging>pom</packaging>
 
-  <name>sebinson-sample-web-commons</name>
-  <url>http://www.sebinson.net</url>
+	<name>sebinson-sample-web-commons</name>
+	<url>http://www.sebinson.net</url>
 
-  <properties>
-  </properties>
+	<properties>
+	</properties>
 
-  <dependencies>
-  </dependencies>
+	<dependencies>
+	</dependencies>
+	<modules>
+		<module>sebinson-sample-web-mis-view</module>
+		<module>sebinson-sample-web-mis-service</module>
+		<module>sebinson-sample-web-mis-persistence</module>
+	</modules>
 </project>
