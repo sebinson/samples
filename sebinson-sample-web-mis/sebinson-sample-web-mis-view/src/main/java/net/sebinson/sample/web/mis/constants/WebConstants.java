@@ -1,4 +1,4 @@
-package com.sample.web.mis.constants;
+package net.sebinson.sample.web.mis.constants;
 
 public class WebConstants {
 

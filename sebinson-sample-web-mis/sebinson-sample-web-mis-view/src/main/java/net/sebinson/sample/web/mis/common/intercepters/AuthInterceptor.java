@@ -1,4 +1,4 @@
-package com.sample.web.mis.common.intercepters;
+package net.sebinson.sample.web.mis.common.intercepters;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sebinson.sample.web.common.annotations.Auth;
 import net.sebinson.sample.web.common.beans.Message;
 import net.sebinson.sample.web.common.tools.HtmlUtil;
+import net.sebinson.sample.web.mis.common.tools.AuthUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +15,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.sample.common.tools.StringUtil;
-import com.sample.web.mis.common.tools.AuthUtil;
 
 /**
  * 认证授权拦截器

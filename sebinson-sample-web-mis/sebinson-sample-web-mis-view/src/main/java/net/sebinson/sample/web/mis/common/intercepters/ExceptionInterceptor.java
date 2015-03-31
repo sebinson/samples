@@ -1,4 +1,4 @@
-package com.sample.web.mis.common.intercepters;
+package net.sebinson.sample.web.mis.common.intercepters;
 
 import java.util.Enumeration;
 

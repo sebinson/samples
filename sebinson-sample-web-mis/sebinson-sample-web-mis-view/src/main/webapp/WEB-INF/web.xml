@@ -14,7 +14,7 @@
 
 	<servlet>
 		<servlet-name>spring</servlet-name>
-		<servlet-class>com.sample.web.common.servlets.EncodingDispatcherServlet</servlet-class>
+		<servlet-class>net.sebinson.sample.web.common.servlets.EncodingDispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring-context.xml</param-value>

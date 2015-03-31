@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
 	<!-- 配置自动扫面注入根目录 -->
-	<context:component-scan base-package="com.sample.web.mis">
+	<context:component-scan base-package="net.sebinson.sample.web.mis">
 	</context:component-scan>
 
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
@@ -76,7 +76,7 @@
 
 	<!-- 配置自定义Spring拦截器 -->
 	<mvc:interceptors>
-		<bean class="com.sample.web.mis.common.intercepters.AuthInterceptor" />
-		<bean class="com.sample.web.mis.common.intercepters.ExceptionInterceptor" />
+		<bean class="net.sebinson.sample.web.mis.common.intercepters.AuthInterceptor" />
+		<bean class="net.sebinson.sample.web.mis.common.intercepters.ExceptionInterceptor" />
 	</mvc:interceptors>
 </beans>

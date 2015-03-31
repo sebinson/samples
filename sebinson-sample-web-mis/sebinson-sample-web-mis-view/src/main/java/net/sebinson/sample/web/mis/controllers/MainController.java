@@ -1,4 +1,4 @@
-package com.sample.web.mis.controllers;
+package net.sebinson.sample.web.mis.controllers;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -12,6 +12,10 @@ import net.sebinson.sample.web.common.BaseController;
 import net.sebinson.sample.web.common.annotations.Auth;
 import net.sebinson.sample.web.common.beans.ResponseJson;
 import net.sebinson.sample.web.common.tools.SessionUtil;
+import net.sebinson.sample.web.mis.common.tools.AuthUtil;
+import net.sebinson.sample.web.mis.common.tools.MenuTreeHelper;
+import net.sebinson.sample.web.mis.common.tools.UriUtil;
+import net.sebinson.sample.web.mis.constants.WebConstants;
 import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
 import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
 import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
@@ -29,10 +33,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sample.common.tools.Md5Util;
 import com.sample.common.tools.StringUtil;
-import com.sample.web.mis.common.tools.AuthUtil;
-import com.sample.web.mis.common.tools.MenuTreeHelper;
-import com.sample.web.mis.common.tools.UriUtil;
-import com.sample.web.mis.constants.WebConstants;
 
 @Controller
 public class MainController extends BaseController {

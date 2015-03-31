@@ -1,11 +1,11 @@
-package com.sample.web.mis.controller.base;
+package net.sebinson.sample.web.mis.controller.base;
 
 import java.util.List;
 
 import net.sebinson.sample.web.common.bean.pagination.Page;
 import net.sebinson.sample.web.common.beans.ResponseJson;
-import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
-import net.sebinson.sample.web.mis.service.base.SampleMenuOperationService;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
+import net.sebinson.sample.web.mis.service.base.SampleUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/samplemenuoperation")
-public class SampleMenuOperationController {
+@RequestMapping(value = "/sampleuser")
+public class SampleUserController {
 
     @Autowired
-    SampleMenuOperationService sampleMenuOperationService;
+    SampleUserService sampleUserService;
 
     @RequestMapping(value = "/index")
     public void index() {
     }
 
     @RequestMapping(value = "/list")
-    public @ResponseBody ModelMap list(SampleMenuOperation paramObj, Page page) {
+    public @ResponseBody ModelMap list(SampleUser paramObj, Page page) {
         ModelMap modelMap = new ModelMap();
-        List<SampleMenuOperation> list = this.sampleMenuOperationService.queryListPage(paramObj, page);
+        List<SampleUser> list = this.sampleUserService.queryListPage(paramObj, page);
         modelMap.put("total", page.getRowCount());
         modelMap.put("rows", list);
         return modelMap;
     }
 
     @RequestMapping(value = "/add")
-    public @ResponseBody ResponseJson add(SampleMenuOperation paramObj) {
+    public @ResponseBody ResponseJson add(SampleUser paramObj) {
         boolean iSuccess = false;
-        if (this.sampleMenuOperationService.insert(paramObj) > 0) {
+        if (this.sampleUserService.insert(paramObj) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
@@ -46,16 +46,16 @@ public class SampleMenuOperationController {
     public @ResponseBody ResponseJson remove(String[] ids) {
 
         boolean iSuccess = false;
-        if (this.sampleMenuOperationService.delete(ids) > 0) {
+        if (this.sampleUserService.delete(ids) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
     }
 
     @RequestMapping(value = "/save")
-    public @ResponseBody ResponseJson save(SampleMenuOperation paramObj) {
+    public @ResponseBody ResponseJson save(SampleUser paramObj) {
         boolean iSuccess = false;
-        if (this.sampleMenuOperationService.update(paramObj) > 0) {
+        if (this.sampleUserService.update(paramObj) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
@@ -65,7 +65,7 @@ public class SampleMenuOperationController {
     public @ResponseBody ResponseJson byId(String id) {
 
         boolean iSuccess = false;
-        SampleMenuOperation data = this.sampleMenuOperationService.selectByKey(id);
+        SampleUser data = this.sampleUserService.selectByKey(id);
         if (data != null) {
             iSuccess = true;
         }

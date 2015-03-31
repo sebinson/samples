@@ -1,4 +1,4 @@
-package com.sample.web.mis.common.tools;
+package net.sebinson.sample.web.mis.common.tools;
 
 import java.util.ArrayList;
 import java.util.List;

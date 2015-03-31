@@ -1,4 +1,4 @@
-package com.sample.web.mis.controller.base;
+package net.sebinson.sample.web.mis.controller.system;
 
 import java.util.List;
 
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/samplemenu")
-public class SampleMenuController {
+@RequestMapping(value = "/menu")
+public class MenuController {
 
     @Autowired
-    SampleMenuService sampleMenuService;
+    SampleMenuService menuService;
 
     @RequestMapping(value = "/index")
-    public void index() {
+    public void index(ModelMap modelMap) {
     }
 
     @RequestMapping(value = "/list")
     public @ResponseBody ModelMap list(SampleMenu paramObj, Page page) {
         ModelMap modelMap = new ModelMap();
-        List<SampleMenu> list = this.sampleMenuService.queryListPage(paramObj, page);
+        List<SampleMenu> list = this.menuService.queryListPage(paramObj, page);
         modelMap.put("total", page.getRowCount());
         modelMap.put("rows", list);
         return modelMap;
@@ -36,7 +36,7 @@ public class SampleMenuController {
     @RequestMapping(value = "/add")
     public @ResponseBody ResponseJson add(SampleMenu paramObj) {
         boolean iSuccess = false;
-        if (this.sampleMenuService.insert(paramObj) > 0) {
+        if (menuService.insert(paramObj) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
@@ -46,7 +46,7 @@ public class SampleMenuController {
     public @ResponseBody ResponseJson remove(String[] ids) {
 
         boolean iSuccess = false;
-        if (this.sampleMenuService.delete(ids) > 0) {
+        if (menuService.delete(ids) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
@@ -55,7 +55,7 @@ public class SampleMenuController {
     @RequestMapping(value = "/save")
     public @ResponseBody ResponseJson save(SampleMenu paramObj) {
         boolean iSuccess = false;
-        if (this.sampleMenuService.update(paramObj) > 0) {
+        if (menuService.update(paramObj) > 0) {
             iSuccess = true;
         }
         return ResponseJson.body(iSuccess);
@@ -65,7 +65,7 @@ public class SampleMenuController {
     public @ResponseBody ResponseJson byId(String id) {
 
         boolean iSuccess = false;
-        SampleMenu data = this.sampleMenuService.selectByKey(id);
+        SampleMenu data = menuService.selectByKey(id);
         if (data != null) {
             iSuccess = true;
         }
