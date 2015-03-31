@@ -7,7 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.sample.web.common.tools.SessionUtil;
+import net.sebinson.sample.web.common.tools.SessionUtil;
+
 import com.sample.web.mis.constants.WebConstants;
 import com.sample.web.mis.persistence.domain.SampleUser;
 

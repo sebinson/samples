@@ -2,14 +2,15 @@ package com.sample.web.mis.controller.base;
 
 import java.util.List;
 
+import net.sebinson.sample.web.common.bean.pagination.Page;
+import net.sebinson.sample.web.common.beans.ResponseJson;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sample.web.common.bean.pagination.Page;
-import com.sample.web.common.beans.ResponseJson;
 import com.sample.web.mis.persistence.domain.SampleUser;
 import com.sample.web.mis.service.base.SampleUserService;
 

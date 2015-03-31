@@ -1,6 +1,8 @@
-package com.sample.web.common.logger;
+package net.sebinson.sample.web.common.logger;
 
 import java.lang.reflect.Field;
+
+import net.sebinson.sample.web.common.annotations.ALogger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +10,6 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
-
-import com.sample.web.common.annotations.ALogger;
 
 
 /**

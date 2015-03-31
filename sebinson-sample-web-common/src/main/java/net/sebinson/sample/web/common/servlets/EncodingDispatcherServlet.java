@@ -1,4 +1,4 @@
-package com.sample.web.common.servlets;
+package net.sebinson.sample.web.common.servlets;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.sample.web.common.tools;
+package net.sebinson.sample.web.common.tools;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,4 +1,4 @@
-package com.sample.web.common.bean.factory;
+package net.sebinson.sample.web.common.bean.factory;
 
 import java.beans.Introspector;
 

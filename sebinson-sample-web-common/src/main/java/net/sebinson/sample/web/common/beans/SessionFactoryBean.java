@@ -1,4 +1,4 @@
-package com.sample.web.common.beans;
+package net.sebinson.sample.web.common.beans;
 
 import static org.springframework.util.Assert.notNull;
 import static org.springframework.util.ObjectUtils.isEmpty;

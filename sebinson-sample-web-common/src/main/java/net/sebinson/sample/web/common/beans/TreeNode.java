@@ -1,4 +1,4 @@
-package com.sample.web.common.beans;
+package net.sebinson.sample.web.common.beans;
 
 import java.util.HashMap;
 import java.util.List;

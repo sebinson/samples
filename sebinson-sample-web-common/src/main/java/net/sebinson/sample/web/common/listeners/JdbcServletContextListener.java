@@ -1,4 +1,4 @@
-package com.sample.web.common.listeners;
+package net.sebinson.sample.web.common.listeners;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

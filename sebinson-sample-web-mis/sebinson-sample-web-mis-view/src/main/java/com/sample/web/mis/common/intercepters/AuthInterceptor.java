@@ -3,6 +3,10 @@ package com.sample.web.mis.common.intercepters;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sebinson.sample.web.common.annotations.Auth;
+import net.sebinson.sample.web.common.beans.Message;
+import net.sebinson.sample.web.common.tools.HtmlUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -10,9 +14,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.sample.common.tools.StringUtil;
-import com.sample.web.common.annotations.Auth;
-import com.sample.web.common.beans.Message;
-import com.sample.web.common.tools.HtmlUtil;
 import com.sample.web.mis.common.tools.AuthUtil;
 
 /**

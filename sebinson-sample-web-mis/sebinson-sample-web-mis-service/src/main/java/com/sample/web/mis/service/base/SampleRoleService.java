@@ -2,7 +2,8 @@ package com.sample.web.mis.service.base;
 
 import java.util.List;
 
-import com.sample.web.common.bean.pagination.Page;
+import net.sebinson.sample.web.common.bean.pagination.Page;
+
 import com.sample.web.mis.persistence.domain.SampleRole;
 
 /**

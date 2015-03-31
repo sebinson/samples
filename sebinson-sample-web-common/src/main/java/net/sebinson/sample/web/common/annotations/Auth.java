@@ -1,4 +1,4 @@
-package com.sample.web.common.annotations;
+package net.sebinson.sample.web.common.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

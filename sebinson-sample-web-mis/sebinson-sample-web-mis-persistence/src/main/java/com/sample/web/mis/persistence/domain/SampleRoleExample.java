@@ -3,7 +3,7 @@ package com.sample.web.mis.persistence.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sample.web.common.bean.pagination.Page;
+import net.sebinson.sample.web.common.bean.pagination.Page;
 
 public class SampleRoleExample {
     protected String orderByClause;

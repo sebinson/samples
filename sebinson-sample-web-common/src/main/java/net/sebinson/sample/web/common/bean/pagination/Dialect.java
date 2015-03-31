@@ -1,4 +1,4 @@
-package com.sample.web.common.bean.pagination;
+package net.sebinson.sample.web.common.bean.pagination;
 
 /**
  * 数据库分页查询SQL语法定义<br/>

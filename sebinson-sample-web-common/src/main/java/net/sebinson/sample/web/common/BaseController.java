@@ -1,15 +1,15 @@
-package com.sample.web.common;
+package net.sebinson.sample.web.common;
 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sebinson.sample.web.common.beans.Message;
+import net.sebinson.sample.web.common.tools.HtmlUtil;
+
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.sample.web.common.beans.Message;
-import com.sample.web.common.tools.HtmlUtil;
 
 public class BaseController {
 

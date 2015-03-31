@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.sample.web.common.bean.pagination.Page;
+import net.sebinson.sample.web.common.bean.pagination.Page;
 
 public class SampleUserExample {
     protected String orderByClause;

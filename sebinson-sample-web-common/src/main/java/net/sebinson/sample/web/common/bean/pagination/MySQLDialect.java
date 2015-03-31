@@ -1,4 +1,4 @@
-package com.sample.web.common.bean.pagination;
+package net.sebinson.sample.web.common.bean.pagination;
 
 /**
  * MySql数据库分页查询SQL封装实现

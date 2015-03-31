@@ -1,4 +1,4 @@
-package com.sample.web.common.intercepters;
+package net.sebinson.sample.web.common.intercepters;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,9 @@ import java.util.Properties;
 import java.util.Set;
 
 import javax.xml.bind.PropertyException;
+
+import net.sebinson.sample.web.common.bean.pagination.Dialect;
+import net.sebinson.sample.web.common.bean.pagination.Page;
 
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.executor.parameter.DefaultParameterHandler;
@@ -25,8 +28,6 @@ import org.apache.ibatis.plugin.Signature;
 import org.springframework.util.StringUtils;
 
 import com.sample.common.tools.ReflectHelper;
-import com.sample.web.common.bean.pagination.Dialect;
-import com.sample.web.common.bean.pagination.Page;
 
 /**
  * Mybatis的分页查询拦截器，通过拦截StatementHandler的prepare方法来实现。

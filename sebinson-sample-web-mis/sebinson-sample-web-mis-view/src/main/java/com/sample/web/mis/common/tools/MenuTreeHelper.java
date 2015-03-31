@@ -3,7 +3,8 @@ package com.sample.web.mis.common.tools;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sample.web.common.beans.TreeNode;
+import net.sebinson.sample.web.common.beans.TreeNode;
+
 import com.sample.web.mis.persistence.domain.SampleMenu;
 import com.sample.web.mis.persistence.domain.SampleMenuOperation;
 
