@@ -11,7 +11,7 @@
 	<groupId>net.sebinson.sample.web.message</groupId>
 	<artifactId>sebinson-sample-web-message-collection</artifactId>
 	<packaging>war</packaging>
-	<name>sebinson-sample-web-message-collection Maven Webapp</name>
+	<name>sebinson-sample-web-message-collection</name>
 	<url>http://www.sebinson.net</url>
 
 	<dependencies>
