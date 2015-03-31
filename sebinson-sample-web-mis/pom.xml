@@ -18,6 +18,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>net.sebinson.sample.web</groupId>
+			<artifactId>sebinson-sample-web-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<modules>
 		<module>sebinson-sample-web-mis-view</module>

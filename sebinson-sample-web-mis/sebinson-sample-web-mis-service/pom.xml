@@ -12,8 +12,12 @@
 	<artifactId>sebinson-sample-web-mis-service</artifactId>
 	<name>sebinson-sample-web-mis-service</name>
 	<url>http://www.sebinson.net</url>
-	<properties>
-	</properties>
+
 	<dependencies>
+		<dependency>
+			<groupId>net.sebinson.sample.web.mis</groupId>
+			<artifactId>sebinson-sample-web-mis-persistence</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>

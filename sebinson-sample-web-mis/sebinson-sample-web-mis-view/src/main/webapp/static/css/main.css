@@ -1,0 +1,62 @@
+.main-header {
+	padding: 10px font-family:'lucida grande', tahoma, arial, sans-serif;
+	height: 64px
+}
+
+.main-header h1 {
+	font-size: 30px;
+	font-weight: normal;
+	padding: 10px 10px;
+	float: left;
+	font-weight: bold;
+	margin-left: 20px;
+	text-indent: 20px
+}
+
+.main-header-info {
+	float: right;
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+.main-header-info a {
+	color: blue;
+}
+
+.main-header-info .ui-login-bar {
+	text-align: right;
+}
+
+.main-footer {
+	background: #A9FACD;
+	padding: 10px
+}
+
+.main-navigate {
+	width: 320px
+}
+
+.menu-item {
+	display: block;
+	color: black;
+	text-decoration: none;
+	border-bottom: 1px dotted #D8D8D8;
+	padding: 5px 5px 5px 15px;
+}
+
+.menu-item:hover {
+	background: #E0ECFF;
+}
+
+.modify-pwd-win table tr td {
+	width: 100px;
+	text-align: right;
+}
+
+.modify-pwd-win label {
+	font-size: 13px;
+}
+
+.pwd-form {
+	padding-top: 20px;
+}

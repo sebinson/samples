@@ -1,0 +1,61 @@
+body {
+	font-family: helvetica, tahoma, verdana, sans-serif;
+	padding: 0px;
+	font-size: 12px;
+	margin: 0;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+.div-inline {
+	display: inline;
+}
+
+.search-panel {
+	border-bottom: 1px solid #D4D4D4;
+	padding: 10px
+}
+
+.search-panel fieldset {
+	min-height: 72px;
+}
+
+.search-panel legend span {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.search-form {
+	overflow: hidden;
+}
+
+.search-form div {
+	float: left;
+	margin-top: 10px;
+}
+
+.search-form label {
+	vertical-align: middle;
+	margin-left: 20px;
+}
+
+.search-button {
+	text-align: right;
+}
+
+.search-button a {
+	width: 80px;
+	margin-right: 10px
+}
+
+.edit-win {
+	padding: 10px 10px 10px 10px;
+}
+
+.edit-win label {
+	font-size: 13px;
+	margin-left: 40px;
+}

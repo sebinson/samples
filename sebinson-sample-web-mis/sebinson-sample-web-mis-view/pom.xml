@@ -11,9 +11,19 @@
 	<groupId>net.sebinson.sample.web.mis</groupId>
 	<artifactId>sebinson-sample-web-mis-view</artifactId>
 	<packaging>war</packaging>
-	<name>sebinson-sample-web-mis-view Maven Webapp</name>
+	<name>sebinson-sample-web-mis-view</name>
 	<url>http://www.sebinson.net</url>
 	<dependencies>
+		<dependency>
+			<groupId>net.sebinson.sample.web.mis</groupId>
+			<artifactId>sebinson-sample-web-mis-persistence</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sebinson.sample.web.mis</groupId>
+			<artifactId>sebinson-sample-web-mis-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>sebinson-sample-web-mis-view</finalName>

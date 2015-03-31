@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.web.mis.persistence.mapper.dao.AuthorizationQueryDao">
+    <resultMap id="MenuResultMap" type="com.sample.web.mis.persistence.domain.SampleMenu">
+        <id column="menu_id" jdbcType="VARCHAR" property="menuId" />
+        <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+        <result column="menu_type" jdbcType="CHAR" property="menuType" />
+        <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+        <result column="menu_status" jdbcType="CHAR" property="menuStatus" />
+        <result column="menu_parent_id" jdbcType="VARCHAR" property="menuParentId" />
+        <result column="menu_order" jdbcType="INTEGER" property="menuOrder" />
+        <result column="menu_uri" jdbcType="VARCHAR" property="menuUri" />
+        <result column="menu_actions" jdbcType="VARCHAR" property="menuActions" />
+        <result column="menu_desc" jdbcType="VARCHAR" property="menuDesc" />
+    </resultMap>
+    <resultMap id="MenuOperationResultMap" type="com.sample.web.mis.persistence.domain.SampleMenuOperation">
+        <id column="oper_id" jdbcType="VARCHAR" property="operId" />
+        <result column="menu_id" jdbcType="VARCHAR" property="menuId" />
+        <result column="oper_code" jdbcType="VARCHAR" property="operCode" />
+        <result column="oper_name" jdbcType="VARCHAR" property="operName" />
+        <result column="oper_type" jdbcType="CHAR" property="operType" />
+        <result column="oper_uri" jdbcType="VARCHAR" property="operUri" />
+        <result column="oper_actions" jdbcType="VARCHAR" property="operActions" />
+    </resultMap>
+    <sql id="Menu_Column_List">
+        a.menu_id, a.menu_code, a.menu_type, a.menu_name, a.menu_status, a.menu_parent_id, a.menu_order,
+        a.menu_uri,
+        a.menu_actions, a.menu_desc
+    </sql>
+    <sql id="Menu_Operation_Column_List">
+        a.oper_id, a.menu_id, a.oper_code, a.oper_name, a.oper_type, a.oper_actions
+    </sql>
+    <select id="queryRootMenuByUserId" parameterType="java.lang.String" resultMap="MenuResultMap">
+        SELECT
+        <include refid="Menu_Column_List" />
+        FROM sample_menu a
+        LEFT JOIN sample_role_menu b ON b.menu_id=a.menu_id
+        LEFT JOIN sample_user_role c ON
+        c.role_id=b.role_id
+        WHERE c.user_id=${userId} AND a.menu_parent_id ='0000'
+    </select>
+    <select id="queryChildMenuByUserId" parameterType="java.lang.String" resultMap="MenuResultMap">
+        SELECT
+        <include refid="Menu_Column_List" />
+        FROM sample_menu a
+        LEFT JOIN sample_role_menu b ON b.menu_id=a.menu_parent_id
+        LEFT JOIN sample_user_role
+        c ON c.role_id=b.role_id
+        WHERE c.user_id=${userId}
+    </select>
+    <select id="queryMenuOperByUserId" parameterType="java.lang.String" resultMap="MenuOperationResultMap">
+        SELECT
+        <include refid="Menu_Operation_Column_List" />
+        FROM sample_menu_operation a
+        LEFT JOIN sample_role_menu b ON b.menu_id=a.menu_id
+        LEFT JOIN
+        sample_user_role c ON c.role_id=b.role_id
+        WHERE c.user_id=${userId}
+    </select>
+</mapper>
