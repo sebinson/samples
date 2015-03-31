@@ -1,4 +1,4 @@
-package com.sample.web.mis.service.auth.impl;
+package net.sebinson.sample.web.mis.service.auth.impl;
 
 import java.util.List;
 
@@ -9,11 +9,10 @@ import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample;
 import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample.Criteria;
 import net.sebinson.sample.web.mis.persistence.mapper.SampleUserMapper;
 import net.sebinson.sample.web.mis.persistence.mapper.dao.AuthorizationQueryDao;
+import net.sebinson.sample.web.mis.service.auth.VerificationAuthorizationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.sample.web.mis.service.auth.VerificationAuthorizationService;
 
 /**
  * 用戶授权验证服务的实现

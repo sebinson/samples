@@ -1,4 +1,4 @@
-package com.sample.web.mis.service.auth;
+package net.sebinson.sample.web.mis.service.auth;
 
 import java.util.List;
 

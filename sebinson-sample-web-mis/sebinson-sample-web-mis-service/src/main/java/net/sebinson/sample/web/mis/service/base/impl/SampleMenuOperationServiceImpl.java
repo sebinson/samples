@@ -1,4 +1,4 @@
-package com.sample.web.mis.service.base.impl;
+package net.sebinson.sample.web.mis.service.base.impl;
 
 import java.util.List;
 
@@ -7,12 +7,11 @@ import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
 import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperationExample;
 import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperationExample.Criteria;
 import net.sebinson.sample.web.mis.persistence.mapper.SampleMenuOperationMapper;
+import net.sebinson.sample.web.mis.service.base.SampleMenuOperationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import com.sample.web.mis.service.base.SampleMenuOperationService;
 
 /**
  * 

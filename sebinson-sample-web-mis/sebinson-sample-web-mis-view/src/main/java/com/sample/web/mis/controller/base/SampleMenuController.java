@@ -5,14 +5,13 @@ import java.util.List;
 import net.sebinson.sample.web.common.bean.pagination.Page;
 import net.sebinson.sample.web.common.beans.ResponseJson;
 import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.service.base.SampleMenuService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sample.web.mis.service.base.SampleMenuService;
 
 @Controller
 @RequestMapping(value = "/samplemenu")

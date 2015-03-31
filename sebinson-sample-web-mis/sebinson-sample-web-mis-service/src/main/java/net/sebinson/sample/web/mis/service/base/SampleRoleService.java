@@ -1,4 +1,4 @@
-package com.sample.web.mis.service.base;
+package net.sebinson.sample.web.mis.service.base;
 
 import java.util.List;
 

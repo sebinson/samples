@@ -1,4 +1,4 @@
-package com.sample.web.mis.service.base.impl;
+package net.sebinson.sample.web.mis.service.base.impl;
 
 import java.util.List;
 
@@ -7,12 +7,11 @@ import net.sebinson.sample.web.mis.persistence.domain.SampleRole;
 import net.sebinson.sample.web.mis.persistence.domain.SampleRoleExample;
 import net.sebinson.sample.web.mis.persistence.domain.SampleRoleExample.Criteria;
 import net.sebinson.sample.web.mis.persistence.mapper.SampleRoleMapper;
+import net.sebinson.sample.web.mis.service.base.SampleRoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import com.sample.web.mis.service.base.SampleRoleService;
 
 /**
  * 
