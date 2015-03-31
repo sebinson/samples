@@ -1,21 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-    <parent>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
 		<groupId>net.sebinson.sample</groupId>
-        <artifactId>sebinson-sample-soa</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+		<artifactId>sebinson-sample-soa</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-  <groupId>net.sebinson.sample.soa</groupId>
-  <artifactId>sebinson-sample-soa-dubbo</artifactId>
-  <packaging>pom</packaging>
+	<groupId>net.sebinson.sample.soa</groupId>
+	<artifactId>sebinson-sample-soa-dubbo</artifactId>
+	<packaging>pom</packaging>
 
-  <name>sebinson-sample-soa-dubbo</name>
-  <url>http://www.sebinson.net</url>
+	<name>sebinson-sample-soa-dubbo</name>
+	<url>http://www.sebinson.net</url>
 
-  <properties>
-  </properties>
+	<properties>
+	</properties>
 
-  <dependencies>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>${dubbo-version}</version>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>sebinson-sample-soa-dubbo-provider</module>
+		<module>sebinson-sample-soa-dubbo-consumer</module>
+	</modules>
 </project>

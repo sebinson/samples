@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>net.sebinson.sample.soa</groupId>
+		<artifactId>sebinson-sample-soa-dubbo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>net.sebinson.sample.soa.dubbo</groupId>
+	<artifactId>sebinson-sample-soa-dubbo-provider</artifactId>
+	<packaging>war</packaging>
+	<name>sebinson-sample-soa-dubbo-provider</name>
+	<url>http://www.sebinson.net</url>
+	<dependencies>
+	</dependencies>
+	<build>
+		<finalName>sebinson-sample-soa-dubbo-provider</finalName>
+	</build>
+</project>

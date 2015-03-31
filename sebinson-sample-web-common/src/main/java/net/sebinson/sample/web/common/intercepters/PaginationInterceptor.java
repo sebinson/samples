@@ -10,6 +10,7 @@ import java.util.Set;
 
 import javax.xml.bind.PropertyException;
 
+import net.sebinson.common.utils.ReflectHelper;
 import net.sebinson.sample.web.common.bean.pagination.Dialect;
 import net.sebinson.sample.web.common.bean.pagination.Page;
 
@@ -26,8 +27,6 @@ import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Plugin;
 import org.apache.ibatis.plugin.Signature;
 import org.springframework.util.StringUtils;
-
-import com.sample.common.tools.ReflectHelper;
 
 /**
  * Mybatis的分页查询拦截器，通过拦截StatementHandler的prepare方法来实现。
