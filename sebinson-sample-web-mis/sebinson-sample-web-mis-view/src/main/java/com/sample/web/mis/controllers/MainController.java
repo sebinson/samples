@@ -12,6 +12,9 @@ import net.sebinson.sample.web.common.BaseController;
 import net.sebinson.sample.web.common.annotations.Auth;
 import net.sebinson.sample.web.common.beans.ResponseJson;
 import net.sebinson.sample.web.common.tools.SessionUtil;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,9 +31,6 @@ import com.sample.web.mis.common.tools.AuthUtil;
 import com.sample.web.mis.common.tools.MenuTreeHelper;
 import com.sample.web.mis.common.tools.UriUtil;
 import com.sample.web.mis.constants.WebConstants;
-import com.sample.web.mis.persistence.domain.SampleMenu;
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
-import com.sample.web.mis.persistence.domain.SampleUser;
 import com.sample.web.mis.service.auth.VerificationAuthorizationService;
 import com.sample.web.mis.service.base.SampleUserService;
 

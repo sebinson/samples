@@ -1,9 +1,9 @@
-package com.sample.web.mis.persistence.mapper;
-
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
-import com.sample.web.mis.persistence.domain.SampleMenuOperationExample;
+package net.sebinson.sample.web.mis.persistence.mapper;
 
 import java.util.List;
+
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperationExample;
 
 import org.apache.ibatis.annotations.Param;
 

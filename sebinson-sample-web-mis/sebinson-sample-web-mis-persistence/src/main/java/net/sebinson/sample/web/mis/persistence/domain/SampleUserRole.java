@@ -1,4 +1,4 @@
-package com.sample.web.mis.persistence.domain;
+package net.sebinson.sample.web.mis.persistence.domain;
 
 public class SampleUserRole extends SampleUserRoleKey {
     private String remarks;

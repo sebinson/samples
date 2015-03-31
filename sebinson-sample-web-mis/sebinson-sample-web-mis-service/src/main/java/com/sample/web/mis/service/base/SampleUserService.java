@@ -3,8 +3,7 @@ package com.sample.web.mis.service.base;
 import java.util.List;
 
 import net.sebinson.sample.web.common.bean.pagination.Page;
-
-import com.sample.web.mis.persistence.domain.SampleUser;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
 
 /**
  * 

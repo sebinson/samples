@@ -8,9 +8,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import net.sebinson.sample.web.common.tools.SessionUtil;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
 
 import com.sample.web.mis.constants.WebConstants;
-import com.sample.web.mis.persistence.domain.SampleUser;
 
 public class AuthUtil {
 

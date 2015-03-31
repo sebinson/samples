@@ -2,16 +2,17 @@ package com.sample.web.mis.service.auth.impl;
 
 import java.util.List;
 
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample.Criteria;
+import net.sebinson.sample.web.mis.persistence.mapper.SampleUserMapper;
+import net.sebinson.sample.web.mis.persistence.mapper.dao.AuthorizationQueryDao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sample.web.mis.persistence.domain.SampleMenu;
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
-import com.sample.web.mis.persistence.domain.SampleUser;
-import com.sample.web.mis.persistence.domain.SampleUserExample;
-import com.sample.web.mis.persistence.domain.SampleUserExample.Criteria;
-import com.sample.web.mis.persistence.mapper.SampleUserMapper;
-import com.sample.web.mis.persistence.mapper.dao.AuthorizationQueryDao;
 import com.sample.web.mis.service.auth.VerificationAuthorizationService;
 
 /**

@@ -41,17 +41,17 @@
     </bean>
 
     <!-- -->
-    <bean id="pagePlugin" class="com.sample.web.common.intercepters.PaginationInterceptor">
+    <bean id="pagePlugin" class="net.sebinson.sample.web.common.intercepters.PaginationInterceptor">
         <property name="properties">
             <props>
-                <prop key="dialect">com.sample.web.common.bean.pagination.MySQLDialect</prop>
+                <prop key="dialect">net.sebinson.sample.web.common.bean.pagination.MySQLDialect</prop>
                 <prop key="pageSqlId">(.*)selectByExample(.*)</prop>
             </props>
         </property>
     </bean>
 
     <!-- -->
-    <bean id="sqlSessionFactory" class="com.sample.web.common.beans.SessionFactoryBean">
+    <bean id="sqlSessionFactory" class="net.sebinson.sample.web.common.beans.SessionFactoryBean">
         <property name="dataSource" ref="mybatisDataSource" />
         <property name="configLocation" value="classpath:persistence-mybatis.xml" />
         <property name="plugins">
@@ -63,7 +63,7 @@
 
     <!-- -->
     <bean name="userMapperScannerConfig" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.sample.web.mis.persistence.mapper" />
+        <property name="basePackage" value="net.sebinson.sample.web.mis.persistence.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

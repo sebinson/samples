@@ -2,12 +2,12 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleUserMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleUserRoleMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleRoleMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleRoleMenuMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleMenuMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/SampleMenuOperationMapper.xml" />
-        <mapper resource="com/sample/web/mis/persistence/mapper/dao/AuthorizationQueryDao.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleUserMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleUserRoleMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleRoleMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleRoleMenuMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleMenuMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/SampleMenuOperationMapper.xml" />
+        <mapper resource="net/sebinson/sample/web/mis/persistence/mapper/dao/AuthorizationQueryDao.xml" />
     </mappers>
 </configuration>

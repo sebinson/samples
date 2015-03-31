@@ -2,9 +2,9 @@ package com.sample.web.mis.service.auth;
 
 import java.util.List;
 
-import com.sample.web.mis.persistence.domain.SampleMenu;
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
-import com.sample.web.mis.persistence.domain.SampleUser;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
 
 /**
  * 用戶授权验证服务

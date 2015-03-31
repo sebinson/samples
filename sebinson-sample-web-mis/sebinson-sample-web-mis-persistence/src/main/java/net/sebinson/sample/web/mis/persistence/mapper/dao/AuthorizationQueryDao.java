@@ -1,11 +1,11 @@
-package com.sample.web.mis.persistence.mapper.dao;
+package net.sebinson.sample.web.mis.persistence.mapper.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
 
-import com.sample.web.mis.persistence.domain.SampleMenu;
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
+import org.apache.ibatis.annotations.Param;
 
 public interface AuthorizationQueryDao {
 

@@ -3,15 +3,15 @@ package com.sample.web.mis.service.base.impl;
 import java.util.List;
 
 import net.sebinson.sample.web.common.bean.pagination.Page;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUser;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample;
+import net.sebinson.sample.web.mis.persistence.domain.SampleUserExample.Criteria;
+import net.sebinson.sample.web.mis.persistence.mapper.SampleUserMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.sample.web.mis.persistence.domain.SampleUser;
-import com.sample.web.mis.persistence.domain.SampleUserExample;
-import com.sample.web.mis.persistence.domain.SampleUserExample.Criteria;
-import com.sample.web.mis.persistence.mapper.SampleUserMapper;
 import com.sample.web.mis.service.base.SampleUserService;
 
 /**

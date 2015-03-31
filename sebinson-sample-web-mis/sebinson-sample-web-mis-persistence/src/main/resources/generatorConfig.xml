@@ -2,41 +2,39 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
 
-    <classPathEntry location="D:\apache-maven-3.0.4\repo\mysql\mysql-connector-java\5.1.20\mysql-connector-java-5.1.20.jar" />
-    
-    <context id="MysqlTables" targetRuntime="MyBatis3">
+	<classPathEntry location="D:\apache-maven-3.0.4\repo\mysql\mysql-connector-java\5.1.20\mysql-connector-java-5.1.20.jar" />
 
-        <commentGenerator>
-            <property name="suppressAllComments" value="true" />
-        </commentGenerator>
+	<context id="MysqlTables" targetRuntime="MyBatis3">
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/gooagoo_sample"
-            userId="root" password="sys@123">
-        </jdbcConnection>
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
 
-        <javaTypeResolver>
-            <property name="forceBigDecimals" value="false" />
-        </javaTypeResolver>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/gooagoo_sample" userId="root" password="sys@123">
+		</jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.sample.web.mis.persistence.domain" targetProject="src\main\java">
-            <property name="enableSubPackages" value="true" />
-            <property name="trimStrings" value="true" />
-        </javaModelGenerator>
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
 
-        <sqlMapGenerator targetPackage="com.sample.web.mis.persistence.mapper" targetProject="src\main\resources">
-            <property name="enableSubPackages" value="true" />
-        </sqlMapGenerator>
+		<javaModelGenerator targetPackage="net.sebinson.sample.web.mis.persistence.domain" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.sample.web.mis.persistence.mapper"
-            targetProject="src\main\java">
-            <property name="enableSubPackages" value="true" />
-        </javaClientGenerator>
+		<sqlMapGenerator targetPackage="net.sebinson.sample.web.mis.persistence.mapper" targetProject="src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
 
-        <table tableName="sample_user" domainObjectName="SampleUser" />              
-        <table tableName="sample_user_role" domainObjectName="SampleUserRole" />
-        <table tableName="sample_role" domainObjectName="SampleRole" />
-        <table tableName="sample_role_menu" domainObjectName="SampleRoleMenu" />
-        <table tableName="sample_menu" domainObjectName="SampleMenu" />
-        <table tableName="sample_menu_operation" domainObjectName="SampleMenuOperation" />
-    </context>
+		<javaClientGenerator type="XMLMAPPER" targetPackage="net.sebinson.sample.web.mis.persistence.mapper" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="sample_user" domainObjectName="SampleUser" />
+		<table tableName="sample_user_role" domainObjectName="SampleUserRole" />
+		<table tableName="sample_role" domainObjectName="SampleRole" />
+		<table tableName="sample_role_menu" domainObjectName="SampleRoleMenu" />
+		<table tableName="sample_menu" domainObjectName="SampleMenu" />
+		<table tableName="sample_menu_operation" domainObjectName="SampleMenuOperation" />
+	</context>
 </generatorConfiguration> 

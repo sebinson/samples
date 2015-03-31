@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.sebinson.sample.web.common.beans.TreeNode;
-
-import com.sample.web.mis.persistence.domain.SampleMenu;
-import com.sample.web.mis.persistence.domain.SampleMenuOperation;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenu;
+import net.sebinson.sample.web.mis.persistence.domain.SampleMenuOperation;
 
 public class MenuTreeHelper {
 
