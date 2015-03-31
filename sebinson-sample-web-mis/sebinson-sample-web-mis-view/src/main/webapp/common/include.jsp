@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     request.setAttribute("basePath", "");
-    request.setAttribute("staticPath", "http://static.sample.com");
+    request.setAttribute("staticPath", "http://stc.sebinson.net");
 %>
 <script type="text/javascript">
 	var basePath = '${basePath}';
