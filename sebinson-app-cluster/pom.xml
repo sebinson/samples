@@ -1,37 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
+    <parent>
+        <groupId>net.sebinson</groupId>
+        <artifactId>sebinson-app</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 	<groupId>net.sebinson.app</groupId>
 	<artifactId>sebinson-app-cluster</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>sebinson-app-cluster</name>
 	<url>http://www.sebinson.net</url>
-
-	<properties>
-		<junit-version>4.11</junit-version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<zkclient-version>0.4</zkclient-version>
-		<zookeeper-version>3.4.5</zookeeper-version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.101tec</groupId>
-			<artifactId>zkclient</artifactId>
-			<version>${zkclient-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.zookeeper</groupId>
-			<artifactId>zookeeper</artifactId>
-			<version>${zookeeper-version}</version>
-		</dependency>
-	</dependencies>
 </project>
