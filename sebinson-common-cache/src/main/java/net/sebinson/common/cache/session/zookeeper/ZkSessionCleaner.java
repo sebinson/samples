@@ -3,9 +3,9 @@ package net.sebinson.common.cache.session.zookeeper;
 import java.util.Date;
 import java.util.List;
 
-import org.I0Itec.zkclient.ZkClient;
-
 import net.sebinson.common.cache.session.SessionMeta;
+
+import org.I0Itec.zkclient.ZkClient;
 
 public class ZkSessionCleaner extends Thread {
     @Override

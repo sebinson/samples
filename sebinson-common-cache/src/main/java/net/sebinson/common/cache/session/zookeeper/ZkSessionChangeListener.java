@@ -7,16 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.sebinson.common.cache.session.AbstractSessionChangeListener;
+import net.sebinson.common.cache.session.SessionMeta;
+
 import org.I0Itec.zkclient.IZkChildListener;
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 
-import net.sebinson.common.cache.session.AbstractSessionChangeListener;
-import net.sebinson.common.cache.session.SessionMeta;
-
 public class ZkSessionChangeListener extends AbstractSessionChangeListener {
 
-    private static final Map<String, Set<IZkDataListener>> sissionDataListeners = new HashMap<String, Set<IZkDataListener>>();
+    private static final Map<String, Set<IZkDataListener>> sessionDataListeners = new HashMap<String, Set<IZkDataListener>>();
     private static final Map<String, Map<String, Set<IZkDataListener>>> attributeDataListeners = new HashMap<String, Map<String, Set<IZkDataListener>>>();
 
     private void subscribeSessionAttributeChange(List<String> zkSessions) {
@@ -57,7 +57,7 @@ public class ZkSessionChangeListener extends AbstractSessionChangeListener {
         final ZkClient zkClient = ZkConnection.getInstance();
         for (int i = 0, len = zkSessions.size(); i < len; i++) {
             String sid = (String) zkSessions.get(i);
-            Set<IZkDataListener> listenerSet = sissionDataListeners.get(sid);
+            Set<IZkDataListener> listenerSet = sessionDataListeners.get(sid);
             if (listenerSet != null) {
                 Iterator<IZkDataListener> it = listenerSet.iterator();
                 while (it.hasNext()) {
@@ -68,7 +68,7 @@ public class ZkSessionChangeListener extends AbstractSessionChangeListener {
             if (listenerSet == null) {
                 listenerSet = new HashSet<IZkDataListener>();
                 listenerSet.add(newDataListener);
-                sissionDataListeners.put(sid, listenerSet);
+                sessionDataListeners.put(sid, listenerSet);
             } else {
                 listenerSet.add(newDataListener);
             }
