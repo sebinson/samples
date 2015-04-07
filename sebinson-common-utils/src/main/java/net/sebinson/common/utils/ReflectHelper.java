@@ -2,9 +2,6 @@ package net.sebinson.common.utils;
 
 import java.lang.reflect.Field;
 
-/**
- * 反射工具
- */
 public class ReflectHelper {
     public static Field getFieldByFieldName(Object obj, String fieldName) {
         if (obj == null || fieldName == null) {
@@ -37,7 +34,6 @@ public class ReflectHelper {
         return value;
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> T getValueByFieldType(Object obj, Class<T> fieldType) {
         Object value = null;
         for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
@@ -67,12 +63,9 @@ public class ReflectHelper {
 
     public static boolean setValueByFieldName(Object obj, String fieldName, Object value) {
         try {
-            // java.lang.Class.getDeclaredField()方法用法实例教程 -
-            // 方法返回一个Field对象，它反映此Class对象所表示的类或接口的指定已声明字段。
-            // 此方法返回这个类中的指定字段的Field对象
             Field field = obj.getClass().getDeclaredField(fieldName);
-            if (field.isAccessible()) {// 获取此对象的 accessible 标志的值。
-                field.set(obj, value);// 将指定对象变量上此 Field 对象表示的字段设置为指定的新值
+            if (field.isAccessible()) {
+                field.set(obj, value);
             } else {
                 field.setAccessible(true);
                 field.set(obj, value);

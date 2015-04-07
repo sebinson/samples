@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation=" http://www.springframework.org/schema/mvc
+	  http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+	  http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-3.2.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+      http://code.alibabatech.com/schema/dubbo
+      http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<context:component-scan base-package="net.sebinson.sample.message.collection.core">
+		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect" />
+	</context:component-scan>
+
+	<aop:aspectj-autoproxy />
+
+	<!-- MQ消息接收配置开始 -->
+	<bean id="billReceiveService" class="com.gooagoo.bill.collect.core.service.impl.transport.MQMessageReceiver"
+		init-method="start">
+		<!-- 消息通道名称 -->
+		<property name="topicName" value="collector" />
+		<!-- 消费集群名称，一个topic可以有多个消息集群进行消费，但一个消费集群只能消费一个topic的消息 -->
+		<property name="consumerGroupName" value="billCollectConsumerGroup" />
+		<!-- 过滤表达式，表示接收表达式内的tag参数值的消息，多个值以“||”分隔，例如 "bill || order || unbill"，"*"代表接收全部 -->
+		<property name="subExpression" value="*" />
+		<!-- 消费线程数量，同一消费集群名称下的消费线程数量之和不应超过topic队列数量 -->
+		<property name="threadNum" value="1" />
+	</bean>
+	<!-- MQ消息接收配置结束 -->
+</beans>
