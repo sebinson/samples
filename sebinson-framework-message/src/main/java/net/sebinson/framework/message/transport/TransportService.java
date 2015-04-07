@@ -4,6 +4,8 @@ import net.sebinson.framework.message.transport.exception.TransportConnectExcept
 import net.sebinson.framework.message.transport.exception.TransportSendRequestException;
 import net.sebinson.framework.message.transport.exception.TransportTimeoutException;
 import net.sebinson.framework.message.transport.exception.TransportTooMuchRequestException;
+import net.sebinson.framework.message.transport.processor.LoginProcessor;
+import net.sebinson.framework.message.transport.processor.RequestProcessor;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 /**

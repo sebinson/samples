@@ -1,4 +1,4 @@
-package net.sebinson.framework.message.transport;
+package net.sebinson.framework.message.transport.processor;
 
 import net.sebinson.framework.message.common.ClientInfoMsg;
 

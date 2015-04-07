@@ -1,9 +1,9 @@
 package net.sebinson.framework.message.push;
 
 import net.sebinson.framework.message.push.service.DistributionServer;
-import net.sebinson.framework.message.transport.LoginProcessor;
 import net.sebinson.framework.message.transport.RPCHook;
-import net.sebinson.framework.message.transport.RequestProcessor;
+import net.sebinson.framework.message.transport.processor.LoginProcessor;
+import net.sebinson.framework.message.transport.processor.RequestProcessor;
 
 import org.springframework.util.StringUtils;
 

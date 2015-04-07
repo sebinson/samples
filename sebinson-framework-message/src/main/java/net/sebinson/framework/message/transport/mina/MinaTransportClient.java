@@ -5,7 +5,6 @@ import java.util.concurrent.ExecutorService;
 import net.sebinson.framework.message.common.ClientInfoMsg;
 import net.sebinson.framework.message.common.ConstantTransport;
 import net.sebinson.framework.message.transport.InvokeCallback;
-import net.sebinson.framework.message.transport.LoginProcessor;
 import net.sebinson.framework.message.transport.RPCHook;
 import net.sebinson.framework.message.transport.TransportClient;
 import net.sebinson.framework.message.transport.TransportService;
@@ -13,6 +12,7 @@ import net.sebinson.framework.message.transport.exception.TransportConnectExcept
 import net.sebinson.framework.message.transport.exception.TransportSendRequestException;
 import net.sebinson.framework.message.transport.exception.TransportTimeoutException;
 import net.sebinson.framework.message.transport.exception.TransportTooMuchRequestException;
+import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 import org.apache.mina.core.session.IoSession;
@@ -121,14 +121,14 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
 
     @Override
     public void registerRequestProcessor(String itype,
-            net.sebinson.framework.message.transport.RequestProcessor processor) {
+            net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
     public void registerMoniterProcessor(String itype,
-            net.sebinson.framework.message.transport.RequestProcessor processor) {
+            net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
         // TODO Auto-generated method stub
         
     }

@@ -18,6 +18,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>net.sebinson.framework</groupId>
+			<artifactId>sebinson-framework-message</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<modules>
 		<module>sebinson-sample-web-message-collection</module>
