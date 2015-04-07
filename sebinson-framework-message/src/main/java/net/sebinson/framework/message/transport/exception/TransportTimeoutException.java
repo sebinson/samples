@@ -12,8 +12,7 @@ public class TransportTimeoutException extends TransportException {
     }
 
     public TransportTimeoutException(String errorCode, String add, long timeoutMills, String message, Throwable cause) {
-        super(errorCode, "wait response to [" + add + "] timeout, [" + timeoutMills + "](ms), message is [" + message
-                + "]", cause);
+        super(errorCode, "wait response to [" + add + "] timeout, [" + timeoutMills + "](ms), message is [" + message + "]", cause);
     }
 
 }

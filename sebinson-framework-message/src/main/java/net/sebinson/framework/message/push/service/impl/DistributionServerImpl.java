@@ -48,29 +48,32 @@ import com.google.gson.reflect.TypeToken;
 
 public class DistributionServerImpl implements DistributionServer, TransportBootstrap {
 
-    private int distributedType;// 0=单节点模式，1=分布式多节点模式
-    private String name;// 服务名
-    private boolean isLong = true;// true,长连接，false短连接。
-    private int port;// 端口
-    private int nThreads;// mina线程数据
-    private int cacheType;// TODO;default=0 cacheType 缓存库: 0=本地EHCache 0=单节点模式,
-                          // 1=redis,2...待补充
+    private int                        distributedType;            // 0=单节点模式，1=分布式多节点模式
+    private String                     name;                       // 服务名
+    private boolean                    isLong = true;              // true,长连接，false短连接。
+    private int                        port;                       // 端口
+    private int                        nThreads;                   // mina线程数据
+    private int                        cacheType;                  // TODO;default=0
+                                                                   // cacheType
+                                                                   // 缓存库:
+                                                                   // 0=本地EHCache
+                                                                   // 0=单节点模式,
+                                                                   // 1=redis,2...待补充
 
     // mina服务端
-    private MinaTransportServer minaTransportServer;
+    private MinaTransportServer        minaTransportServer;
 
     // 1:映射数据写入共享 2：历史数据的处理
     private LoginProcessorDistribution loginProcessorDistribution;
 
     // 处理历史数据
-    private HistoryDataService historyDataService;
+    private HistoryDataService         historyDataService;
 
     public DistributionServerImpl(String serverName, int port, boolean isLong, int nThreads, int distributedType) {
         this(serverName, port, isLong, nThreads, distributedType, 0);
     }
 
-    public DistributionServerImpl(String serverName, int port, boolean isLong, int nThreads, int distributedType,
-            int cacheType) {
+    public DistributionServerImpl(String serverName, int port, boolean isLong, int nThreads, int distributedType, int cacheType) {
         this.distributedType = distributedType;
         this.name = serverName;
         this.isLong = isLong;
@@ -86,8 +89,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
         {
             this.historyDataService = new HistoryDataServiceLocalImpl();
             this.loginProcessorDistribution.setHistoryDataService(this.historyDataService);
-            this.loginProcessorDistribution.setShareSessionMappingService(new ShareSessionMappingServiceLocalImpl(
-                    this.minaTransportServer));
+            this.loginProcessorDistribution.setShareSessionMappingService(new ShareSessionMappingServiceLocalImpl(this.minaTransportServer));
         } else if (this.cacheType == 1) {
             this.historyDataService = new HistoryDataServiceRedisImpl();
             this.loginProcessorDistribution.setHistoryDataService(this.historyDataService);
@@ -168,8 +170,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
             try {
                 hasSendCount++;
                 remotingCommand.getHeader().setAdd(add);// 用客户端的标识
-                response = this.minaTransportServer.invokeSync(add, remotingCommand,
-                        ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS);
+                response = this.minaTransportServer.invokeSync(add, remotingCommand, ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS);
                 hasSendSend = true;
                 request.setFlag(1);
                 isTooMuchException = false;
@@ -275,43 +276,36 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
                 hasSendCount++;
                 haveSends.add(add);
                 remotingCommand.getHeader().setAdd(add);// 用客户端的标识
-                this.minaTransportServer.invokeASync(add, remotingCommand,
-                        ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS, new InvokeCallback() {
-                            @Override
-                            public void operationComplete(ResponseFuture responseFuture) {
-                                if (callBack == null) {
-                                    return;
-                                }
-                                RemoteCommand responseCommand = responseFuture.getResponseCommand();
-                                SendResult<T> sendResult = new SendResult<T>();
-                                sendResult.setRequestMsg(request);
-                                if (responseCommand != null) {
-                                    try {
-                                        sendResult.setResponse(responseCommand);
-                                        callBack.onSuccess(sendResult);
-                                    } catch (Exception e) {
-                                        callBack.onException(sendResult, e);
-                                    }
-                                } else {
-                                    if (!responseFuture.isSendRequestOK()) {
-                                        callBack.onException(sendResult, new TransportSendRequestException(
-                                                TransportException.EORROR_SENDREQUSET, haveSends.toString(), "serial="
-                                                        + serial, responseFuture.getThrowable()));
-                                    } else if (responseFuture.isTimeout()) {
-                                        callBack.onException(sendResult,
-                                                new TransportTimeoutException(TransportException.EORROR_TIMEOUT,
-                                                        haveSends.toString(), responseFuture.getSendTimeoutMillis(),
-                                                        "serial=" + serial, responseFuture.getThrowable()));
-                                    } else {
-                                        callBack.onException(
-                                                sendResult,
-                                                new TransportException(TransportException.EORROR_TRANSPORT,
-                                                        "unknow exception reseaon. serial=" + serial, responseFuture
-                                                                .getThrowable()));
-                                    }
-                                }
+                this.minaTransportServer.invokeASync(add, remotingCommand, ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS, new InvokeCallback() {
+                    @Override
+                    public void operationComplete(ResponseFuture responseFuture) {
+                        if (callBack == null) {
+                            return;
+                        }
+                        RemoteCommand responseCommand = responseFuture.getResponseCommand();
+                        SendResult<T> sendResult = new SendResult<T>();
+                        sendResult.setRequestMsg(request);
+                        if (responseCommand != null) {
+                            try {
+                                sendResult.setResponse(responseCommand);
+                                callBack.onSuccess(sendResult);
+                            } catch (Exception e) {
+                                callBack.onException(sendResult, e);
                             }
-                        });
+                        } else {
+                            if (!responseFuture.isSendRequestOK()) {
+                                callBack.onException(sendResult, new TransportSendRequestException(TransportException.EORROR_SENDREQUSET, haveSends.toString(),
+                                        "serial=" + serial, responseFuture.getThrowable()));
+                            } else if (responseFuture.isTimeout()) {
+                                callBack.onException(sendResult, new TransportTimeoutException(TransportException.EORROR_TIMEOUT, haveSends.toString(),
+                                        responseFuture.getSendTimeoutMillis(), "serial=" + serial, responseFuture.getThrowable()));
+                            } else {
+                                callBack.onException(sendResult, new TransportException(TransportException.EORROR_TRANSPORT,
+                                        "unknow exception reseaon. serial=" + serial, responseFuture.getThrowable()));
+                            }
+                        }
+                    }
+                });
 
                 hasSendSend = true;
                 request.setFlag(1);
@@ -416,8 +410,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
             try {
                 hasSendCount++;
                 remotingCommand.getHeader().setAdd(add);// 用客户端的标识
-                this.minaTransportServer.invokeUnreply(add, remotingCommand,
-                        ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS);
+                this.minaTransportServer.invokeUnreply(add, remotingCommand, ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS);
                 hasSendSend = true;
                 request.setFlag(1);
                 isTooMuchException = false;
@@ -485,8 +478,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmssSSS");
             String ctimeStr = df.format(new Date(c));
             String ntimeStr = df.format(new Date(n));
-            TransportLog.debug("报文过了有效期,超时时间＝" + timeout + "(ms), 创建时间＝" + ctimeStr + ", 当前时间＝" + ntimeStr
-                    + ", serial=" + request.getSerial());
+            TransportLog.debug("报文过了有效期,超时时间＝" + timeout + "(ms), 创建时间＝" + ctimeStr + ", 当前时间＝" + ntimeStr + ", serial=" + request.getSerial());
             return true;
         }
         return false;
@@ -576,14 +568,12 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
         Date nDate = new Date();
         int diff = TimeUtil.dateDiff(3, cDate, nDate);
         if (diff < 0) {// 创建时间比当前时间大，数据有bug，丢弃
-            TransportLog.warn("创建时间比当前时间大,msg创建时间不正确,Msg丢弃.Msg创建时间＝"
-                    + TimeUtil.convertDateToString(cDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", 当前时间="
+            TransportLog.warn("创建时间比当前时间大,msg创建时间不正确,Msg丢弃.Msg创建时间＝" + TimeUtil.convertDateToString(cDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", 当前时间="
                     + TimeUtil.convertDateToString(nDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", GAGMessage=" + request);
             return;
         }
         if (diff > 2) {// 创建时间比当前时间相比，超过3天，丢弃
-            TransportLog.warn("创建时间比当前时间比对，已超过3天,Msg丢弃.Msg创建时间＝"
-                    + TimeUtil.convertDateToString(cDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", 当前时间="
+            TransportLog.warn("创建时间比当前时间比对，已超过3天,Msg丢弃.Msg创建时间＝" + TimeUtil.convertDateToString(cDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", 当前时间="
                     + TimeUtil.convertDateToString(nDate, "yyyy-MM-dd HH:mm:ss.SSS") + ", GAGMessage=" + request);
             return;
         }

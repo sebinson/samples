@@ -24,16 +24,14 @@ public class TransportServerFactoryAbstract {
      * @throws IllegalArgumentException
      *             参数有为null
      */
-    public void registerLongConnectProcessor(String loginItype, LoginProcessor loginProcessor, String moniterItype,
-            RequestProcessor moniterProcessor) {
+    public void registerLongConnectProcessor(String loginItype, LoginProcessor loginProcessor, String moniterItype, RequestProcessor moniterProcessor) {
         if (this.distributionServer.isLong()) {
             if (StringUtils.isEmpty(loginItype) || loginProcessor == null) {
-                throw new IllegalArgumentException("loginItype or LoginProcessor is null, loginItype=" + loginItype
-                        + ", LoginProcessor=" + loginProcessor);
+                throw new IllegalArgumentException("loginItype or LoginProcessor is null, loginItype=" + loginItype + ", LoginProcessor=" + loginProcessor);
             }
             if (StringUtils.isEmpty(moniterItype) || moniterProcessor == null) {
-                throw new IllegalArgumentException("moniterItype or moniterProcessor is null, moniterItype="
-                        + moniterItype + ", RequestProcessor=" + moniterProcessor);
+                throw new IllegalArgumentException("moniterItype or moniterProcessor is null, moniterItype=" + moniterItype + ", RequestProcessor="
+                        + moniterProcessor);
             }
             this.distributionServer.registerLogintProcessor(loginItype, loginProcessor);
             this.distributionServer.registerMoniterProcessor(moniterItype, moniterProcessor);
@@ -52,8 +50,7 @@ public class TransportServerFactoryAbstract {
      */
     public void registerRequestProcessorregisterRequestProcessor(String itype, RequestProcessor processor) {
         if (StringUtils.isEmpty(itype) || processor == null) {
-            throw new IllegalArgumentException("itype or RequestProcessor is null, itype=" + itype
-                    + ", RequestProcessor=" + processor);
+            throw new IllegalArgumentException("itype or RequestProcessor is null, itype=" + itype + ", RequestProcessor=" + processor);
         }
         this.distributionServer.registerRequestProcessor(itype, processor);
     }

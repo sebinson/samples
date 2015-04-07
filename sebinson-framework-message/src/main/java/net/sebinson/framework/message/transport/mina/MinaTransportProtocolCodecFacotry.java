@@ -8,11 +8,9 @@ import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
  * mina编解码工厂
  *
  */
-public class MinaTransportProtocolCodecFacotry extends DemuxingProtocolCodecFactory
-{
+public class MinaTransportProtocolCodecFacotry extends DemuxingProtocolCodecFactory {
 
-    public MinaTransportProtocolCodecFacotry()
-    {
+    public MinaTransportProtocolCodecFacotry() {
         this.addMessageDecoder(MinaTransportDecoder.class);
         this.addMessageEncoder(RemoteCommand.class, MinaTransportEncoder.class);
     }

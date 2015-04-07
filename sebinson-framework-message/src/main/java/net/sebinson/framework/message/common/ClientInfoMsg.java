@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Map;
 
 public class ClientInfoMsg implements Serializable {
-    
-    private static final long serialVersionUID = 8300019109002416029L;
 
-    private String add = "";// 用户（转发器）标识，如mac地址
-    private String shopid = "";// 商家id
-    private String shopentityid = "";// 实体店Id
-    private List<String> functions;// 用户（转发器）的所有功能点
-    private long monitertime;// 监控时间
-    private String ctime;// 此ClientInfoMsg创建时间
-    private Map<String, Object> param;// 一些用于扩展的数据
+    private static final long   serialVersionUID = 8300019109002416029L;
+
+    private String              add              = "";                   // 用户（转发器）标识，如mac地址
+    private String              shopid           = "";                   // 商家id
+    private String              shopentityid     = "";                   // 实体店Id
+    private List<String>        functions;                               // 用户（转发器）的所有功能点
+    private long                monitertime;                             // 监控时间
+    private String              ctime;                                   // 此ClientInfoMsg创建时间
+    private Map<String, Object> param;                                   // 一些用于扩展的数据
 
     public ClientInfoMsg(String add) {
         if (add != null) {
@@ -86,8 +86,7 @@ public class ClientInfoMsg implements Serializable {
 
     @Override
     public String toString() {
-        return "ClientInfoMsg [add=" + this.add + ", shopid=" + this.shopid + ", shopentityid=" + this.shopentityid
-                + ", functions=" + this.functions + ", monitertime=" + this.monitertime + ", ctime=" + this.ctime
-                + ", param=" + this.param + "]";
+        return "ClientInfoMsg [add=" + this.add + ", shopid=" + this.shopid + ", shopentityid=" + this.shopentityid + ", functions=" + this.functions
+                + ", monitertime=" + this.monitertime + ", ctime=" + this.ctime + ", param=" + this.param + "]";
     }
 }

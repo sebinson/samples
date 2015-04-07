@@ -2,7 +2,6 @@ package net.sebinson.framework.message.transport;
 
 import net.sebinson.framework.message.transport.mina.ResponseFuture;
 
-
 /**
  * 异步调用应答回调接口
  *

@@ -1,6 +1,5 @@
 package net.sebinson.framework.message.transport.exception;
 
-
 public class TransportCommandException extends TransportException {
     private static final long serialVersionUID = -3284112575953054986L;
 

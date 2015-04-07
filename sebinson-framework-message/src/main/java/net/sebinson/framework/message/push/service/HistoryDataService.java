@@ -5,10 +5,10 @@ import java.util.List;
 import net.sebinson.framework.message.common.ClientInfoMsg;
 import net.sebinson.framework.message.push.bean.GAGMessage;
 
-public interface HistoryDataService
-{
+public interface HistoryDataService {
     /**
      * 获取key对应的单条数据
+     * 
      * @param key
      * @return
      */
@@ -16,6 +16,7 @@ public interface HistoryDataService
 
     /**
      * 获取key对应的多条数据
+     * 
      * @param key
      * @return
      */
@@ -23,29 +24,35 @@ public interface HistoryDataService
 
     /**
      * 删除key对应数据
+     * 
      * @param Key
      */
     public void delete(String Key);
 
     /**
      * 存入一条数据
+     * 
      * @param key
      * @param value
-     * @param expireTime　过期时间
+     * @param expireTime
+     *            　过期时间
      */
     public <T> void setData(String key, GAGMessage<T> value, int expireTime);
 
     /**
      * value为List,向List中存入一条数据
+     * 
      * @param key
-     * @param value 向List中存入一条数据
-     * @param expireTime　key的过期时间
+     * @param value
+     *            向List中存入一条数据
+     * @param expireTime
+     *            　key的过期时间
      */
     public <T> void setListData(String key, List<GAGMessage<T>> value, int expireTime);
 
     /**
-     *  TODO 用到　#FutionItypeCache
-     * 处理历史数据
+     * TODO 用到　#FutionItypeCache 处理历史数据
+     * 
      * @param sessionId
      * @param add
      * @param clientInfoMsg

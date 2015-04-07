@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SemaphoreOnce {
     private final AtomicBoolean released = new AtomicBoolean(false);
 
-    private final Semaphore semaphore;
+    private final Semaphore     semaphore;
 
     public SemaphoreOnce(Semaphore semaphore) {
         this.semaphore = semaphore;

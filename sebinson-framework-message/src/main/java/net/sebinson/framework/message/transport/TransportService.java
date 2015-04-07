@@ -9,46 +9,56 @@ import net.sebinson.framework.message.transport.processor.RequestProcessor;
 import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
- * 发送数据
- * 注册hook,RequestProcessor,LoginProcessor
+ * 发送数据 注册hook,RequestProcessor,LoginProcessor
  *
  */
-public interface TransportService
-{
+public interface TransportService {
 
     /**
-     *发送数据，等待同步应答 
+     * 发送数据，等待同步应答
      */
-    public RemoteCommand invokeSync(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public RemoteCommand invokeSync(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException,
+            TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
-     *发送数据，等待异步应答 
+     * 发送数据，等待异步应答
      */
-    public void invokeASync(final String add, final RemoteCommand request, final long timeoutMillis, final InvokeCallback invokeCallback) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public void invokeASync(final String add, final RemoteCommand request, final long timeoutMillis, final InvokeCallback invokeCallback)
+            throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
-     *发送数据，不等待应答 
+     * 发送数据，不等待应答
      */
-    public void invokeUnreply(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public void invokeUnreply(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException,
+            TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
-     *注册请求处理器，优化使用注册的接口，如没有找到，就用SpringBeanUtils.getBean(itype)
-     * @param itype 接口名
-     * @param processor RequestProcessor
+     * 注册请求处理器，优化使用注册的接口，如没有找到，就用SpringBeanUtils.getBean(itype)
+     * 
+     * @param itype
+     *            接口名
+     * @param processor
+     *            RequestProcessor
      */
     public void registerRequestProcessor(final String itype, final RequestProcessor processor);
 
     /**
-     *注册登陆接口 LoginProcessor 长连接用
-     * @param itype 登陆接口名
-     * @param processor LoginProcessor
+     * 注册登陆接口 LoginProcessor 长连接用
+     * 
+     * @param itype
+     *            登陆接口名
+     * @param processor
+     *            LoginProcessor
      */
     public void registerLogintProcessor(final String itype, final LoginProcessor processor);
 
     /**
-     *注册监控接口 LoginProcessor 长连接用
-     * @param itype 监控接口接口名
-     * @param processor RequestProcessor
+     * 注册监控接口 LoginProcessor 长连接用
+     * 
+     * @param itype
+     *            监控接口接口名
+     * @param processor
+     *            RequestProcessor
      */
     public void registerMoniterProcessor(final String itype, final RequestProcessor processor);
 

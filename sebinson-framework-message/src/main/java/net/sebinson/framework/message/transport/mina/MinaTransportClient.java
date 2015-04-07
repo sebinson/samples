@@ -33,25 +33,22 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public RemoteCommand invokeSync(String add, RemoteCommand request, long timeoutMillis)
-            throws InterruptedException, TransportConnectException, TransportTimeoutException,
-            TransportSendRequestException, TransportTooMuchRequestException {
+    public RemoteCommand invokeSync(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
+            TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         // TODO 短连接客户端 sync后，recicemessage后 session.clolse(true),
         return null;
     }
 
     @Override
-    public void invokeASync(String add, RemoteCommand request, long timeoutMillis, InvokeCallback invokeCallback)
-            throws InterruptedException, TransportConnectException, TransportTimeoutException,
-            TransportSendRequestException, TransportTooMuchRequestException {
+    public void invokeASync(String add, RemoteCommand request, long timeoutMillis, InvokeCallback invokeCallback) throws InterruptedException,
+            TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         // TODO 短连接客户端,没有此方法
 
     }
 
     @Override
-    public void invokeUnreply(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException,
-            TransportConnectException, TransportTimeoutException, TransportSendRequestException,
-            TransportTooMuchRequestException {
+    public void invokeUnreply(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
+            TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         // TODO 短连接客户端session.write发数据upreply后 直接断开session.closee(true)
 
     }
@@ -120,17 +117,15 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public void registerRequestProcessor(String itype,
-            net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
+    public void registerRequestProcessor(String itype, net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
-    public void registerMoniterProcessor(String itype,
-            net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
+    public void registerMoniterProcessor(String itype, net.sebinson.framework.message.transport.processor.RequestProcessor processor) {
         // TODO Auto-generated method stub
-        
+
     }
 
 }

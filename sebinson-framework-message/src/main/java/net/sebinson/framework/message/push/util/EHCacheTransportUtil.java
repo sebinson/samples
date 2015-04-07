@@ -9,42 +9,38 @@ import net.sf.ehcache.Element;
 
 /**
  * 针对remoting通讯框架的cache 工具类
+ * 
  * @author jmb
  *
  */
-public class EHCacheTransportUtil
-{
+public class EHCacheTransportUtil {
 
     private static CacheManager cacheManager;
 
-    static
-    {
+    static {
         URL url = EHCacheTransportUtil.class.getResource("/ehcache-transport.xml");
-        if (url == null)
-        {
-            TransportLog.error("ehcache-transport.xml not find. Use default file.", new IllegalArgumentException("Transport ehcache file ehcache-transport.xml not find. Use default file."));
+        if (url == null) {
+            TransportLog.error("ehcache-transport.xml not find. Use default file.", new IllegalArgumentException(
+                    "Transport ehcache file ehcache-transport.xml not find. Use default file."));
             cacheManager = CacheManager.getInstance();
-        }
-        else
-        {
+        } else {
             cacheManager = new CacheManager(url);
         }
     }
 
     /**
      * 获取cache
-     * @param cacheName cache库名
+     * 
+     * @param cacheName
+     *            cache库名
      * @return cacheName库名正确,cache;cacheName库名不正确, null
      */
-    public static Cache createCache(String cacheName)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static Cache createCache(String cacheName) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return null;
         }
         Cache cache = cacheManager.getCache(cacheName);
-        if (cache == null)
-        {
+        if (cache == null) {
             cacheManager.addCache(cacheName);
             return cacheManager.getCache(cacheName);
         }
@@ -53,13 +49,13 @@ public class EHCacheTransportUtil
 
     /**
      * 获取Cache库
-     * @param cacheName 库名
+     * 
+     * @param cacheName
+     *            库名
      * @return 存在 Cache ,不存在 null
      */
-    public static Cache getCache(String cacheName)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static Cache getCache(String cacheName) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return null;
         }
         return cacheManager.getCache(cacheName);
@@ -67,26 +63,26 @@ public class EHCacheTransportUtil
 
     /**
      * Cache库是否存在
-     * @param cacheName 库名
+     * 
+     * @param cacheName
+     *            库名
      * @return 存在 ture ,不存在 false
      */
-    public static boolean isCacheExist(String cacheName)
-    {
+    public static boolean isCacheExist(String cacheName) {
         return getCache(cacheName) != null;
     }
 
     /**
      * 删除Cache库
-     * @param cacheName 库名
+     * 
+     * @param cacheName
+     *            库名
      */
-    public static void removeCache(String cacheName)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static void removeCache(String cacheName) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return;
         }
-        if (isCacheExist(cacheName))
-        {
+        if (isCacheExist(cacheName)) {
             Cache cache = cacheManager.getCache(cacheName);
             cacheManager.removeCache(cacheName);
             cache.removeAll();
@@ -95,17 +91,17 @@ public class EHCacheTransportUtil
 
     /**
      * 删除缓存数据
-     * @param cacheName cache库名
-     * @param key 数据key,不能为空
+     * 
+     * @param cacheName
+     *            cache库名
+     * @param key
+     *            数据key,不能为空
      */
-    public static void remove(Cache cache, String key)
-    {
-        if (cache == null)
-        {
+    public static void remove(Cache cache, String key) {
+        if (cache == null) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
         cache.remove(key);
@@ -113,18 +109,19 @@ public class EHCacheTransportUtil
 
     /**
      * 存入缓存数据
-     * @param cacheName cache库名
-     * @param key 数据key,不能为空
-     * @param value 数据value
+     * 
+     * @param cacheName
+     *            cache库名
+     * @param key
+     *            数据key,不能为空
+     * @param value
+     *            数据value
      */
-    public static void put(String cacheName, String key, Object value)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static void put(String cacheName, String key, Object value) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
         Element element = new Element(key, value);
@@ -133,18 +130,19 @@ public class EHCacheTransportUtil
 
     /**
      * 存入缓存数据
-     * @param cache cache库
-     * @param key 数据key,不能为空
-     * @param value 数据value
+     * 
+     * @param cache
+     *            cache库
+     * @param key
+     *            数据key,不能为空
+     * @param value
+     *            数据value
      */
-    public static void put(Cache cache, String key, Object value)
-    {
-        if (cache == null)
-        {
+    public static void put(Cache cache, String key, Object value) {
+        if (cache == null) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
         Element element = new Element(key, value);
@@ -153,23 +151,22 @@ public class EHCacheTransportUtil
 
     /**
      * 获取数据
-     * @param cacheName cache库名
-     * @param key 数据key,不能为空
+     * 
+     * @param cacheName
+     *            cache库名
+     * @param key
+     *            数据key,不能为空
      * @return 如没有数据，则为null;否则则为value
      */
-    public static Object get(String cacheName, String key)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static Object get(String cacheName, String key) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return null;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return null;
         }
         Element element = createCache(cacheName).get(key);
-        if (element == null)
-        {
+        if (element == null) {
             return null;
         }
         return element.getObjectValue();
@@ -177,23 +174,22 @@ public class EHCacheTransportUtil
 
     /**
      * 获取数据
-     * @param cache cache库
-     * @param key 数据key,不能为空
+     * 
+     * @param cache
+     *            cache库
+     * @param key
+     *            数据key,不能为空
      * @return 如没有数据，则为null;否则则为value
      */
-    public static Object get(Cache cache, String key)
-    {
-        if (cache == null)
-        {
+    public static Object get(Cache cache, String key) {
+        if (cache == null) {
             return null;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return null;
         }
         Element element = cache.get(key);
-        if (element == null)
-        {
+        if (element == null) {
             return null;
         }
         return element.getObjectValue();
@@ -201,27 +197,26 @@ public class EHCacheTransportUtil
 
     /**
      * 设置缓存数据过期
-     * @param cacheName cache库名
-     * @param key 数据key,不能为空
-     * @param expireTime 过期时间，单位秒，不能<0,如为0，则为最大时间
+     * 
+     * @param cacheName
+     *            cache库名
+     * @param key
+     *            数据key,不能为空
+     * @param expireTime
+     *            过期时间，单位秒，不能<0,如为0，则为最大时间
      */
-    public static void expire(String cacheName, String key, int expireTime)
-    {
-        if (cacheName == null || cacheName.trim().length() == 0)
-        {
+    public static void expire(String cacheName, String key, int expireTime) {
+        if (cacheName == null || cacheName.trim().length() == 0) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
-        if (expireTime < 0)
-        {
+        if (expireTime < 0) {
             return;
         }
         Element element = createCache(cacheName).get(key);
-        if (element == null)
-        {
+        if (element == null) {
             return;
         }
         element.setTimeToLive(expireTime);
@@ -229,27 +224,26 @@ public class EHCacheTransportUtil
 
     /**
      * 设置缓存数据过期
-     * @param cache cache库
-     * @param key 数据key,不能为空
-     * @param expireTime 过期时间，单位秒，不能<0,如为0，则为最大时间
+     * 
+     * @param cache
+     *            cache库
+     * @param key
+     *            数据key,不能为空
+     * @param expireTime
+     *            过期时间，单位秒，不能<0,如为0，则为最大时间
      */
-    public static void expire(Cache cache, String key, int expireTime)
-    {
-        if (cache == null)
-        {
+    public static void expire(Cache cache, String key, int expireTime) {
+        if (cache == null) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
-        if (expireTime < 0)
-        {
+        if (expireTime < 0) {
             return;
         }
         Element element = cache.get(key);
-        if (element == null)
-        {
+        if (element == null) {
             return;
         }
         element.setTimeToLive(expireTime);
@@ -257,23 +251,23 @@ public class EHCacheTransportUtil
 
     /**
      * 设置缓存数据永不过期
-     * @param cache cache库
-     * @param key 数据key,不能为空
-     * @param flage ture=永不失效，false=使用默认值 
+     * 
+     * @param cache
+     *            cache库
+     * @param key
+     *            数据key,不能为空
+     * @param flage
+     *            ture=永不失效，false=使用默认值
      */
-    public static void eternal(Cache cache, String key, boolean flage)
-    {
-        if (cache == null)
-        {
+    public static void eternal(Cache cache, String key, boolean flage) {
+        if (cache == null) {
             return;
         }
-        if (key == null || key.trim().length() == 0)
-        {
+        if (key == null || key.trim().length() == 0) {
             return;
         }
         Element element = cache.get(key);
-        if (element == null)
-        {
+        if (element == null) {
             return;
         }
         element.setEternal(flage);
@@ -281,13 +275,13 @@ public class EHCacheTransportUtil
 
     /**
      * EHCache释放资源
-     * @param cacheName cache库名
+     * 
+     * @param cacheName
+     *            cache库名
      */
-    public static void dispose(String cacheName)
-    {
+    public static void dispose(String cacheName) {
         cacheManager.removeCache(cacheName);
-        if (cacheManager.getCacheNames().length == 0)
-        {
+        if (cacheManager.getCacheNames().length == 0) {
             cacheManager.shutdown();
         }
     }
