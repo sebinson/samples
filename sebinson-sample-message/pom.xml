@@ -24,7 +24,7 @@
 		</dependency>
 	</dependencies>
 	<modules>
-		<module>sebinson-sample-web-message-collection</module>
-		<module>sebinson-sample-web-message-distribution</module>
+		<module>sebinson-sample-message-collection</module>
+		<module>sebinson-sample-message-distribution</module>
 	</modules>
 </project>
