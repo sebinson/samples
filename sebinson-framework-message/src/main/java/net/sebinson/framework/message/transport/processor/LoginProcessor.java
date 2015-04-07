@@ -1,7 +1,7 @@
 package net.sebinson.framework.message.transport.processor;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  * 登录接口
@@ -17,6 +17,6 @@ public interface LoginProcessor
      * @throws TransportException 处理失败返回  
      * TransportException.errorCode即为返回对方报文Header的resutl, TransportException.message即为返回对方报文Header的msg
      */
-    public Object[] processLoginRequestSync(RemotingCommand request) throws TransportException;
+    public Object[] processLoginRequestSync(RemoteCommand request) throws TransportException;
 
 }

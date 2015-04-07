@@ -1,6 +1,6 @@
 package net.sebinson.framework.message.push.bean;
 
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  * 异步调用返回结果
@@ -13,7 +13,7 @@ public class SendResult<T>
     private GAGMessage<T> requestMsg;
 
     /**返回的报文，如没有返回，就为空*/
-    private RemotingCommand response;
+    private RemoteCommand response;
 
     public GAGMessage<T> getRequestMsg()
     {
@@ -25,12 +25,12 @@ public class SendResult<T>
         this.requestMsg = requestMsg;
     }
 
-    public RemotingCommand getResponse()
+    public RemoteCommand getResponse()
     {
         return this.response;
     }
 
-    public void setResponse(RemotingCommand response)
+    public void setResponse(RemoteCommand response)
     {
         this.response = response;
     }

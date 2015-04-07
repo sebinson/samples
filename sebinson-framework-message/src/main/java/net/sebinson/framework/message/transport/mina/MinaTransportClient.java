@@ -13,7 +13,7 @@ import net.sebinson.framework.message.transport.exception.TransportSendRequestEx
 import net.sebinson.framework.message.transport.exception.TransportTimeoutException;
 import net.sebinson.framework.message.transport.exception.TransportTooMuchRequestException;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 import org.apache.mina.core.session.IoSession;
 import org.apache.zookeeper.server.RequestProcessor;
@@ -33,7 +33,7 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public RemotingCommand invokeSync(String add, RemotingCommand request, long timeoutMillis)
+    public RemoteCommand invokeSync(String add, RemoteCommand request, long timeoutMillis)
             throws InterruptedException, TransportConnectException, TransportTimeoutException,
             TransportSendRequestException, TransportTooMuchRequestException {
         // TODO 短连接客户端 sync后，recicemessage后 session.clolse(true),
@@ -41,7 +41,7 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public void invokeASync(String add, RemotingCommand request, long timeoutMillis, InvokeCallback invokeCallback)
+    public void invokeASync(String add, RemoteCommand request, long timeoutMillis, InvokeCallback invokeCallback)
             throws InterruptedException, TransportConnectException, TransportTimeoutException,
             TransportSendRequestException, TransportTooMuchRequestException {
         // TODO 短连接客户端,没有此方法
@@ -49,7 +49,7 @@ public class MinaTransportClient extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public void invokeUnreply(String add, RemotingCommand request, long timeoutMillis) throws InterruptedException,
+    public void invokeUnreply(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException,
             TransportConnectException, TransportTimeoutException, TransportSendRequestException,
             TransportTooMuchRequestException {
         // TODO 短连接客户端session.write发数据upreply后 直接断开session.closee(true)

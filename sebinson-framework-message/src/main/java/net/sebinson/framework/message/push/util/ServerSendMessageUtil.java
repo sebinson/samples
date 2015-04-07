@@ -5,7 +5,7 @@ import net.sebinson.framework.message.push.bean.GAGMessage;
 import net.sebinson.framework.message.push.service.DistributionServer;
 import net.sebinson.framework.message.push.service.SendCallBack;
 import net.sebinson.framework.message.transport.log.TransportLog;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  * 服务端主动发送报文
@@ -35,9 +35,9 @@ public class ServerSendMessageUtil
      * @return 对方的应答报文，如超时，报文过有效期，没有接收者连接等情况，返回为null
      * @throws IllegalArgumentException add，msg为空,GAGMessage必填项错误
      */
-    public static <T> RemotingCommand sendMessageSync(String add, GAGMessage<T> msg)
+    public static <T> RemoteCommand sendMessageSync(String add, GAGMessage<T> msg)
     {
-        RemotingCommand sendSync = distributionServer.sendSync(add, msg);
+        RemoteCommand sendSync = distributionServer.sendSync(add, msg);
         //TransportLog.debug("sendMessageSync send to [" + add + "] GAGMessage, GAGMessage=" + msg + ", return RemotingCommand=" + sendSync);
         return sendSync;
     }

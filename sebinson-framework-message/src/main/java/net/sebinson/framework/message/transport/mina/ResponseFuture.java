@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import net.sebinson.framework.message.common.SemaphoreOnce;
 import net.sebinson.framework.message.transport.InvokeCallback;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 
 /**
@@ -18,7 +18,7 @@ public class ResponseFuture implements Serializable
 {
     private static final long serialVersionUID = -9080809215794478434L;
 
-    private volatile RemotingCommand responseCommand;//应答数据  定时任务与应答同时处理
+    private volatile RemoteCommand responseCommand;//应答数据  定时任务与应答同时处理
     private volatile boolean sendRequestOK = true;//是否发送成功 定时任务与应答同时处理
     private volatile Throwable throwable;//异常信息 定时任务与应答同时处理
 
@@ -78,7 +78,7 @@ public class ResponseFuture implements Serializable
     /**
      * 同步应答，线程阻塞一定时间
      */
-    public RemotingCommand waitResponse(long waitMills) throws InterruptedException
+    public RemoteCommand waitResponse(long waitMills) throws InterruptedException
     {
         this.countDownLatch.await(waitMills, TimeUnit.MILLISECONDS);
         return this.responseCommand;
@@ -88,7 +88,7 @@ public class ResponseFuture implements Serializable
      * 同步应答，线程阻塞
      * 发送失败时，不用再线程阻塞了
      */
-    public void putResponseCommand(RemotingCommand responseCommand)
+    public void putResponseCommand(RemoteCommand responseCommand)
     {
         this.responseCommand = responseCommand;
         this.countDownLatch.countDown();
@@ -124,12 +124,12 @@ public class ResponseFuture implements Serializable
         this.throwable = throwable;
     }
 
-    public RemotingCommand getResponseCommand()
+    public RemoteCommand getResponseCommand()
     {
         return this.responseCommand;
     }
 
-    public void setResponseCommand(RemotingCommand responseCommand)
+    public void setResponseCommand(RemoteCommand responseCommand)
     {
         this.responseCommand = responseCommand;
     }

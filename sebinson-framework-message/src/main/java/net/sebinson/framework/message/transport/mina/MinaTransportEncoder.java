@@ -1,7 +1,7 @@
 package net.sebinson.framework.message.transport.mina;
 
 import net.sebinson.framework.message.common.ConstantTransport;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.IoSession;
@@ -13,10 +13,10 @@ import org.apache.mina.filter.codec.demux.MessageEncoder;
  * [1个字节通信类型（1建连接;2心跳;3业务通讯）][4个字节字符串长度][4个字节byte数组长度][字符串][byte数组]
  *
  */
-public class MinaTransportEncoder implements MessageEncoder<RemotingCommand>
+public class MinaTransportEncoder implements MessageEncoder<RemoteCommand>
 {
     @Override
-    public void encode(IoSession session, RemotingCommand command, ProtocolEncoderOutput out) throws Exception
+    public void encode(IoSession session, RemoteCommand command, ProtocolEncoderOutput out) throws Exception
     {
         if (command.getType() != ConstantTransport.MINA_PROTOCOL_TYPE_2)
         {//不是心跳

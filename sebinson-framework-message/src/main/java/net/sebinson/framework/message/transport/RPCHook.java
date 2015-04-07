@@ -1,7 +1,7 @@
 package net.sebinson.framework.message.transport;
 
 import net.sebinson.framework.message.transport.exception.TransportCommandException;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  * 接收报文后预处理，发送报文前预处理
@@ -18,7 +18,7 @@ public interface RPCHook
      * @param request 对应请求报文
      * @throws TransportCommandException 校验报文失败
      */
-    public void doBeforeRequest(final String add, final RemotingCommand request) throws TransportCommandException;
+    public void doBeforeRequest(final String add, final RemoteCommand request) throws TransportCommandException;
 
     /**
      * 发送报文前预处理
@@ -26,5 +26,5 @@ public interface RPCHook
      * @param add Socket对应地址 
      * @param response 对应发送报文
      */
-    public void doBeforeResponse(final String add, final RemotingCommand response);
+    public void doBeforeResponse(final String add, final RemoteCommand response);
 }

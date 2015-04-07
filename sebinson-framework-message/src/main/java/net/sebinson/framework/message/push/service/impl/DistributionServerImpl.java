@@ -39,7 +39,7 @@ import net.sebinson.framework.message.transport.mina.ResponseFuture;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
 import net.sebinson.framework.message.transport.protocol.Header;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 import org.apache.mina.core.session.IoSession;
 import org.springframework.util.StringUtils;
@@ -122,10 +122,10 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
     }
 
     @Override
-    public <T> RemotingCommand sendSync(String add, GAGMessage<T> request) {
+    public <T> RemoteCommand sendSync(String add, GAGMessage<T> request) {
         TransportLog.debug("sendSync：发送报文到<" + add + ">开始...,发送 GAGMessage=" + request);
         this.checkParamer(add, request);
-        RemotingCommand remotingCommand = this.prepareCommand(request, 0);
+        RemoteCommand remotingCommand = this.prepareCommand(request, 0);
         if (this.checkMsgTimeout(request)) {
             TransportLog.debug("sendSync：发送报文到<" + add + ">已经过了有效期，数据丢弃..., GAGMessage=" + request);
             return null;
@@ -142,7 +142,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
         receiveidSet.add(add);
         String serial = request.getSerial();
 
-        RemotingCommand response = null;
+        RemoteCommand response = null;
         int tooMuchExceptionCount = 5;// TransportTooMuchRequestException 一共重试5次
         boolean isTooMuchException = false;// TransportTooMuchRequestException
                                            // true
@@ -231,7 +231,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
     public <T> void sendAsync(String add, final GAGMessage<T> request, final SendCallBack callBack) {
         TransportLog.debug("sendAsync：发送报文到<" + add + ">开始...,发送 GAGMessage=" + request);
         this.checkParamer(add, request);
-        RemotingCommand remotingCommand = this.prepareCommand(request, 1);
+        RemoteCommand remotingCommand = this.prepareCommand(request, 1);
         if (this.checkMsgTimeout(request)) {
             TransportLog.debug("sendAsync：发送报文到<" + add + ">已经过了有效期，数据丢弃..., GAGMessage=" + request);
             return;
@@ -282,7 +282,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
                                 if (callBack == null) {
                                     return;
                                 }
-                                RemotingCommand responseCommand = responseFuture.getResponseCommand();
+                                RemoteCommand responseCommand = responseFuture.getResponseCommand();
                                 SendResult<T> sendResult = new SendResult<T>();
                                 sendResult.setRequestMsg(request);
                                 if (responseCommand != null) {
@@ -374,7 +374,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
     public <T> void sendUnreply(String add, GAGMessage<T> request) {
         TransportLog.debug("sendUnreply：发送报文到<" + add + ">开始..., 发送 GAGMessage=" + request);
         this.checkParamer(add, request);
-        RemotingCommand remotingCommand = this.prepareCommand(request, 2);
+        RemoteCommand remotingCommand = this.prepareCommand(request, 2);
         if (this.checkMsgTimeout(request)) {
             TransportLog.debug("sendUnreply：发送报文到<" + add + ">已经过了有效期，数据丢弃..., GAGMessage=" + request);
             return;
@@ -630,7 +630,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
         }
     }
 
-    private <T> RemotingCommand prepareCommand(GAGMessage<T> request, int rpc) {
+    private <T> RemoteCommand prepareCommand(GAGMessage<T> request, int rpc) {
         String serial = request.getSerial();
         if (serial == null)// 只判断空
         {
@@ -671,7 +671,7 @@ public class DistributionServerImpl implements DistributionServer, TransportBoot
         header.setSerial(serial);
         header.setItype(itype);
         header.setCtimeLong(ctime);
-        RemotingCommand remotingCommand = new RemotingCommand();
+        RemoteCommand remotingCommand = new RemoteCommand();
         remotingCommand.setHeader(header);
 
         T t = request.getData();

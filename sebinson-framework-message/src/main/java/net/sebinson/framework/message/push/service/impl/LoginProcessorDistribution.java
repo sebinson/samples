@@ -9,7 +9,7 @@ import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.log.TransportLog;
 import net.sebinson.framework.message.transport.processor.LoginDistributedProcessor;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  *  登录的处理
@@ -29,7 +29,7 @@ public class LoginProcessorDistribution implements LoginProcessor, LoginDistribu
     private ShareSessionMappingService shareSessionMappingService;
 
     @Override
-    public Object[] processLoginRequestSync(RemotingCommand request) throws TransportException
+    public Object[] processLoginRequestSync(RemoteCommand request) throws TransportException
     {
         return this.loginProcessor.processLoginRequestSync(request);
     }

@@ -6,7 +6,7 @@ import net.sebinson.framework.message.transport.exception.TransportTimeoutExcept
 import net.sebinson.framework.message.transport.exception.TransportTooMuchRequestException;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 /**
  * 发送数据
@@ -19,17 +19,17 @@ public interface TransportService
     /**
      *发送数据，等待同步应答 
      */
-    public RemotingCommand invokeSync(final String add, final RemotingCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public RemoteCommand invokeSync(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
      *发送数据，等待异步应答 
      */
-    public void invokeASync(final String add, final RemotingCommand request, final long timeoutMillis, final InvokeCallback invokeCallback) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public void invokeASync(final String add, final RemoteCommand request, final long timeoutMillis, final InvokeCallback invokeCallback) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
      *发送数据，不等待应答 
      */
-    public void invokeUnreply(final String add, final RemotingCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
+    public void invokeUnreply(final String add, final RemoteCommand request, final long timeoutMillis) throws InterruptedException, TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException;
 
     /**
      *注册请求处理器，优化使用注册的接口，如没有找到，就用SpringBeanUtils.getBean(itype)

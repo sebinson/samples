@@ -1,6 +1,6 @@
 package net.sebinson.framework.message.transport.mina;
 
-import net.sebinson.framework.message.transport.protocol.RemotingCommand;
+import net.sebinson.framework.message.transport.protocol.RemoteCommand;
 
 import org.apache.mina.filter.codec.demux.DemuxingProtocolCodecFactory;
 
@@ -14,6 +14,6 @@ public class MinaTransportProtocolCodecFacotry extends DemuxingProtocolCodecFact
     public MinaTransportProtocolCodecFacotry()
     {
         this.addMessageDecoder(MinaTransportDecoder.class);
-        this.addMessageEncoder(RemotingCommand.class, MinaTransportEncoder.class);
+        this.addMessageEncoder(RemoteCommand.class, MinaTransportEncoder.class);
     }
 }

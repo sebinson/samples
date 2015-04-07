@@ -11,26 +11,19 @@ import net.sebinson.framework.message.transport.exception.TransportException;
 
 import org.springframework.util.StringUtils;
 
-/**
- * Remoting 客户端与服务端通讯通过Remotingcommand来交互 协议 [1个字节通信类型（type
- * 1建连接;2心跳;3业务通讯）][4个字节字符串长度][4个字节byte数组长度][字符串（header+body）][byte数组(binary)]
- * 
- *
- */
-public class RemotingCommand implements Serializable {
-    private static final long serialVersionUID = -4101344746952294912L;
+public class RemoteCommand implements Serializable {
+    private static final long   serialVersionUID = -4101344746952294912L;
 
-    private byte type = 3;// 通讯协议 1建连接;2心跳;3业务通讯
-    private String baseinfo = "";// 原始字符串
-    private byte[] binary = new byte[0];// byte数据流
-
-    private Header header;// 报文头部
-    private Map<String, Object> body;// 业务数据
+    private byte                type             = 3;                    // 通讯协议，1连接、2心跳、3业务
+    private String              baseinfo         = "";                   // 原始字符串
+    private byte[]              binary           = new byte[0];          // 字节流
+    private Header              header;                                  // 报文头部
+    private Map<String, Object> body;                                    // 业务数据
 
     /** 解码用 */
     public void DeProtocol() throws TransportCommandProtocolException {
         try {
-            RemotingCommand remotingCommand = JsonUtil.toObj(this.baseinfo, RemotingCommand.class);       
+            RemoteCommand remotingCommand = JsonUtil.toObj(this.baseinfo, RemoteCommand.class);
             this.header = remotingCommand.getHeader();
             this.body = remotingCommand.getBody();
         } catch (Exception e) {
@@ -129,7 +122,7 @@ public class RemotingCommand implements Serializable {
 
     @Override
     public String toString() {
-        return "RemotingCommand [type=" + this.type + ", baseinfo=" + this.baseinfo + ",header=" + this.header
-                + ", body=" + this.body + ", binary.size=" + (this.binary == null ? 0 : this.binary.length) + "]";
+        return "RemotingCommand [type=" + this.type + ", baseinfo=" + this.baseinfo + ",header=" + this.header + ", body=" + this.body + ", binary.size="
+                + (this.binary == null ? 0 : this.binary.length) + "]";
     }
 }
