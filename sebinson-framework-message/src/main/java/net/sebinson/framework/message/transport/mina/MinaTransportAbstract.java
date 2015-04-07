@@ -26,7 +26,7 @@ import net.sebinson.framework.message.transport.processor.LoginDistributedProces
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
 import net.sebinson.framework.message.transport.protocol.Header;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 import org.apache.mina.core.future.IoFuture;
 import org.apache.mina.core.future.IoFutureListener;
@@ -115,7 +115,7 @@ public abstract class MinaTransportAbstract {
         }
     }
 
-    protected void processRequestCommandImpl(final IoSession session, final String add, final RemoteCommand request) {
+    protected void processRequestCommandImpl(final IoSession session, final String add, final RemotingCommand request) {
         Runnable run = new Runnable() {
             @Override
             public void run() {
@@ -125,7 +125,7 @@ public abstract class MinaTransportAbstract {
                     }
                     // 业务处理
                     String itype = request.getHeader().getItype();
-                    RemoteCommand response = null;
+                    RemotingCommand response = null;
                     if (!MinaTransportAbstract.this.loginItype.equals(itype))// 非登录
                     {
                         RequestProcessor requestProcessorTemp = MinaTransportAbstract.this.processorMap.get(itype);
@@ -185,7 +185,7 @@ public abstract class MinaTransportAbstract {
                             }
 
                             Header requestHeader = request.getHeader();
-                            response = new RemoteCommand();
+                            response = new RemotingCommand();
                             Header header = new Header();
                             response.setHeader(header);
                             header.setCode(1);
@@ -229,7 +229,7 @@ public abstract class MinaTransportAbstract {
                         // add=ClientInfoMsg
                         // session.setAttribute("add", responseLogin[1]);//存入mac
                         MinaTransportAbstract.this.invokeLoginAdd(session, clientInfoMsg, add);
-                        response = (RemoteCommand) responseLogin[0];
+                        response = (RemotingCommand) responseLogin[0];
                         // 先处理历史等数据
                         if (MinaTransportAbstract.this.loginProcessor instanceof LoginDistributedProcessor) {
                             final LoginDistributedProcessor l = (LoginDistributedProcessor) MinaTransportAbstract.this.loginProcessor;
@@ -281,7 +281,7 @@ public abstract class MinaTransportAbstract {
     }
 
     // 处理失败，返回结果
-    private void writeErrorReqsponse(IoSession session, RemoteCommand request, String add, TransportException e) {
+    private void writeErrorReqsponse(IoSession session, RemotingCommand request, String add, TransportException e) {
         if (request.getHeader().getRpc() != 2) {
             request.getHeader().setCode(1);
             request.getHeader().setResult(e.getErrorCode());
@@ -304,7 +304,7 @@ public abstract class MinaTransportAbstract {
         }
     }
 
-    protected void processResponseCommandImpl(IoSession session, String add, final RemoteCommand response) {
+    protected void processResponseCommandImpl(IoSession session, String add, final RemotingCommand response) {
         final ResponseFuture responseFuture = this.responseMap.get(response.getHeader().getSerial());
         if (responseFuture == null) {
             TransportLog.info("Receive response, but not matched any request, response may be timeout, response Serial=" + response.getHeader().getSerial()
@@ -364,7 +364,7 @@ public abstract class MinaTransportAbstract {
     }
 
     // 短连接不能主动发数据，长连接发数据是否登录等不用这这儿处理
-    protected RemoteCommand invokeSyncImpl(IoSession session, final String add, final RemoteCommand request, long timeoutMillis) throws InterruptedException,
+    protected RemotingCommand invokeSyncImpl(IoSession session, final String add, final RemotingCommand request, long timeoutMillis) throws InterruptedException,
             TransportTimeoutException, TransportSendRequestException {
         final String serial = request.getHeader().getSerial();
         try {
@@ -394,7 +394,7 @@ public abstract class MinaTransportAbstract {
                             + ", request=" + request);
                 }
             });
-            RemoteCommand response = responseFuture.waitResponse(timeoutMillis);
+            RemotingCommand response = responseFuture.waitResponse(timeoutMillis);
             if (response == null) {
                 if (responseFuture.isSendRequestOK())// session.write(request)异步发送的，不能与responseFuture.waitResponse(timeoutMillis)换位置
                 { // 发送报文成功，读取应答超时
@@ -413,7 +413,7 @@ public abstract class MinaTransportAbstract {
     }
 
     // 短连接不能主动发数据，长连接发数据是否登录等不用这这儿处理
-    protected void invokeASyncImpl(IoSession session, final String add, final RemoteCommand request, long timeoutMillis, InvokeCallback invokeCallback)
+    protected void invokeASyncImpl(IoSession session, final String add, final RemotingCommand request, long timeoutMillis, InvokeCallback invokeCallback)
             throws InterruptedException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         final String serial = request.getHeader().getSerial();
         boolean required = this.semaphoreAsync.tryAcquire(timeoutMillis, TimeUnit.MILLISECONDS);
@@ -473,7 +473,7 @@ public abstract class MinaTransportAbstract {
         }
     }
 
-    protected void invokeUnreplyImpl(IoSession session, final String add, final RemoteCommand request, long timeoutMillis) throws InterruptedException,
+    protected void invokeUnreplyImpl(IoSession session, final String add, final RemotingCommand request, long timeoutMillis) throws InterruptedException,
             TransportTooMuchRequestException, TransportTimeoutException, TransportSendRequestException {
         boolean required = this.semaphoreUnreply.tryAcquire(timeoutMillis, TimeUnit.MILLISECONDS);
         if (required) {
@@ -522,7 +522,7 @@ public abstract class MinaTransportAbstract {
 
     // 1:映射数据写入共享 2：历史数据的处理
     private void processDistributedlogin(final LoginDistributedProcessor l, final ClientInfoMsg clientInfoMsg, final IoSession session, final String add,
-            final RemoteCommand request, final int type) throws TransportTooMuchRequestException {
+            final RemotingCommand request, final int type) throws TransportTooMuchRequestException {
         try {
             // MinaTransportAbstract.this.loginDistributedProcessorExecutorService.submit(new
             // Runnable()

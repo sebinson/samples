@@ -11,7 +11,7 @@ import net.sebinson.framework.message.transport.exception.TransportException;
 
 import org.springframework.util.StringUtils;
 
-public class RemoteCommand implements Serializable {
+public class RemotingCommand implements Serializable {
     private static final long   serialVersionUID = -4101344746952294912L;
 
     private byte                type             = 3;                    // 通讯协议，1连接、2心跳、3业务
@@ -23,7 +23,7 @@ public class RemoteCommand implements Serializable {
     /** 解码用 */
     public void DeProtocol() throws TransportCommandProtocolException {
         try {
-            RemoteCommand remotingCommand = JsonUtil.toObj(this.baseinfo, RemoteCommand.class);
+            RemotingCommand remotingCommand = JsonUtil.toObj(this.baseinfo, RemotingCommand.class);
             this.header = remotingCommand.getHeader();
             this.body = remotingCommand.getBody();
         } catch (Exception e) {

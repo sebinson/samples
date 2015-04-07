@@ -19,7 +19,7 @@ import net.sebinson.framework.message.transport.exception.TransportConnectExcept
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.log.TransportLog;
 import net.sebinson.framework.message.transport.protocol.Header;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IdleStatus;
@@ -164,7 +164,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
     }
 
     private void writeExceptionCommand(IoSession session, String errorCode, String msg) {
-        RemoteCommand response = new RemoteCommand();
+        RemotingCommand response = new RemotingCommand();
         Header header = new Header();
         response.setHeader(header);
         header.setCode(1);
@@ -178,7 +178,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
 
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        RemoteCommand request = (RemoteCommand) message;
+        RemotingCommand request = (RemotingCommand) message;
         TransportLog.debug("Received msg, sessionId=" + session.getId() + ", msg=" + message);
         if (request.getType() == ConstantTransport.MINA_PROTOCOL_TYPE_2) {// 心跳直接返回
             session.write(request);
@@ -199,7 +199,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
     }
 
     /** IoSession中有无 add. 无，断开此连接;有，则不处理。防止恶意连接 */
-    private void checkHeartbeat(IoSession session, RemoteCommand request) {
+    private void checkHeartbeat(IoSession session, RemotingCommand request) {
         ClientInfoMsg clientInfoMsg = (ClientInfoMsg) session.getAttribute("add");
         if (clientInfoMsg != null)// 有数据，则此为有效连接
         {
@@ -211,7 +211,7 @@ public class MinaServerHandler extends IoHandlerAdapter {
     }
 
     /** 报文header必须项与正确性校验 */
-    private void checkRemotingCommand(IoSession session, RemoteCommand requset) throws TransportCommandException {
+    private void checkRemotingCommand(IoSession session, RemotingCommand requset) throws TransportCommandException {
         Header header = requset.getHeader();
         if (header == null) {
             throw new TransportCommandException(TransportException.EORROR_COMMAND, "header is null.");

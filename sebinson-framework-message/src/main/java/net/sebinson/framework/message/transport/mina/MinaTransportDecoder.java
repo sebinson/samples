@@ -3,7 +3,7 @@ package net.sebinson.framework.message.transport.mina;
 import net.sebinson.framework.message.common.ConstantTransport;
 import net.sebinson.framework.message.transport.exception.TransportCommandProtocolException;
 import net.sebinson.framework.message.transport.exception.TransportException;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.core.session.AttributeKey;
@@ -102,7 +102,7 @@ public class MinaTransportDecoder implements MessageDecoder {
             }
 
             context.isOK = true;
-            RemoteCommand remotingCommand = new RemoteCommand();
+            RemotingCommand remotingCommand = new RemotingCommand();
             remotingCommand.setType(context.type);
             remotingCommand.setBaseinfo(new String(context.jsonStr, ConstantTransport.CODE_UTF8));
             remotingCommand.setBinary(context.binary);

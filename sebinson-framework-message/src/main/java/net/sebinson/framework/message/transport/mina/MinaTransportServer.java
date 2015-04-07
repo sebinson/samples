@@ -23,7 +23,7 @@ import net.sebinson.framework.message.transport.log.TransportLog;
 import net.sebinson.framework.message.transport.processor.LoginDistributedProcessor;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 import org.apache.mina.core.session.IoSession;
 import org.springframework.util.StringUtils;
@@ -131,7 +131,7 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
     }
 
     @Override
-    public RemoteCommand invokeSync(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
+    public RemotingCommand invokeSync(String add, RemotingCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
             TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         IoSession session = this.sendRequestCommandCheakSessionAndLogin(add, request, timeoutMillis);
         return this.invokeSyncImpl(session, add, request, timeoutMillis);
@@ -139,7 +139,7 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
 
     /** 只用于长连接 */
     @Override
-    public void invokeASync(String add, RemoteCommand request, long timeoutMillis, InvokeCallback invokeCallback) throws InterruptedException,
+    public void invokeASync(String add, RemotingCommand request, long timeoutMillis, InvokeCallback invokeCallback) throws InterruptedException,
             TransportConnectException, TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         IoSession session = this.sendRequestCommandCheakSessionAndLogin(add, request, timeoutMillis);
         this.invokeASyncImpl(session, add, request, timeoutMillis, invokeCallback);
@@ -147,13 +147,13 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
 
     /** 只用于长连接 */
     @Override
-    public void invokeUnreply(String add, RemoteCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
+    public void invokeUnreply(String add, RemotingCommand request, long timeoutMillis) throws InterruptedException, TransportConnectException,
             TransportTimeoutException, TransportSendRequestException, TransportTooMuchRequestException {
         IoSession session = this.sendRequestCommandCheakSessionAndLogin(add, request, timeoutMillis);
         this.invokeUnreplyImpl(session, add, request, timeoutMillis);
     }
 
-    public void processRequsetCommand(IoSession session, String add, RemoteCommand request) {
+    public void processRequsetCommand(IoSession session, String add, RemotingCommand request) {
         try {
             this.processRequsetCommandCheckLogin(session, add, request, ConstantTransport.MINA_SEND_RECEIVE_DEFAULT_TIMEOUTMILLIS);
             this.processRequestCommandImpl(session, add, request);
@@ -162,12 +162,12 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
         }
     }
 
-    public void processResponseCommand(IoSession session, String add, RemoteCommand response) {
+    public void processResponseCommand(IoSession session, String add, RemotingCommand response) {
         this.processResponseCommandImpl(session, add, response);
     }
 
     /** receive请求报文，短连接不用校验，长连接接收数据，校验session客户端是否已登录 */
-    private void processRequsetCommandCheckLogin(IoSession session, final String add, RemoteCommand request, long timeoutMills)
+    private void processRequsetCommandCheckLogin(IoSession session, final String add, RemotingCommand request, long timeoutMills)
             throws TransportTooMuchRequestException, TransportTimeoutException, TransportSendRequestException, InterruptedException, TransportConnectException {
         if (!this.isLong())// 短连接不用校验登录情况
         {
@@ -177,7 +177,7 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
     }
 
     /** send报文，短连接不能发送。长连接发数据校验session客户端是否已登录 */
-    private IoSession sendRequestCommandCheakSessionAndLogin(final String add, RemoteCommand request, long timeoutMills) throws TransportConnectException,
+    private IoSession sendRequestCommandCheakSessionAndLogin(final String add, RemotingCommand request, long timeoutMills) throws TransportConnectException,
             TransportTooMuchRequestException, TransportTimeoutException, TransportSendRequestException, InterruptedException {
         if (!this.isLong()) {// 短连接不发数据
             throw new TransportSendRequestException(TransportException.EORROR_SENDREQUSET_SERVER_ISSHORT_SOCKET, add,
@@ -191,7 +191,7 @@ public class MinaTransportServer extends MinaTransportAbstract implements Transp
     }
 
     /** 长连接用校验登录情况 */
-    private void checkLogin(IoSession session, final String add, RemoteCommand request, long timeoutMills, int code) throws TransportTooMuchRequestException,
+    private void checkLogin(IoSession session, final String add, RemotingCommand request, long timeoutMills, int code) throws TransportTooMuchRequestException,
             TransportTimeoutException, TransportSendRequestException, InterruptedException, TransportConnectException {
         // 登录请求
         if (this.loginItype.equals(request.getHeader().getItype())) {

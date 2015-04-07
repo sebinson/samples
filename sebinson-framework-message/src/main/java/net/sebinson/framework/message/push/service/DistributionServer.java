@@ -5,13 +5,13 @@ import net.sebinson.framework.message.push.bean.GAGMessage;
 import net.sebinson.framework.message.transport.RPCHook;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 public interface DistributionServer extends TransportBootstrap {
     /**
      * 发送数据，等待同步应答
      */
-    public <T> RemoteCommand sendSync(final String add, final GAGMessage<T> request);
+    public <T> RemotingCommand sendSync(final String add, final GAGMessage<T> request);
 
     /**
      * 发送数据，等待异步应答

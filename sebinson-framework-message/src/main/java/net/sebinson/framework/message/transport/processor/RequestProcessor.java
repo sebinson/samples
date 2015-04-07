@@ -1,7 +1,7 @@
 package net.sebinson.framework.message.transport.processor;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
-import net.sebinson.framework.message.transport.protocol.RemoteCommand;
+import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
 /**
  * 接收到的请求处理,非登陆 报文用到那个方法就实现那个方法即可
@@ -19,7 +19,7 @@ public interface RequestProcessor {
      *             处理失败返回 TransportException.errorCode即为返回对方报文Header的resutl,
      *             TransportException.message即为返回对方报文Header的msg
      */
-    public void processRequestUnreply(RemoteCommand request) throws TransportException;
+    public void processRequestUnreply(RemotingCommand request) throws TransportException;
 
     /**
      * 处理同步应答的请求
@@ -31,7 +31,7 @@ public interface RequestProcessor {
      *             处理失败返回 TransportException.errorCode即为返回对方报文Header的resutl,
      *             TransportException.message即为返回对方报文Header的msg
      */
-    public RemoteCommand processRequestSync(RemoteCommand request) throws TransportException;
+    public RemotingCommand processRequestSync(RemotingCommand request) throws TransportException;
 
     /**
      * 处理异步应答的请求
@@ -42,5 +42,5 @@ public interface RequestProcessor {
      *             处理失败返回 TransportException.errorCode即为返回对方报文Header的resutl,
      *             TransportException.message即为返回对方报文Header的msg
      */
-    public void processRequestAsync(RemoteCommand request) throws TransportException;
+    public void processRequestAsync(RemotingCommand request) throws TransportException;
 }
