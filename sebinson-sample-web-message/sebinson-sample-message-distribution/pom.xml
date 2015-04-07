@@ -4,20 +4,20 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>net.sebinson.sample.web</groupId>
-		<artifactId>sebinson-sample-web-message</artifactId>
+		<groupId>net.sebinson.sample</groupId>
+		<artifactId>sebinson-sample-message</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>net.sebinson.sample.web.message</groupId>
-	<artifactId>sebinson-sample-web-message-distribution</artifactId>
+	<groupId>net.sebinson.sample.message</groupId>
+	<artifactId>sebinson-sample-message-distribution</artifactId>
 	<packaging>war</packaging>
-	<name>sebinson-sample-web-message-distribution</name>
+	<name>sebinson-sample-message-distribution</name>
 	<url>http://www.sebinson.net</url>
 
 	<dependencies>
 	</dependencies>
 
 	<build>
-		<finalName>sebinson-sample-web-message-distribution</finalName>
+		<finalName>sebinson-sample-message-distribution</finalName>
 	</build>
 </project>
