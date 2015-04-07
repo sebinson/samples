@@ -7,11 +7,10 @@
 		<artifactId>sebinson-sample-web</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>net.sebinson.sample.web</groupId>
-	<artifactId>sebinson-sample-web-message</artifactId>
+	<artifactId>sebinson-sample-message</artifactId>
 	<packaging>pom</packaging>
 
-	<name>sebinson-sample-web-message</name>
+	<name>sebinson-sample-message</name>
 	<url>http://www.sebinson.net</url>
 
 	<properties>
