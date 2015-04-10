@@ -4,12 +4,12 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import net.sebinson.common.cache.zookeeper.type.DictionaryCache;
-import net.sebinson.common.cache.zookeeper.type.Cache;
+import net.sebinson.common.cache.zookeeper.type.ICacheType;
 import net.sebinson.common.cache.zookeeper.type.MapCache;
 import net.sebinson.common.cache.zookeeper.type.TreeCache;
 
 public class CacheFactory {
-    private static Map<String, Cache> map = new ConcurrentHashMap<String, Cache>();
+    private static Map<String, ICacheType> map = new ConcurrentHashMap<String, ICacheType>();
 
     public static MapCache getMapCache(CacheEnums x) {
         return (MapCache) map.get(x.name());
@@ -25,11 +25,11 @@ public class CacheFactory {
         return (DictionaryCache) map.get(x.name());
     }
 
-    public static void put(String key, Cache value) {
+    public static void put(String key, ICacheType value) {
         map.put(key, value);
     }
 
-    public static Cache get(String key) {
+    public static ICacheType get(String key) {
         return map.get(key);
     }
 }
