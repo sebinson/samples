@@ -2,6 +2,7 @@ package net.sebinson.framework.message.transport.protocol;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,43 +15,72 @@ import org.springframework.util.StringUtils;
 public class RemotingCommand implements Serializable {
     private static final long   serialVersionUID = -4101344746952294912L;
 
-    private byte                type             = 3;                    // 通讯协议，1连接、2心跳、3业务
-    private String              baseinfo         = "";                   // 原始字符串
-    private byte[]              binary           = new byte[0];          // 字节流
-    private Header              header;                                  // 报文头部
-    private Map<String, Object> body;                                    // 业务数据
+    /*
+     * 通讯协议，1连接、2心跳、3业务
+     */
+    private byte                type             = 3;
+    /*
+     * 通讯字符流，JSON串+32位MD5
+     */
+    private String              message          = "";
+    /*
+     * 通讯字符流，JSON串
+     */
+    private String              messageNoSign    = "";
+    /*
+     * 通讯字节流
+     */
+    private byte[]              binary           = new byte[0];
+    /*
+     * 签名信息
+     */
+    private String              sign;
+    /*
+     * 报文头
+     */
+    private Header              header;
+    /*
+     * 报文体
+     */
+    private Map<String, Object> body;
 
-    /** 解码用 */
+    /**
+     * 解码
+     * 
+     * @throws TransportCommandProtocolException
+     */
     public void DeProtocol() throws TransportCommandProtocolException {
         try {
-            RemotingCommand remotingCommand = JsonUtil.toObj(this.baseinfo, RemotingCommand.class);
+            int index = this.message.length() - 32;
+            this.sign = this.message.substring(index);
+            this.messageNoSign = this.message.substring(0, index);
+            RemotingCommand remotingCommand = JsonUtil.toObj(this.messageNoSign, RemotingCommand.class);
             this.header = remotingCommand.getHeader();
             this.body = remotingCommand.getBody();
         } catch (Exception e) {
             throw new TransportCommandProtocolException(TransportException.EORROR_COMMANDPROTOCOL,
-                    "jsonStr parse Header and body Map<String,Object> exception. jsonStr=" + this.baseinfo, e);
+                    "jsonStr parse Header and body Map<String,Object> exception. jsonStr=" + this.message, e);
         }
     }
 
-    /** 编码码用 */
+    /**
+     * 编码
+     * 
+     * @throws TransportCommandProtocolException
+     */
     public void EnProtocol() throws TransportCommandProtocolException {
-        try {
-            if (this.header == null) {
-                throw new IllegalArgumentException("RemotingCommand header is null.");
-            }
-
-            Map<String, Object> h = this.javaBeanToMap(this.header);
-            Map<String, Object> f = new HashMap<String, Object>();
-            f.put("header", h);
-            // TODO 去掉body里的null值
-            if (this.body != null && !this.body.isEmpty()) {
-                f.put("body", this.body);
-            }
-            this.baseinfo = JsonUtil.toJson(f);
-        } catch (Exception e) {
-            throw new TransportCommandProtocolException(TransportException.EORROR_COMMANDPROTOCOL,
-                    "RemotingCommand to JSON and binary bytes exception. RemotingCommand=" + this, e);
+        if (this.header == null) {
+            throw new IllegalArgumentException("RemotingCommand header is null.");
         }
+        Map<String, Object> h = this.javaBeanToMap(this.header);
+        Map<String, Object> m = new HashMap<String, Object>();
+        m.put("header", h);
+        // TODO 去掉body里的null值
+        if (this.body != null && !this.body.isEmpty()) {
+            m.put("body", this.body);
+        }
+        this.messageNoSign = JsonUtil.toJson(m);
+        this.message = this.messageNoSign + this.sign;
     }
 
     private Map<String, Object> javaBeanToMap(Object javaBean) {
@@ -77,15 +107,47 @@ public class RemotingCommand implements Serializable {
     }
 
     public byte getType() {
-        return this.type;
+        return type;
     }
 
     public void setType(byte type) {
         this.type = type;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getMessageNoSign() {
+        return messageNoSign;
+    }
+
+    public void setMessageNoSign(String messageNoSign) {
+        this.messageNoSign = messageNoSign;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public byte[] getBinary() {
+        return binary;
+    }
+
+    public void setBinary(byte[] binary) {
+        this.binary = binary;
+    }
+
     public Header getHeader() {
-        return this.header;
+        return header;
     }
 
     public void setHeader(Header header) {
@@ -93,36 +155,16 @@ public class RemotingCommand implements Serializable {
     }
 
     public Map<String, Object> getBody() {
-        return this.body;
+        return body;
     }
 
     public void setBody(Map<String, Object> body) {
         this.body = body;
     }
 
-    public byte[] getBinary() {
-        return this.binary;
-    }
-
-    public void setBinary(byte[] binary) {
-        if (binary == null) {
-            this.binary = new byte[0];
-            return;
-        }
-        this.binary = binary;
-    }
-
-    public String getBaseinfo() {
-        return this.baseinfo;
-    }
-
-    public void setBaseinfo(String baseinfo) {
-        this.baseinfo = baseinfo;
-    }
-
     @Override
     public String toString() {
-        return "RemotingCommand [type=" + this.type + ", baseinfo=" + this.baseinfo + ",header=" + this.header + ", body=" + this.body + ", binary.size="
-                + (this.binary == null ? 0 : this.binary.length) + "]";
+        return "RemotingCommand [type=" + type + ", message=" + message + ", messageNoSign=" + messageNoSign + ", sign=" + sign + ", binary="
+                + Arrays.toString(binary) + ", header=" + header + ", body=" + body + "]";
     }
 }
