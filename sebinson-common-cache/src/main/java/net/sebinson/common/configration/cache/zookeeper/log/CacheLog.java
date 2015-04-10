@@ -1,4 +1,4 @@
-package net.sebinson.common.cache.zookeeper.log;
+package net.sebinson.common.configration.cache.zookeeper.log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

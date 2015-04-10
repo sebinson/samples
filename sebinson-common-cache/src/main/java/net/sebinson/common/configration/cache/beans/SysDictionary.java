@@ -1,4 +1,4 @@
-package net.sebinson.common.cache.zookeeper.beans;
+package net.sebinson.common.configration.cache.beans;
 
 import java.io.Serializable;
 

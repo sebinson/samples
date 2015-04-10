@@ -1,12 +1,14 @@
-package net.sebinson.common.cache.zookeeper;
+package net.sebinson.common.configration.cache.zookeeper;
 
 import java.util.ResourceBundle;
 
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import net.sebinson.common.cache.zookeeper.log.CacheLog;
-import net.sebinson.common.cache.zookeeper.type.ICacheType;
+import net.sebinson.common.configration.cache.type.ICacheType;
+import net.sebinson.common.configration.cache.zookeeper.log.CacheLog;
 
 import com.google.gson.Gson;
 
@@ -16,6 +18,9 @@ import com.google.gson.Gson;
  *
  */
 public class CacheThread extends Thread {
+
+    private static final Logger logger = LoggerFactory.getLogger(CacheThread.class);
+
     @Override
     public void run() {
         try {

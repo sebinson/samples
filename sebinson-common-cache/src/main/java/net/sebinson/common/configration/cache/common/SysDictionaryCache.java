@@ -1,10 +1,10 @@
-package net.sebinson.common.cache.zookeeper.common;
+package net.sebinson.common.configration.cache.common;
 
 import java.util.Map;
 
-import net.sebinson.common.cache.zookeeper.CacheEnums;
-import net.sebinson.common.cache.zookeeper.CacheFactory;
-import net.sebinson.common.cache.zookeeper.beans.SysDictionary;
+import net.sebinson.common.configration.cache.beans.SysDictionary;
+import net.sebinson.common.configration.cache.zookeeper.CacheEnums;
+import net.sebinson.common.configration.cache.zookeeper.CacheFactory;
 
 
 public class SysDictionaryCache

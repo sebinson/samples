@@ -1,10 +1,10 @@
-package net.sebinson.common.cache.zookeeper.common;
+package net.sebinson.common.configration.cache.common;
 
 import java.util.List;
 
-import net.sebinson.common.cache.zookeeper.CacheEnums;
-import net.sebinson.common.cache.zookeeper.CacheFactory;
-import net.sebinson.common.cache.zookeeper.beans.Area;
+import net.sebinson.common.configration.cache.beans.Area;
+import net.sebinson.common.configration.cache.zookeeper.CacheEnums;
+import net.sebinson.common.configration.cache.zookeeper.CacheFactory;
 
 public class AreaCache {
     public static Area get(String key) {

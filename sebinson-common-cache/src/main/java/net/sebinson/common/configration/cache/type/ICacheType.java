@@ -1,4 +1,4 @@
-package net.sebinson.common.cache.zookeeper.type;
+package net.sebinson.common.configration.cache.type;
 
 public interface ICacheType
 {

@@ -1,4 +1,4 @@
-package net.sebinson.common.cache.zookeeper;
+package net.sebinson.common.configration.cache.zookeeper;
 
 public class CacheHelper {
 

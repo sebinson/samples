@@ -1,4 +1,4 @@
-package net.sebinson.common.cache.zookeeper;
+package net.sebinson.common.configration.cache.zookeeper;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 import org.I0Itec.zkclient.serialize.ZkSerializer;
 
-import net.sebinson.common.cache.zookeeper.log.CacheLog;
+import net.sebinson.common.configration.cache.zookeeper.log.CacheLog;
 
 public class CacheSerializer implements ZkSerializer {
 

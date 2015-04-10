@@ -1,9 +1,9 @@
 package net.sebinson.common.cache.session.zookeeper;
 
-import org.I0Itec.zkclient.ZkClient;
-
 import net.sebinson.common.cache.session.SessionMeta;
-import net.sebinson.common.cache.zookeeper.CacheHelper;
+import net.sebinson.common.configration.cache.zookeeper.CacheHelper;
+
+import org.I0Itec.zkclient.ZkClient;
 
 public class ZkSessionHelper {
     public static final String root = CacheHelper.CACHE_ROOT_DEFAULT+"/session";

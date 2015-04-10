@@ -1,12 +1,12 @@
-package net.sebinson.common.cache.zookeeper;
+package net.sebinson.common.configration.cache.zookeeper;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import net.sebinson.common.cache.zookeeper.type.DictionaryCache;
-import net.sebinson.common.cache.zookeeper.type.ICacheType;
-import net.sebinson.common.cache.zookeeper.type.MapCache;
-import net.sebinson.common.cache.zookeeper.type.TreeCache;
+import net.sebinson.common.configration.cache.type.DictionaryCache;
+import net.sebinson.common.configration.cache.type.ICacheType;
+import net.sebinson.common.configration.cache.type.MapCache;
+import net.sebinson.common.configration.cache.type.TreeCache;
 
 public class CacheFactory {
     private static Map<String, ICacheType> map = new ConcurrentHashMap<String, ICacheType>();

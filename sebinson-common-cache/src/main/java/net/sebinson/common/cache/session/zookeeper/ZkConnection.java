@@ -2,7 +2,7 @@ package net.sebinson.common.cache.session.zookeeper;
 
 import org.I0Itec.zkclient.ZkClient;
 
-import net.sebinson.common.cache.zookeeper.CacheHelper;
+import net.sebinson.common.configration.cache.zookeeper.CacheHelper;
 
 public class ZkConnection {
         
