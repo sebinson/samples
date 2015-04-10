@@ -51,7 +51,7 @@ public class CacheThread extends Thread {
                 }
             }
         } catch (Exception e) {
-            CacheLog.error("初始化本地缓存异常", e);
+            logger.error("初始化本地缓存异常", e);
         }
     }
 
@@ -70,22 +70,22 @@ public class CacheThread extends Thread {
      * @param data
      */
     private void reload(String dataPath, Object data) {
-        CacheLog.info("开始加载本地缓存:" + dataPath);
+        logger.info("开始加载本地缓存:" + dataPath);
         if (dataPath == null || dataPath.length() < 21) {
-            CacheLog.error("dataPath不合法:" + dataPath, null);
+            logger.error("dataPath不合法:" + dataPath, new Exception());
             return;
         }
         if (data == null) {
-            CacheLog.error("data为空:" + dataPath, null);
+            logger.error("data为空:" + dataPath, new Exception());
             return;
         }
         try {
             String key = this.getKeyByDataPath(dataPath);
             ICacheType cache = CacheFactory.get(key);
             cache.reload(data);
-            CacheLog.info("本地缓存加载完毕:" + dataPath);
+            logger.info("本地缓存加载完毕:" + dataPath);
         } catch (Exception e) {
-            CacheLog.error("加载本地缓存异常：" + dataPath, e);
+            logger.error("加载本地缓存异常：" + dataPath, e);
         }
     }
 }

@@ -7,10 +7,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import org.I0Itec.zkclient.serialize.ZkSerializer;
-
-import net.sebinson.common.configration.cache.zookeeper.log.CacheLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CacheSerializer implements ZkSerializer {
+
+    private static final Logger logger = LoggerFactory.getLogger(CacheSerializer.class);
 
     /**
      * 序列化
@@ -28,21 +30,21 @@ public class CacheSerializer implements ZkSerializer {
             byte[] bytes = baos.toByteArray();
             return bytes;
         } catch (Exception e) {
-            CacheLog.error("序列化异常", e);
+            logger.error("序列化异常", e);
             return null;
         } finally {
             if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException e) {
-                    CacheLog.error("序列化关闭oos异常", e);
+                    logger.error("序列化关闭oos异常", e);
                 }
             }
             if (baos != null) {
                 try {
                     baos.close();
                 } catch (IOException e) {
-                    CacheLog.error("序列化关闭baos异常", e);
+                    logger.error("序列化关闭baos异常", e);
                 }
             }
         }
@@ -62,21 +64,21 @@ public class CacheSerializer implements ZkSerializer {
             ois = new ObjectInputStream(bais);
             return ois.readObject();
         } catch (Exception e) {
-            CacheLog.error("反序列化异常", e);
+            logger.error("反序列化异常", e);
             return null;
         } finally {
             if (ois != null) {
                 try {
                     ois.close();
                 } catch (IOException e) {
-                    CacheLog.error("反序列化关闭ois异常", e);
+                    logger.error("反序列化关闭ois异常", e);
                 }
             }
             if (bais != null) {
                 try {
                     bais.close();
                 } catch (IOException e) {
-                    CacheLog.error("反序列化关闭bais异常", e);
+                    logger.error("反序列化关闭bais异常", e);
                 }
             }
         }
