@@ -6,7 +6,7 @@
 		<artifactId>sebinson-sample</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-    <groupId>net.sebinson.sample</groupId>
+	<groupId>net.sebinson.sample</groupId>
 	<artifactId>sebinson-sample-cache</artifactId>
 	<packaging>pom</packaging>
 
@@ -14,9 +14,14 @@
 	<url>http://sample.sebinson.net</url>
 
 	<properties>
+		<chcache-web-version>2.0.4</chcache-web-version>
 	</properties>
-
+	
 	<dependencies>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-web</artifactId>
+			<version>${chcache-web-version}</version>
+		</dependency>
 	</dependencies>
-
 </project>
