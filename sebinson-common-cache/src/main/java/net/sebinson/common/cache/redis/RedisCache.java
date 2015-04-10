@@ -67,8 +67,7 @@ public class RedisCache implements Cache {
 		if (key == null) {
 			throw new CacheException("error jedis");
 		}
-		Long ret = jedis.del(key.toString());
-		// return ret == 1 ? true : false;
+		jedis.del(key.toString());
 	}
 
 	@Override
