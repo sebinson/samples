@@ -34,6 +34,7 @@ public class ReflectHelper {
         return value;
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T getValueByFieldType(Object obj, Class<T> fieldType) {
         Object value = null;
         for (Class<?> superClass = obj.getClass(); superClass != Object.class; superClass = superClass.getSuperclass()) {
