@@ -6,7 +6,7 @@ import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
 
 import net.sebinson.common.cache.zookeeper.log.CacheLog;
-import net.sebinson.common.cache.zookeeper.type.ICacheType;
+import net.sebinson.common.cache.zookeeper.type.Cache;
 
 import com.google.gson.Gson;
 
@@ -28,7 +28,7 @@ public class CacheThread extends Thread {
             for (CacheEnums cacheEnums : c) {
                 key = cacheEnums.name();
                 if (rb.containsKey(key)) {
-                    CacheFactory.put(key, (ICacheType) Class.forName(rb.getString(key)).newInstance());
+                    CacheFactory.put(key, (Cache) Class.forName(rb.getString(key)).newInstance());
                     dataPath = this.getDataPathByKey(key);
                     this.reload(dataPath, zk.readData(dataPath, true));
                     zk.subscribeDataChanges(dataPath, new IZkDataListener() {
@@ -76,7 +76,7 @@ public class CacheThread extends Thread {
         }
         try {
             String key = this.getKeyByDataPath(dataPath);
-            ICacheType cache = CacheFactory.get(key);
+            Cache cache = CacheFactory.get(key);
             cache.reload(data);
             CacheLog.info("本地缓存加载完毕:" + dataPath);
         } catch (Exception e) {

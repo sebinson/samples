@@ -3,7 +3,7 @@ package net.sebinson.common.cache.zookeeper.type;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class MapCache implements ICacheType {
+public class MapCache implements Cache {
     private Map<String, String> map = new ConcurrentHashMap<String, String>();
 
     /**

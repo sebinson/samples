@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TreeCache<T> implements ICacheType {
+public class TreeCache<T> implements Cache {
     private Map<String, T> map = new ConcurrentHashMap<String, T>();
     private Map<String, List<T>> next = new ConcurrentHashMap<String, List<T>>();
     private String currentId = "id";

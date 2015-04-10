@@ -1,6 +1,6 @@
 package net.sebinson.common.cache.zookeeper.type;
 
-public interface ICacheType
+public interface Cache
 {
     public void reload(Object data);
 }

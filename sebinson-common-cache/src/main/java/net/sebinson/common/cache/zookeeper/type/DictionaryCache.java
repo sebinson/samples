@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DictionaryCache<T> implements ICacheType {
+public class DictionaryCache<T> implements Cache {
     private Map<String, Map<String, T>> map = new ConcurrentHashMap<String, Map<String, T>>();
     private String type = "type";
     private String code = "code";
