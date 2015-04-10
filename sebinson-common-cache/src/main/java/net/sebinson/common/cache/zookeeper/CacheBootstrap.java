@@ -1,13 +1,15 @@
 package net.sebinson.common.cache.zookeeper;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import net.sebinson.common.cache.zookeeper.log.CacheLog;
-
 @Service
 public class CacheBootstrap implements InitializingBean {
-    private static boolean flag = false;
+
+    private static final Logger logger = LoggerFactory.getLogger(CacheBootstrap.class);
+    private static boolean      flag   = false;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -16,7 +18,7 @@ public class CacheBootstrap implements InitializingBean {
             CacheThread ct = new CacheThread();
             ct.start();
         } else {
-            CacheLog.warn("Cache task has been started, this belongs to the repetition priming!");
+            logger.warn("Cache task has been started, this belongs to the repetition priming!");
         }
     }
 }
