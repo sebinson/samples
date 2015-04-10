@@ -104,7 +104,7 @@ public class MinaTransportDecoder implements MessageDecoder {
             context.isOK = true;
             RemotingCommand remotingCommand = new RemotingCommand();
             remotingCommand.setType(context.type);
-            remotingCommand.setBaseinfo(new String(context.jsonStr, ConstantTransport.CODE_UTF8));
+            remotingCommand.setMessage(new String(context.jsonStr, ConstantTransport.CODE_UTF8));
             remotingCommand.setBinary(context.binary);
             if (context.type != ConstantTransport.MINA_PROTOCOL_TYPE_2)// 不是心跳
             {

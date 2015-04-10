@@ -22,7 +22,7 @@ public class MinaTransportEncoder implements MessageEncoder<RemotingCommand> {
         IoBuffer buffer = IoBuffer.allocate(ConstantTransport.MINA_MAX_PACKET_SIZE_SEND);
         buffer.setAutoExpand(true);
         buffer.put(command.getType());// 1个字节通信类型
-        byte[] jsonStr = command.getBaseinfo().getBytes("utf-8");
+        byte[] jsonStr = command.getMessage().getBytes("utf-8");
         buffer.putInt(jsonStr.length);// 4个字节字符串长度
         buffer.putInt(command.getBinary().length);// 4个字节byte数组长度
         buffer.put(jsonStr);// 字符串
