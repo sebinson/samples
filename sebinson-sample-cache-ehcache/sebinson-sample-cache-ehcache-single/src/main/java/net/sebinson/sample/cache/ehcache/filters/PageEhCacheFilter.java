@@ -1,4 +1,4 @@
-package net.sebinson.sample.cache.ehcache.interceptors;
+package net.sebinson.sample.cache.ehcache.filters;
 
 import java.util.Enumeration;
 
