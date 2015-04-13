@@ -15,12 +15,12 @@
 		<property name="cacheName" value="billCache" />
 	</bean>
 
-	<bean id="methodCacheInterceptor" class="net.sebinson.sample.cache.ehcache.interceptors.MethodEhCacheInterceptor">
+	<bean id="methodEhCacheInterceptor" class="net.sebinson.sample.cache.ehcache.interceptors.MethodEhCacheInterceptor">
 		<property name="cache" ref="simpleCache" />
 	</bean>
 
 	<bean id="methodCachePointCut" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice" ref="methodCacheInterceptor" />
+		<property name="advice" ref="methodEhCacheInterceptor" />
 		<!-- 配置哪些方法参与缓存策略 -->
 		<!-- .表示符合任何单一字元 ### +表示符合前一个字元一次或多次 ### *表示符合前一个字元零次或多次 ### \Escape任何Regular expression使用到的符号 -->
 		<!-- .*表示前面的前缀(包括包名) 表示print方法 -->
