@@ -8,11 +8,28 @@
                 <plugin>
                     <groupId>org.mybatis.generator</groupId>
                     <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>1.3.2</version>
+                    <version>${mybatis-generator-maven-plugin-version}</version>
                     <configuration>
                         <verbose>true</verbose>
                         <overwrite>true</overwrite>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <version>${mysql-connector-java-version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.mybatis.generator</groupId>
+                            <artifactId>mybatis-generator-core</artifactId>
+                            <version>${mybatis-generator-core-version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.mybatis</groupId>
+                            <artifactId>mybatis</artifactId>
+                            <version>${mybatis-version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
             </plugins>
         </build>
