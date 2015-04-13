@@ -1,11 +1,9 @@
 package net.sebinson.sample.web.mis.persistence.mapper;
 
 import java.util.List;
-
 import net.sebinson.sample.web.mis.persistence.domain.SampleUserRole;
 import net.sebinson.sample.web.mis.persistence.domain.SampleUserRoleExample;
 import net.sebinson.sample.web.mis.persistence.domain.SampleUserRoleKey;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface SampleUserRoleMapper {

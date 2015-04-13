@@ -1,10 +1,8 @@
 package net.sebinson.sample.web.mis.persistence.mapper;
 
 import java.util.List;
-
 import net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuExample;
 import net.sebinson.sample.web.mis.persistence.domain.SampleRoleMenuKey;
-
 import org.apache.ibatis.annotations.Param;
 
 public interface SampleRoleMenuMapper {

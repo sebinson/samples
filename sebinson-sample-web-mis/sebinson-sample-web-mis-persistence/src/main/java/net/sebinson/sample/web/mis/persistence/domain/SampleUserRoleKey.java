@@ -1,17 +1,9 @@
 package net.sebinson.sample.web.mis.persistence.domain;
 
 public class SampleUserRoleKey {
-    private String roleId;
-
     private String userId;
 
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-        this.roleId = roleId == null ? null : roleId.trim();
-    }
+    private String roleId;
 
     public String getUserId() {
         return userId;
@@ -19,5 +11,13 @@ public class SampleUserRoleKey {
 
     public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
+    }
+
+    public String getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(String roleId) {
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 }

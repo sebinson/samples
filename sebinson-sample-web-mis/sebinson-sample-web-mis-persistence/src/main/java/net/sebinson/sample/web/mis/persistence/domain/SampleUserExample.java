@@ -4,24 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import net.sebinson.sample.web.common.bean.pagination.Page;
-
 public class SampleUserExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
-    
-    private Page page;
-
-    public Page getPage() {
-        return page;
-    }
-
-    public void setPage(Page page) {
-        this.page = page;
-    }
 
     public SampleUserExample() {
         oredCriteria = new ArrayList<Criteria>();
