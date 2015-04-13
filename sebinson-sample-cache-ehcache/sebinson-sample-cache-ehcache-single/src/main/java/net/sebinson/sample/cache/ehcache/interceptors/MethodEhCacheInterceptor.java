@@ -11,9 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 
-public class MethodCacheInterceptor implements MethodInterceptor, InitializingBean {
+public class MethodEhCacheInterceptor implements MethodInterceptor, InitializingBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(MethodCacheInterceptor.class);
+    private static final Logger logger = LoggerFactory.getLogger(MethodEhCacheInterceptor.class);
     private Cache               cache;
 
     public void setCache(Cache cache) {
