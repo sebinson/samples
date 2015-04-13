@@ -15,7 +15,7 @@
 		<property name="cacheName" value="billCache" />
 	</bean>
 
-	<bean id="methodCacheInterceptor" class="net.sebinson.sample.cache.ehcache.interceptors.MethodCacheInterceptor">
+	<bean id="methodCacheInterceptor" class="net.sebinson.sample.cache.ehcache.interceptors.MethodEhCacheInterceptor">
 		<property name="cache" ref="simpleCache" />
 	</bean>
 
