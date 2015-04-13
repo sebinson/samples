@@ -46,7 +46,6 @@ public class PageEhCacheFilter extends SimplePageCachingFilter {
             }
         }
 
-        // 如果包含我们要缓存的url 就缓存该页面，否则执行正常的页面转向
         if (flag) {
             String query = request.getQueryString();
             if (query != null) {
@@ -82,16 +81,13 @@ public class PageEhCacheFilter extends SimplePageCachingFilter {
      *      <b>function:</b> 兼容ie6/7 gzip压缩
      * 
      * @author hoojo
-     * 
      * @createDate 2012-7-4 上午11:07:11
      */
     @Override
     protected boolean acceptsGzipEncoding(HttpServletRequest request) {
 
         boolean ie6 = headerContains(request, "User-Agent", "MSIE 6.0");
-
         boolean ie7 = headerContains(request, "User-Agent", "MSIE 7.0");
-
         return acceptsEncoding(request, "gzip") || ie6 || ie7;
 
     }

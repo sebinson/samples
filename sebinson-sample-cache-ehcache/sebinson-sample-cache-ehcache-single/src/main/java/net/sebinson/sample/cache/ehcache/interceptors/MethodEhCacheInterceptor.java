@@ -35,13 +35,13 @@ public class MethodEhCacheInterceptor implements MethodInterceptor, Initializing
         synchronized (this) {
             element = cache.get(cacheKey);
             if (element == null) {
-                logger.info(cacheKey + "加入到缓存： " + cache.getName());
+                logger.info(cacheKey + "Add cache： " + cache.getName());
                 // 调用实际的方法
                 result = invocation.proceed();
                 element = new Element(cacheKey, (Serializable) result);
                 cache.put(element);
             } else {
-                logger.info(cacheKey + "使用缓存： " + cache.getName());
+                logger.info(cacheKey + "Use cache： " + cache.getName());
             }
         }
         return element.getObjectValue();
