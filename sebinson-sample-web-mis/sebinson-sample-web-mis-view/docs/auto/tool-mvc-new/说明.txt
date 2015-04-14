@@ -1,0 +1,26 @@
+1.创建数据库
+2.修改config.properties
+	指定数据库名db_name（空时默认为test）
+	指定数据库名table_name（空默认为此数据库中所有表）
+3.运行genExcel.bat
+	在xls目录中会生成excel文件，修改excel文件中的字段属性
+4.编写flt目录下的模板文件
+	生成文件路径参数使用
+	生成的文件路径变量
+		1.名称：
+		sheet-标签名
+		fileid-文件标识
+		2.后缀
+		 * 空-保持原样;
+		 * 字符串类型-大写 cap";
+		 * 字符串类型-首字母大写 cap_first";
+		 * 字符串类型-小写 uncap";
+		 * 字符串类型-首字母小写 uncap_first";
+		3.举例：
+		${sheet}
+		${sheet_cap}
+		${fileid_uncap_first}
+	excel中第二行为可使用的变量名称
+5.运行genFile.bat
+	out目录中会生成相关文件
+
