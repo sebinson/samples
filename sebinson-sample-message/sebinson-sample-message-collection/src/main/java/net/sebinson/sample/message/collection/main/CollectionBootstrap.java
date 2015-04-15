@@ -7,14 +7,18 @@ import net.sebinson.framework.message.transport.RPCHook;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
 
 public class CollectionBootstrap extends ContextLoaderListener {
 
+    private static final Logger logger = LoggerFactory.getLogger(CollectionBootstrap.class);
+
     @Override
     public void contextInitialized(final ServletContextEvent event) {
-        System.out.println("采集服务启动...");
+        logger.info("采集服务启动...");
         long from = System.currentTimeMillis();
         super.contextInitialized(event);
         WebApplicationContext wac = getCurrentWebApplicationContext();
@@ -30,21 +34,21 @@ public class CollectionBootstrap extends ContextLoaderListener {
             singleTransportServer.registerPRCHook(wac.getBean("socketHookRpc", RPCHook.class));
             singleTransportServer.start();
             long to = System.currentTimeMillis();
-            System.out.println((String.format("采集服务启动成功,耗时[%s]毫秒.", (from - to))));
+            logger.info((String.format("采集服务启动成功,耗时[%s]毫秒.", (from - to))));
         } catch (Throwable e) {
             // System.exit(0);
         }
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                System.out.println("账单采集服务停止开始...");
+                logger.info("账单采集服务停止开始...");
                 if (singleTransportServer != null) {
                     singleTransportServer.stop();
                 }
                 if (event != null && wac != null) {
                     _this.contextDestroyed(event);
                 }
-                System.out.println("账单采集服务停止成功.");
+                logger.info("账单采集服务停止成功.");
             }
         });
     }
