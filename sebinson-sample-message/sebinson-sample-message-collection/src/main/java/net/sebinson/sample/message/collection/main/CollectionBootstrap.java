@@ -18,7 +18,7 @@ public class CollectionBootstrap extends ContextLoaderListener {
 
     @Override
     public void contextInitialized(final ServletContextEvent event) {
-        logger.info("采集服务启动...");
+        logger.info("Collection Server booting...");
         long from = System.currentTimeMillis();
         super.contextInitialized(event);
         WebApplicationContext wac = getCurrentWebApplicationContext();
@@ -26,7 +26,7 @@ public class CollectionBootstrap extends ContextLoaderListener {
     }
 
     private void initBillCollect(WebApplicationContext wac, ServletContextEvent event, CollectionBootstrap _this, long from) {
-        final SingleTransportServerFactory singleTransportServer = new SingleTransportServerFactory("采集服务", 8888, true, 0);
+        final SingleTransportServerFactory singleTransportServer = new SingleTransportServerFactory("collectionServer", 8888, true, 0);
         try {
             LoginProcessor loginProcessor = (LoginProcessor) wac.getBean("gtsa01");
             RequestProcessor minitorRequestProcessor = (RequestProcessor) wac.getBean("gtsa06");
@@ -34,21 +34,21 @@ public class CollectionBootstrap extends ContextLoaderListener {
             singleTransportServer.registerPRCHook(wac.getBean("socketHookRpc", RPCHook.class));
             singleTransportServer.start();
             long to = System.currentTimeMillis();
-            logger.info((String.format("采集服务启动成功,耗时[%s]毫秒.", (from - to))));
+            logger.info((String.format("Collection Server boot success,time-consuming [%s] millisecond.", (from - to))));
         } catch (Throwable e) {
             // System.exit(0);
         }
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                logger.info("账单采集服务停止开始...");
+                logger.info("Collection Server stoping...");
                 if (singleTransportServer != null) {
                     singleTransportServer.stop();
                 }
                 if (event != null && wac != null) {
                     _this.contextDestroyed(event);
                 }
-                logger.info("账单采集服务停止成功.");
+                logger.info("Collection Server stop success.");
             }
         });
     }

@@ -17,7 +17,6 @@ public abstract class AbstractRPCHookProcessorService implements RPCHook {
     @Override
     public void doBeforeResponse(final String add, final RemotingCommand response) {
         try {
-            // 创建无签名报文
             response.getMessageNoSign();
             String sign = this.getSecuritySign(response, add);
             response.setSign(sign);
