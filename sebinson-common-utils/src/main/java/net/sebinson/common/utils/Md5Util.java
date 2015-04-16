@@ -4,35 +4,34 @@ import java.io.UnsupportedEncodingException;
 
 public class Md5Util {
 
-    private static final int S11 = 7;
-    private static final int S12 = 12;
-    private static final int S13 = 17;
-    private static final int S14 = 22;
+    private static final int    S11     = 7;
+    private static final int    S12     = 12;
+    private static final int    S13     = 17;
+    private static final int    S14     = 22;
 
-    private static final int S21 = 5;
-    private static final int S22 = 9;
-    private static final int S23 = 14;
-    private static final int S24 = 20;
+    private static final int    S21     = 5;
+    private static final int    S22     = 9;
+    private static final int    S23     = 14;
+    private static final int    S24     = 20;
 
-    private static final int S31 = 4;
-    private static final int S32 = 11;
-    private static final int S33 = 16;
-    private static final int S34 = 23;
+    private static final int    S31     = 4;
+    private static final int    S32     = 11;
+    private static final int    S33     = 16;
+    private static final int    S34     = 23;
 
-    private static final int S41 = 6;
-    private static final int S42 = 10;
-    private static final int S43 = 15;
-    private static final int S44 = 21;
+    private static final int    S41     = 6;
+    private static final int    S42     = 10;
+    private static final int    S43     = 15;
+    private static final int    S44     = 21;
 
-    private static final byte[] PADDING = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0 };
+    private static final byte[] PADDING = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-    private final long[] state = new long[4];
-    private final long[] count = new long[2];
-    private final byte[] buffer = new byte[64];
+    private final long[]        state   = new long[4];
+    private final long[]        count   = new long[2];
+    private final byte[]        buffer  = new byte[64];
 
-    private final byte[] digest = new byte[16];
+    private final byte[]        digest  = new byte[16];
 
     public Md5Util() {
         this.md5Init();
@@ -255,8 +254,7 @@ public class Md5Util {
 
     private void Decode(long[] output, byte[] input, int len) {
         for (int i = 0, j = 0; j < len; i++, j += 4) {
-            output[i] = b2iu(input[j]) | (b2iu(input[j + 1]) << 8) | (b2iu(input[j + 2]) << 16)
-                    | (b2iu(input[j + 3]) << 24);
+            output[i] = b2iu(input[j]) | (b2iu(input[j + 1]) << 8) | (b2iu(input[j + 2]) << 16) | (b2iu(input[j + 3]) << 24);
         }
     }
 
@@ -271,5 +269,14 @@ public class Md5Util {
         ob[1] = Digit[ib & 0X0F];
         String s = new String(ob);
         return s;
+    }
+
+    public static void main(String... strings) {
+
+        Md5Util md5 = new Md5Util();
+        String message = "ABCDEFGHIJKLMNOP12232123S";
+        System.out.println(message);
+        System.out.println(md5.encrypt(message));
+        System.out.println(md5.encrypt(message+"ENCRYPTKEY"));
     }
 }

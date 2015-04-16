@@ -1,16 +1,14 @@
 package net.sebinson.framework.message.transport.protocol;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.sebinson.common.utils.JsonUtil;
+import net.sebinson.common.utils.ReflectHelper;
 import net.sebinson.framework.message.transport.exception.TransportCommandProtocolException;
 import net.sebinson.framework.message.transport.exception.TransportException;
-
-import org.springframework.util.StringUtils;
 
 public class RemotingCommand implements Serializable {
     private static final long   serialVersionUID = -4101344746952294912L;
@@ -20,7 +18,7 @@ public class RemotingCommand implements Serializable {
     private String              message          = "";                   // 通讯字符流，JSON串+32位MD5
     private String              messageNoSign    = "";                   // 通讯字符流，JSON串
     private String              sign;                                    // 签名字段
-    private Header              header;                                  //
+    private Header              header;
     private Map<String, Object> body;
 
     public void DeProtocol() throws TransportCommandProtocolException {
@@ -33,45 +31,34 @@ public class RemotingCommand implements Serializable {
             this.body = remotingCommand.getBody();
         } catch (Exception e) {
             throw new TransportCommandProtocolException(TransportException.EORROR_COMMANDPROTOCOL,
-                    "jsonStr parse Header and body Map<String,Object> exception. jsonStr=" + this.message, e);
+                    "Message parse Header and Body Map<String,Object> exception. message=" + this.message, e);
         }
     }
 
     public void EnProtocol() throws TransportCommandProtocolException {
+
+        if (this.messageNoSign == null || "".equals(this.messageNoSign)) {
+            this.messageNoSign = buildMessageNoSign();
+        }
+        if (this.sign == null || "".equals(this.sign)) {
+            throw new TransportCommandProtocolException(TransportException.EORROR_NO_SIGN, "No sign information exception. message=" + this.message);
+        }
+        this.message = this.messageNoSign + this.sign;
+    }
+
+    public String buildMessageNoSign() {
+
         if (this.header == null) {
             throw new IllegalArgumentException("RemotingCommand header is null.");
         }
-        Map<String, Object> h = this.javaBeanToMap(this.header);
+        Map<String, Object> h = ReflectHelper.javaBeanToMap(this.header);
         Map<String, Object> m = new HashMap<String, Object>();
         m.put("header", h);
         // TODO 去掉body里的null值
         if (this.body != null && !this.body.isEmpty()) {
             m.put("body", this.body);
         }
-        this.messageNoSign = JsonUtil.toJson(m);
-        this.message = this.messageNoSign + this.sign;
-    }
-
-    private Map<String, Object> javaBeanToMap(Object javaBean) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        Method[] methods = javaBean.getClass().getDeclaredMethods();
-        for (Method method : methods) {
-            try {
-                if (method.getName().startsWith("get")) {
-                    String field = method.getName();
-                    field = field.substring(field.indexOf("get") + 3);
-                    field = field.toLowerCase().charAt(0) + field.substring(1);
-                    Object value = method.invoke(javaBean, new Object[0]);
-                    if (value == null || !StringUtils.isEmpty(value.toString())) {
-                        continue;
-                    }
-                    result.put(field, value);
-                }
-
-            } catch (Exception e) {
-            }
-        }
-        return result;
+        return this.messageNoSign = JsonUtil.toJson(m);
     }
 
     public byte getType() {

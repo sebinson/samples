@@ -3,6 +3,7 @@ package net.sebinson.sample.message.collection.common;
 import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
+import net.sebinson.common.utils.Md5Util;
 import net.sebinson.framework.message.transport.mina.MinaTransportProtocolCodecFacotry;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
@@ -100,7 +101,6 @@ public class MessageClient {
     }
 
     protected static String sign(RemotingCommand command) {
-        String messageNoSign = command.getMessageNoSign();
-        return SignUtils.emcryptSign(messageNoSign, MessageClient.ENCRYPT_KEY);
+        return new Md5Util().encrypt(command.buildMessageNoSign() + MessageClient.ENCRYPT_KEY).toUpperCase();
     }
 }

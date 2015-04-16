@@ -21,6 +21,9 @@ public class TransportException extends Exception {
     // package encode exception
     public static final String EORROR_COMMANDPROTOCOL                   = "t101";
 
+    // no sign information exception
+    public static final String EORROR_NO_SIGN                           = "t102";
+
     // connection exception
     public static final String EORROR_CONNECT                           = "t200";
 
