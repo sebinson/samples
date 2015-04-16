@@ -18,7 +18,6 @@ import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 public class MessageClient {
 
-    private static String       MAC          = "A1B2C3D4E5F6";
     private static String       ENCRYPT_KEY  = "0123456789";
     private static final int    IDLE_TIMEOUT = 3000;
     private static final String DOMAIN       = "127.0.0.1";

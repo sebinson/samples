@@ -28,10 +28,10 @@ public class CollectionBootstrap extends ContextLoaderListener {
     private void initBillCollect(WebApplicationContext wac, ServletContextEvent event, CollectionBootstrap _this, long from) {
         final SingleTransportServerFactory singleTransportServer = new SingleTransportServerFactory("collectionServer", 8888, true, 0);
         try {
-            LoginProcessor loginProcessor = (LoginProcessor) wac.getBean("gtsa01");
-            RequestProcessor minitorRequestProcessor = (RequestProcessor) wac.getBean("gtsa06");
-            singleTransportServer.registerLongConnectProcessor("gtsa01", loginProcessor, "gtsa06", minitorRequestProcessor);
-            singleTransportServer.registerPRCHook(wac.getBean("socketHookRpc", RPCHook.class));
+            LoginProcessor loginProcessor = (LoginProcessor) wac.getBean("loginProcessor");
+            RequestProcessor minitorRequestProcessor = (RequestProcessor) wac.getBean("minitorRequestProcessor");
+            singleTransportServer.registerLongConnectProcessor("loginProcessor", loginProcessor, "minitorRequestProcessor", minitorRequestProcessor);
+            singleTransportServer.registerPRCHook(wac.getBean("socketRpcHook", RPCHook.class));
             singleTransportServer.start();
             long to = System.currentTimeMillis();
             logger.info((String.format("Collection Server boot success,time-consuming [%s] millisecond.", (from - to))));
