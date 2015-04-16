@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ObjectUtil {
-    
+
     private static final Logger logger = LoggerFactory.getLogger(ObjectUtil.class);
 
     public static byte[] serialize(Object object) {
