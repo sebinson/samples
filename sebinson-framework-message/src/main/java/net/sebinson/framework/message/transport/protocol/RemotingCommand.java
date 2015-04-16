@@ -15,40 +15,14 @@ import org.springframework.util.StringUtils;
 public class RemotingCommand implements Serializable {
     private static final long   serialVersionUID = -4101344746952294912L;
 
-    /*
-     * 通讯协议，1连接、2心跳、3业务
-     */
-    private byte                type             = 3;
-    /*
-     * 通讯字符流，JSON串+32位MD5
-     */
-    private String              message          = "";
-    /*
-     * 通讯字符流，JSON串
-     */
-    private String              messageNoSign    = "";
-    /*
-     * 通讯字节流
-     */
-    private byte[]              binary           = new byte[0];
-    /*
-     * 签名信息
-     */
-    private String              sign;
-    /*
-     * 报文头
-     */
-    private Header              header;
-    /*
-     * 报文体
-     */
+    private byte                type             = 3;                    // 通讯协议，1连接、2心跳、3业务
+    private byte[]              binary           = new byte[0];          // 通讯字节流
+    private String              message          = "";                   // 通讯字符流，JSON串+32位MD5
+    private String              messageNoSign    = "";                   // 通讯字符流，JSON串
+    private String              sign;                                    // 签名字段
+    private Header              header;                                  //
     private Map<String, Object> body;
 
-    /**
-     * 解码
-     * 
-     * @throws TransportCommandProtocolException
-     */
     public void DeProtocol() throws TransportCommandProtocolException {
         try {
             int index = this.message.length() - 32;
@@ -63,11 +37,6 @@ public class RemotingCommand implements Serializable {
         }
     }
 
-    /**
-     * 编码
-     * 
-     * @throws TransportCommandProtocolException
-     */
     public void EnProtocol() throws TransportCommandProtocolException {
         if (this.header == null) {
             throw new IllegalArgumentException("RemotingCommand header is null.");
@@ -101,7 +70,6 @@ public class RemotingCommand implements Serializable {
 
             } catch (Exception e) {
             }
-
         }
         return result;
     }

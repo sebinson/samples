@@ -3,7 +3,7 @@ package net.sebinson.common.utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Log {
+public class LoggerUtil {
     /**
      * 获得Logger
      * 

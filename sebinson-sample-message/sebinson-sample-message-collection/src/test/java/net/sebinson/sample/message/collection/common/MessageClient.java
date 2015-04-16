@@ -51,13 +51,9 @@ public class MessageClient {
         public void run() {
 
             ConnectFuture future = this.connector.connect(new InetSocketAddress(DOMAIN, PORT));
-
             future.awaitUninterruptibly();
-
             this.session = future.getSession();
-
             new Thread(new Heart(this.session)).start();
-
             transmit(this.session, this.commands);
 
         }
@@ -101,5 +97,10 @@ public class MessageClient {
                 e.printStackTrace();
             }
         }
+    }
+
+    protected static String sign(RemotingCommand command) {
+        String messageNoSign = command.getMessageNoSign();
+        return SignUtils.emcryptSign(messageNoSign, MessageClient.ENCRYPT_KEY);
     }
 }
