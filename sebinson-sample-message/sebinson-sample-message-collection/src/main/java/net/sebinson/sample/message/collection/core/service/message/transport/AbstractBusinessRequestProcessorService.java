@@ -52,7 +52,7 @@ public abstract class AbstractBusinessRequestProcessorService implements Request
 
     @Override
     public void processRequestAsync(RemotingCommand request) throws TransportException {
-        int version = request.getHeader().getVersion();
+        String version = request.getHeader().getVersion();
         String itype = request.getHeader().getItype();
         ProcessVersionControlService requestProcessor = null;
         try {
