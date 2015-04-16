@@ -100,7 +100,7 @@ public class MessageClient {
         }
     }
 
-    protected static String sign(RemotingCommand command) {
+    public static String sign(RemotingCommand command) {
         return new Md5Util().encrypt(command.buildMessageNoSign() + MessageClient.ENCRYPT_KEY).toUpperCase();
     }
 }

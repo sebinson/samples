@@ -21,10 +21,11 @@ public class MessageTest {
     public static RemotingCommand getXxxRemotingCommand() {
 
         RemotingCommand command = new RemotingCommand();
-        
+
         command.setHeader(new Header());
         command.setBody(new HashMap<String, Object>());
-
+        command.setSign(MessageClient.sign(command));
+        
         return command;
     }
 }
