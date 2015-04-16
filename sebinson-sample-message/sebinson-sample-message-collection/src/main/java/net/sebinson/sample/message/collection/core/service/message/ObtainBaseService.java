@@ -1,8 +1,8 @@
 package net.sebinson.sample.message.collection.core.service.message;
 
-import net.sebinson.sample.message.collection.core.service.ICollectionBaseService;
+import net.sebinson.sample.message.collection.core.service.CollectionBaseService;
 
-public interface IObtainBaseService extends ICollectionBaseService {
+public interface ObtainBaseService extends CollectionBaseService {
 
     /**
      * 业务处理入口

@@ -3,9 +3,9 @@ package net.sebinson.sample.message.collection.core.service.message.transport;
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.processor.RequestProcessor;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
-import net.sebinson.sample.message.collection.core.service.ICollectionBaseService;
+import net.sebinson.sample.message.collection.core.service.CollectionBaseService;
 
-public abstract class AbstractBusinessRequestProcessorService implements RequestProcessor, ICollectionBaseService {
+public abstract class AbstractBusinessRequestProcessorService implements RequestProcessor, CollectionBaseService {
 
     @Override
     public void processRequestUnreply(RemotingCommand request) throws TransportException {

@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.message.IObtainBaseService;
+import net.sebinson.sample.message.collection.core.service.message.ObtainBaseService;
 
 public class MQMessageReceiverService extends AbstractMessageReceiveService {
 
@@ -17,7 +17,7 @@ public class MQMessageReceiverService extends AbstractMessageReceiveService {
 
     /* 业务处理服务 */
     @Resource(name = "obtainBaseService")
-    private IObtainBaseService obtainBaseService;
+    private ObtainBaseService obtainBaseService;
 
     public MQMessageReceiverService() {
         this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREADS_SIZE_OBTAIN_MQ, new ThreadFactory() {
