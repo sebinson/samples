@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.message.transport;
+package net.sebinson.sample.message.collection.core.service.message;
 
 import net.sebinson.sample.message.collection.core.service.ICollectionBaseService;
 

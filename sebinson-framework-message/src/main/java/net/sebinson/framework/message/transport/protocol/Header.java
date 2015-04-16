@@ -10,61 +10,32 @@ import net.sebinson.common.utils.UUIDUtil;
 /**
  * Message header between client and server communication
  * 
- * @author sebinson@163.com
- *
+ * @author C
  */
 public class Header implements Serializable {
 
     private static final long serialVersionUID = 4642888275245098817L;
-
-    /**
-     * [Required] Request type [0 request,1 response]
-     */
+    /* Required, request type:0 request,1 response */
     private int               code             = 0;
-
-    /**
-     * [Required] Response type [0 synchronous, 1 asynchronous, 2 no-response]
-     */
+    /* Response type: 0 synchronous, 1 asynchronous, 2 no-response Required */
     private int               rpc              = 1;
-
-    /**
-     * [Required] Serial number
-     */
+    /* [Required] Serial number */
     private String            serial           = UUIDUtil.getUUID();
-
-    /**
-     * [Required] Interface type
-     */
+    /* [Required] Interface type */
     private String            itype            = "";
-
-    /**
-     * [Required] Request identifier, such as the transporter mac address,
-     * mobile phone token, server ip.
-     */
+    /* [Required] Interface version */
+    private String            version          = "1.0";
+    /* [Required] Request identifier, such as the transporter mac address, mobile phone token, server ip. */
     private String            add              = HostUtil.getHostAddress();
-
-    /**
-     * [Required] Create time [yyyyMMddHHmmssSSS]
-     */
+    /* [Required] Create time [yyyyMMddHHmmssSSS] */
     private String            ctime            = TimeUtil.getCurrentDateTime("yyyyMMddHHmmssSSS");
-
-    /**
-     * The sign string, default value "SAMPLE"
-     */
-    private String            sign             = "SAMPLE";
-
-    /**
-     * [0 success, other error code]
-     */
+    /* [0 success, other error code] */
     private String            result           = "";
-
-    /**
-     * description
-     */
+    /* description */
     private String            msg              = "";
 
     public int getCode() {
-        return this.code;
+        return code;
     }
 
     public void setCode(int code) {
@@ -72,7 +43,7 @@ public class Header implements Serializable {
     }
 
     public int getRpc() {
-        return this.rpc;
+        return rpc;
     }
 
     public void setRpc(int rpc) {
@@ -80,7 +51,7 @@ public class Header implements Serializable {
     }
 
     public String getSerial() {
-        return this.serial;
+        return serial;
     }
 
     public void setSerial(String serial) {
@@ -88,15 +59,23 @@ public class Header implements Serializable {
     }
 
     public String getItype() {
-        return this.itype;
+        return itype;
     }
 
     public void setItype(String itype) {
         this.itype = itype;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     public String getAdd() {
-        return this.add;
+        return add;
     }
 
     public void setAdd(String add) {
@@ -104,35 +83,11 @@ public class Header implements Serializable {
     }
 
     public String getCtime() {
-        return this.ctime;
+        return ctime;
     }
 
     public void setCtime(String ctime) {
         this.ctime = ctime;
-    }
-
-    public String getSign() {
-        return this.sign;
-    }
-
-    public void setSign(String sign) {
-        this.sign = sign;
-    }
-
-    public String getResult() {
-        return this.result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getMsg() {
-        return this.msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
     }
 
     public void setCtimeLong(long ctimeLong) {
@@ -142,9 +97,26 @@ public class Header implements Serializable {
         this.ctime = TimeUtil.convertDateToString(new Date(ctimeLong), "yyyyMMddHHmmssSSS");
     }
 
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     @Override
     public String toString() {
-        return "Header [code=" + this.code + ", rpc=" + this.rpc + ", serial=" + this.serial + ", itype=" + this.itype + ", add=" + this.add + ", ctime="
-                + this.ctime + ", sign=" + this.sign + ", result=" + this.result + ", msg=" + this.msg + "]";
+        return "Header [code=" + code + ", rpc=" + rpc + ", serial=" + serial + ", itype=" + itype + ", version=" + version + ", add=" + add + ", ctime="
+                + ctime + ", result=" + result + ", msg=" + msg + "]";
     }
+
 }
