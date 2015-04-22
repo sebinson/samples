@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.message.MessageProcessService;
+import net.sebinson.sample.message.collection.core.service.MessageProcessService;
 
 public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceiverThreadService {
 

@@ -1,6 +1,5 @@
-package net.sebinson.sample.message.collection.core.service.message;
+package net.sebinson.sample.message.collection.core.service;
 
-import net.sebinson.sample.message.collection.core.service.CollectionBaseService;
 
 public interface MessageProcessService extends CollectionBaseService {
 
