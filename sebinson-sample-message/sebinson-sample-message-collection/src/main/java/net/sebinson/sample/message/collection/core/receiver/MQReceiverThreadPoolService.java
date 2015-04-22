@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.transport;
+package net.sebinson.sample.message.collection.core.receiver;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
