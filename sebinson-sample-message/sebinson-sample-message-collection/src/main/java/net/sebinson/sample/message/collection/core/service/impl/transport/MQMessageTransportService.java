@@ -9,7 +9,7 @@ import net.sebinson.sample.message.collection.core.service.transport.MessageTran
 import org.springframework.stereotype.Service;
 
 @Service("messageTransportService")
-public class MessageTransportServiceImpl implements MessageTransportService {
+public class MQMessageTransportService implements MessageTransportService {
 
     @Override
     public void processMessage(String tag, Object message) {
