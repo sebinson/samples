@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.receiver;
+package net.sebinson.sample.message.collection.core.service.impl.transport;
 
 import java.util.Set;
 

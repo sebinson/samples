@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.receiver;
+package net.sebinson.sample.message.collection.core.service.impl.transport;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -9,14 +9,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.MessageProcessService;
+import net.sebinson.sample.message.collection.core.service.transport.MessageTransportService;
 
 public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService {
 
-    private ExecutorService   mqExector = null;
+    private ExecutorService         mqExector = null;
 
-    @Resource(name = "messageProcessService")
-    private MessageProcessService messageProcessService;
+    @Resource(name = "messageTransportService")
+    private MessageTransportService messageTransportService;
 
     public MQReceiverThreadPoolService() {
         this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREAD_SIZE_RECEIIVE_MQ, new ThreadFactory() {
@@ -36,7 +36,7 @@ public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService
 
                 @Override
                 public void run() {
-                    MQReceiverThreadPoolService.this.messageProcessService.processMessage(tag, message);
+                    MQReceiverThreadPoolService.this.messageTransportService.processMessage(tag, message);
                 }
             });
         } catch (RejectedExecutionException e) {

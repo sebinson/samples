@@ -1,11 +1,11 @@
-package net.sebinson.sample.message.collection.core.service.message;
+package net.sebinson.sample.message.collection.core.service.impl.message;
 
 import net.sebinson.common.utils.SpringBeanUtil;
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 import net.sebinson.sample.message.collection.core.service.CollectionBaseService;
-import net.sebinson.sample.message.collection.core.service.ProcessVersionControlService;
+import net.sebinson.sample.message.collection.core.service.message.ProcessVersionControlService;
 
 public abstract class AbstractLoginRequestProcessorService implements LoginProcessor, CollectionBaseService {
     
