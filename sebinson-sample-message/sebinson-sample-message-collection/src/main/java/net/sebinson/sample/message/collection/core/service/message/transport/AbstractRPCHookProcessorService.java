@@ -26,7 +26,7 @@ public abstract class AbstractRPCHookProcessorService implements RPCHook {
 
     protected boolean checkSecurityRequestMessage(RemotingCommand request, String adds, String encryptKey) throws TransportCommandException {
 
-        String sign =  new Md5Util().encrypt(request.getMessageNoSign() + "^" + encryptKey).toUpperCase();
+        String sign = new Md5Util().encrypt(request.getMessageNoSign() + "^" + encryptKey).toUpperCase();
         if (request.getSign().equals(sign)) {
             return true;
         }
@@ -34,7 +34,6 @@ public abstract class AbstractRPCHookProcessorService implements RPCHook {
     }
 
     protected String getSecuritySign(RemotingCommand request, String adds) throws TransportCommandException {
-        // 秘钥
         ClientInfoMsg clientInfoMsg = ServerSendMessageUtil.getClientInfoMsg(adds);
         if (clientInfoMsg == null) {
             return "";
