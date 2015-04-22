@@ -17,9 +17,8 @@ import com.alibaba.rocketmq.remoting.exception.RemotingTimeoutException;
 /**
  * MQ接收处理服务
  * 
- * @author C
  */
-public abstract class AbstractMessageReceiveService implements Runnable {
+public abstract class AbstractMQMessageReceiverService implements Runnable {
 
     private String namesrvAddr = "mq.sebinson.net:9876";
     private String topicName;
@@ -27,9 +26,6 @@ public abstract class AbstractMessageReceiveService implements Runnable {
     private int    threadNum;
     private String consumerGroupName;
 
-    /**
-     * 消息接收处理
-     */
     public abstract void process(String tag, Object message);
 
     @Override

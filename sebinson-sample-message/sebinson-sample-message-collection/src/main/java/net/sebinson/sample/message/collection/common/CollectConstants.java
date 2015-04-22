@@ -2,7 +2,7 @@ package net.sebinson.sample.message.collection.common;
 
 public class CollectConstants {
 
-    public static final int THREADS_JVM_AVAILABLEPROCESSORS = Runtime.getRuntime().availableProcessors();
+    public static final int THREAD_JVM_AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
 
-    public static int       THREADS_SIZE_OBTAIN_MQ          = THREADS_JVM_AVAILABLEPROCESSORS * 50;
+    public static int       THREAD_SIZE_RECEIIVE_MQ         = THREAD_JVM_AVAILABLE_PROCESSORS * 50;
 }

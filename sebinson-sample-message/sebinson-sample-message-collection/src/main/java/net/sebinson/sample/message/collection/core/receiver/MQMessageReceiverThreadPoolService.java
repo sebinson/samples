@@ -9,18 +9,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.message.ObtainBaseService;
+import net.sebinson.sample.message.collection.core.service.message.MessageProcessService;
 
-public class MQMessageReceiverService extends AbstractMessageReceiveService {
+public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceiverService {
 
-    private ExecutorService    mqExector = null;
+    private ExecutorService   mqExector = null;
 
-    /* 业务处理服务 */
-    @Resource(name = "obtainBaseService")
-    private ObtainBaseService obtainBaseService;
+    @Resource(name = "messageProcessService")
+    private MessageProcessService messageProcessService;
 
-    public MQMessageReceiverService() {
-        this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREADS_SIZE_OBTAIN_MQ, new ThreadFactory() {
+    public MQMessageReceiverThreadPoolService() {
+        this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREAD_SIZE_RECEIIVE_MQ, new ThreadFactory() {
             private final AtomicInteger ai = new AtomicInteger(0);
 
             @Override
@@ -37,7 +36,7 @@ public class MQMessageReceiverService extends AbstractMessageReceiveService {
 
                 @Override
                 public void run() {
-                    MQMessageReceiverService.this.obtainBaseService.processMessage(tag, message);
+                    MQMessageReceiverThreadPoolService.this.messageProcessService.processMessage(tag, message);
                 }
             });
         } catch (RejectedExecutionException e) {
