@@ -24,7 +24,7 @@ public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService
 
             @Override
             public Thread newThread(Runnable r) {
-                return new Thread(r, "MQReceiverServiceThread_" + ai.incrementAndGet());
+                return new Thread(r, "MQReceiverThreadPoolService_" + ai.incrementAndGet());
             }
         });
     }
