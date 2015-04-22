@@ -4,12 +4,12 @@ import net.sebinson.framework.message.push.bean.GAGMessage;
 import net.sebinson.framework.message.push.bean.SendResult;
 import net.sebinson.framework.message.push.service.SendCallBack;
 import net.sebinson.framework.message.push.util.ServerSendMessageUtil;
-import net.sebinson.sample.message.collection.core.service.transport.MessageTransportService;
+import net.sebinson.sample.message.collection.core.service.transport.IMessageTransportService;
 
 import org.springframework.stereotype.Service;
 
 @Service("messageTransportService")
-public class MQMessageTransportService implements MessageTransportService {
+public class MessageTransportService implements IMessageTransportService {
 
     @Override
     public void processMessage(String tag, Object message) {
