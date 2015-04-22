@@ -18,7 +18,7 @@ import com.alibaba.rocketmq.remoting.exception.RemotingTimeoutException;
  * MQ接收处理服务
  * 
  */
-public abstract class AbstractMQMessageReceiverService implements Runnable {
+public abstract class AbstractMQMessageReceiverThreadService implements Runnable {
 
     private String namesrvAddr = "mq.sebinson.net:9876";
     private String topicName;

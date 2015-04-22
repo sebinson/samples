@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 import net.sebinson.sample.message.collection.common.CollectConstants;
 import net.sebinson.sample.message.collection.core.service.message.MessageProcessService;
 
-public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceiverService {
+public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceiverThreadService {
 
     private ExecutorService   mqExector = null;
 
