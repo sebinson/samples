@@ -1,7 +1,7 @@
 package net.sebinson.sample.message.collection.core.service;
 
 
-public interface MessageProcessService extends CollectionBaseService {
+public interface MQProcessService extends CollectionBaseService {
 
     /**
      * 业务处理入口

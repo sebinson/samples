@@ -9,22 +9,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.MessageProcessService;
+import net.sebinson.sample.message.collection.core.service.MQProcessService;
 
-public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceiverThreadService {
+public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService {
 
     private ExecutorService   mqExector = null;
 
     @Resource(name = "messageProcessService")
-    private MessageProcessService messageProcessService;
+    private MQProcessService messageProcessService;
 
-    public MQMessageReceiverThreadPoolService() {
+    public MQReceiverThreadPoolService() {
         this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREAD_SIZE_RECEIIVE_MQ, new ThreadFactory() {
             private final AtomicInteger ai = new AtomicInteger(0);
 
             @Override
             public Thread newThread(Runnable r) {
-                return new Thread(r, "MQMessageReceiverServiceThread_" + ai.incrementAndGet());
+                return new Thread(r, "MQReceiverServiceThread_" + ai.incrementAndGet());
             }
         });
     }
@@ -36,7 +36,7 @@ public class MQMessageReceiverThreadPoolService extends AbstractMQMessageReceive
 
                 @Override
                 public void run() {
-                    MQMessageReceiverThreadPoolService.this.messageProcessService.processMessage(tag, message);
+                    MQReceiverThreadPoolService.this.messageProcessService.processMessage(tag, message);
                 }
             });
         } catch (RejectedExecutionException e) {
