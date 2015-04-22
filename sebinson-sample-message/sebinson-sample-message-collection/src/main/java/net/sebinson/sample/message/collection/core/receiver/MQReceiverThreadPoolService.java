@@ -9,14 +9,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.MQProcessService;
+import net.sebinson.sample.message.collection.core.service.MessageProcessService;
 
 public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService {
 
     private ExecutorService   mqExector = null;
 
     @Resource(name = "messageProcessService")
-    private MQProcessService messageProcessService;
+    private MessageProcessService messageProcessService;
 
     public MQReceiverThreadPoolService() {
         this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREAD_SIZE_RECEIIVE_MQ, new ThreadFactory() {
