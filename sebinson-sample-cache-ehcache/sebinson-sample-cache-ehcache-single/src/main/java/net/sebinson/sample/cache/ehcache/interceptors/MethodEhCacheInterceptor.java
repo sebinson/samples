@@ -36,7 +36,6 @@ public class MethodEhCacheInterceptor implements MethodInterceptor, Initializing
             element = cache.get(cacheKey);
             if (element == null) {
                 logger.info(cacheKey + "Add cache： " + cache.getName());
-                // 调用实际的方法
                 result = invocation.proceed();
                 element = new Element(cacheKey, (Serializable) result);
                 cache.put(element);
