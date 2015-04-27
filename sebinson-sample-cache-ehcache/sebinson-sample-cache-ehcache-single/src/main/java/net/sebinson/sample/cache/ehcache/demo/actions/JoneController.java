@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller("/jone")
-public class HelloJone {
+public class JoneController {
 
     @RequestMapping("/hello")
     public String hello(HttpServletRequest request,HttpServletResponse response){
