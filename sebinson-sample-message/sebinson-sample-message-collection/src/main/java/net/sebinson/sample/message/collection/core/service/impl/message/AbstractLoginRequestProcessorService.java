@@ -4,18 +4,18 @@ import net.sebinson.common.utils.SpringBeanUtil;
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.processor.LoginProcessor;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
-import net.sebinson.sample.message.collection.core.service.ICollectionBaseService;
-import net.sebinson.sample.message.collection.core.service.message.IProcessVersionControlService;
+import net.sebinson.sample.message.collection.core.service.CollectionBaseService;
+import net.sebinson.sample.message.collection.core.service.message.ProcessVersionControlService;
 
-public abstract class AbstractLoginRequestProcessorService implements LoginProcessor, ICollectionBaseService {
+public abstract class AbstractLoginRequestProcessorService implements LoginProcessor, CollectionBaseService {
     
     @Override
     public Object[] processLoginRequestSync(RemotingCommand request) throws TransportException {
         String version = request.getHeader().getVersion();
         String itype = request.getHeader().getItype();
-        IProcessVersionControlService loginProcessor = null;
+        ProcessVersionControlService loginProcessor = null;
         try {
-            loginProcessor = SpringBeanUtil.getBean(itype + "_" + version, IProcessVersionControlService.class);
+            loginProcessor = SpringBeanUtil.getBean(itype + "_" + version, ProcessVersionControlService.class);
         } catch (Exception e) {
             throw new TransportException(TransportException.EORROR_TRANSPORT_ITYPE, "");
         }

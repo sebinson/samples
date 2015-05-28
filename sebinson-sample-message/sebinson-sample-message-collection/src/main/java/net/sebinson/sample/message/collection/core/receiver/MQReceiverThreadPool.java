@@ -9,16 +9,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Resource;
 
 import net.sebinson.sample.message.collection.common.CollectConstants;
-import net.sebinson.sample.message.collection.core.service.transport.IMessageTransportService;
+import net.sebinson.sample.message.collection.core.service.transport.MessageTransportService;
 
-public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService {
+public class MQReceiverThreadPool extends AbstractMessageReceiverThread {
 
     private ExecutorService         mqExector = null;
 
     @Resource(name = "messageTransportService")
-    private IMessageTransportService messageTransportService;
+    private MessageTransportService messageTransportService;
 
-    public MQReceiverThreadPoolService() {
+    public MQReceiverThreadPool() {
         this.mqExector = Executors.newFixedThreadPool(CollectConstants.THREAD_SIZE_RECEIIVE_MQ, new ThreadFactory() {
             private final AtomicInteger ai = new AtomicInteger(0);
 
@@ -36,7 +36,7 @@ public class MQReceiverThreadPoolService extends AbstractMQReceiverThreadService
 
                 @Override
                 public void run() {
-                    MQReceiverThreadPoolService.this.messageTransportService.processMessage(tag, message);
+                    MQReceiverThreadPool.this.messageTransportService.processMessage(tag, message);
                 }
             });
         } catch (RejectedExecutionException e) {

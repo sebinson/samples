@@ -3,7 +3,7 @@ package net.sebinson.sample.message.collection.core.service.message;
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
-public interface IProcessVersionControlService
+public interface ProcessVersionControlService
 {
     /**
      * 处理同步登陆请求
