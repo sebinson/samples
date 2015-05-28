@@ -1,9 +1,9 @@
-package net.sebinson.sample.message.collection.core.service.message;
+package net.sebinson.sample.message.collection.core.service.processor;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
-public interface ProcessVersionControlService {
+public interface VersionControlProcessorService {
     /**
      * 同步登陆请求
      * 

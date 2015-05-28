@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.message;
+package net.sebinson.sample.message.collection.core.service.impl.processor;
 
 import net.sebinson.common.utils.Md5Util;
 import net.sebinson.framework.message.common.ClientInfoMsg;

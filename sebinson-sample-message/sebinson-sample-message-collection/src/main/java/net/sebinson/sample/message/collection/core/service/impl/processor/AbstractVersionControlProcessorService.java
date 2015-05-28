@@ -1,10 +1,10 @@
-package net.sebinson.sample.message.collection.core.service.impl.message;
+package net.sebinson.sample.message.collection.core.service.impl.processor;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
-import net.sebinson.sample.message.collection.core.service.message.ProcessVersionControlService;
+import net.sebinson.sample.message.collection.core.service.processor.VersionControlProcessorService;
 
-public abstract class AbstractProcessVersionControlService implements ProcessVersionControlService {
+public abstract class AbstractVersionControlProcessorService implements VersionControlProcessorService {
 
     @Override
     public Object[] processLoginRequestSync(RemotingCommand request) throws TransportException {
