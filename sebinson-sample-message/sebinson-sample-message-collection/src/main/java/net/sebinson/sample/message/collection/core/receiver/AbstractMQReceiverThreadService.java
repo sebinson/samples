@@ -36,7 +36,6 @@ public abstract class AbstractMQReceiverThreadService implements Runnable {
         try {
             this.clusterMessage();
         } catch (Exception e) {
-            // TODO logger
         }
     }
 

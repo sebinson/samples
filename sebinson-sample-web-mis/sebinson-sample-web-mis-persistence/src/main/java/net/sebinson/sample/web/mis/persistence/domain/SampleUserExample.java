@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import net.sebinson.sample.web.common.bean.pagination.Page;
+
 public class SampleUserExample {
     protected String orderByClause;
 
@@ -11,6 +13,8 @@ public class SampleUserExample {
 
     protected List<Criteria> oredCriteria;
 
+    private Page page;
+    
     public SampleUserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
@@ -62,6 +66,14 @@ public class SampleUserExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
     }
 
     protected abstract static class GeneratedCriteria {

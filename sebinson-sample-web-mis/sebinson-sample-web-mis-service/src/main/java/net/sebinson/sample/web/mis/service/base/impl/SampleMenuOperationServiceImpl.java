@@ -30,13 +30,13 @@ public class SampleMenuOperationServiceImpl implements SampleMenuOperationServic
         Criteria criteria = example.createCriteria();
         if (!StringUtils.isEmpty(record.getMenuId())) {
             criteria.andMenuIdLike(record.getMenuId() + "%");
-        }    
+        }
         if (!StringUtils.isEmpty(record.getOperCode())) {
             criteria.andOperCodeLike(record.getOperCode() + "%");
-        }    
+        }
         if (!StringUtils.isEmpty(record.getOperName())) {
             criteria.andOperNameLike(record.getOperName() + "%");
-        }    
+        }
         if (null != page) {
             example.setPage(page);
         }
