@@ -9,20 +9,6 @@ import net.sebinson.sample.message.collection.core.service.message.ProcessVersio
 
 public abstract class BusinessRequestProcessorServiceBase implements RequestProcessor, CollectionBaseService {
 
-    private ProcessVersionControlService getProcessVersionControlService(RemotingCommand request) throws TransportException {
-        String version = request.getHeader().getVersion();
-        String itype = request.getHeader().getItype();
-        ProcessVersionControlService requestProcessor = null;
-        try {
-            requestProcessor = SpringBeanUtil.getBean(itype + "_" + version, ProcessVersionControlService.class);
-
-        } catch (Exception e) {
-            throw new TransportException(TransportException.EORROR_TRANSPORT_ITYPE, "" + e.getMessage(), e);
-        }
-
-        return requestProcessor;
-    }
-
     @Override
     public void processRequestUnreply(RemotingCommand request) throws TransportException {
         this.getProcessVersionControlService(request).processRequestUnreply(request);
@@ -36,6 +22,20 @@ public abstract class BusinessRequestProcessorServiceBase implements RequestProc
     @Override
     public void processRequestAsync(RemotingCommand request) throws TransportException {
         this.getProcessVersionControlService(request).processRequestAsync(request);
+    }
+
+    private ProcessVersionControlService getProcessVersionControlService(RemotingCommand request) throws TransportException {
+        String version = request.getHeader().getVersion();
+        String itype = request.getHeader().getItype();
+        ProcessVersionControlService requestProcessor = null;
+        try {
+            requestProcessor = SpringBeanUtil.getBean(itype + "_" + version, ProcessVersionControlService.class);
+
+        } catch (Exception e) {
+            throw new TransportException(TransportException.EORROR_TRANSPORT_ITYPE, "" + e.getMessage(), e);
+        }
+
+        return requestProcessor;
     }
 
 }
