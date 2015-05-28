@@ -3,12 +3,16 @@ package net.sebinson.sample.web.mis.persistence.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SampleMenuOperationExample {
-    protected String orderByClause;
+import net.sebinson.sample.web.common.bean.pagination.Page;
 
-    protected boolean distinct;
+public class SampleMenuOperationExample {
+    protected String         orderByClause;
+
+    protected boolean        distinct;
 
     protected List<Criteria> oredCriteria;
+
+    private Page             page;
 
     public SampleMenuOperationExample() {
         oredCriteria = new ArrayList<Criteria>();
@@ -61,6 +65,14 @@ public class SampleMenuOperationExample {
         oredCriteria.clear();
         orderByClause = null;
         distinct = false;
+    }
+
+    public Page getPage() {
+        return page;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
     }
 
     protected abstract static class GeneratedCriteria {
@@ -533,11 +545,11 @@ public class SampleMenuOperationExample {
     }
 
     public static class Criterion {
-        private String condition;
+        private String  condition;
 
-        private Object value;
+        private Object  value;
 
-        private Object secondValue;
+        private Object  secondValue;
 
         private boolean noValue;
 
@@ -547,7 +559,7 @@ public class SampleMenuOperationExample {
 
         private boolean listValue;
 
-        private String typeHandler;
+        private String  typeHandler;
 
         public String getCondition() {
             return condition;
