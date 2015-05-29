@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.processor;
+package net.sebinson.sample.message.collection.core.service.impl.processors;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;

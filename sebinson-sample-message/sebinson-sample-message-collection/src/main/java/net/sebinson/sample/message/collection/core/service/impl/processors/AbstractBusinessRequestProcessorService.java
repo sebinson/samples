@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.processor;
+package net.sebinson.sample.message.collection.core.service.impl.processors;
 
 import net.sebinson.common.utils.SpringBeanUtil;
 import net.sebinson.framework.message.transport.exception.TransportException;
@@ -37,5 +37,4 @@ public abstract class AbstractBusinessRequestProcessorService implements Request
 
         return requestProcessor;
     }
-
 }
