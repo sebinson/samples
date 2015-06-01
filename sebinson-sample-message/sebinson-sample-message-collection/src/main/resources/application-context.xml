@@ -19,17 +19,25 @@
 
 	<aop:aspectj-autoproxy />
 
-	<!-- MQ消息接收配置开始 -->
-	<bean id="billReceiveService" class="com.gooagoo.bill.collect.core.service.impl.transport.MQMessageReceiver"
+	<bean class="net.sebinson.common.utils.SpringBeanUtil"></bean>
+
+	<import resource="classpath:context-version.xml" />
+
+	<!--context:property-placeholder location="file:/home/sebinson/resource/cbilljdbc.properties" ignore-unresolvable="true"/ -->
+    <!-- some jar package configuration file -->
+	<import resource="classpath:context-mysql.xml" />
+
+    <!-- dubbo configuration file here  -->
+        
+	<bean id="billReceiveService" class="net.sebinson.sample.message.collection.core.receiver.MQReceiverThreadPool"
 		init-method="start">
 		<!-- 消息通道名称 -->
 		<property name="topicName" value="collector" />
 		<!-- 消费集群名称，一个topic可以有多个消息集群进行消费，但一个消费集群只能消费一个topic的消息 -->
-		<property name="consumerGroupName" value="billCollectConsumerGroup" />
-		<!-- 过滤表达式，表示接收表达式内的tag参数值的消息，多个值以“||”分隔，例如 "bill || order || unbill"，"*"代表接收全部 -->
+		<property name="consumerGroupName" value="collectConsumerGroup" />
+		<!-- 过滤表达式，表示接收表达式内的tag参数值的消息，多个值以“||”分隔，"*"代表接收全部 -->
 		<property name="subExpression" value="*" />
 		<!-- 消费线程数量，同一消费集群名称下的消费线程数量之和不应超过topic队列数量 -->
 		<property name="threadNum" value="1" />
 	</bean>
-	<!-- MQ消息接收配置结束 -->
 </beans>
