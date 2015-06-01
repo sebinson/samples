@@ -1,7 +1,10 @@
 package net.sebinson.sample.message.collection.core.service.impl.business;
 
+import org.springframework.stereotype.Service;
+
 import net.sebinson.sample.message.collection.exceptions.CollectionBusinessException;
 
+@Service("loginBusinessService")
 public class LoginBusinessServiceImpl extends AbstractGeneralBusinessService {
 
     @Override

@@ -1,6 +1,9 @@
 package net.sebinson.sample.message.collection.core.service.impl.business;
 
-public class XxxDataStoreServiceImpl extends AbstractDataStoreService{
+import org.springframework.stereotype.Service;
+
+@Service("xxxDataStoreService")
+public class XxxDataStoreServiceImpl extends AbstractDataStoreService {
 
     @Override
     public int saveXXX(Object vo) {
