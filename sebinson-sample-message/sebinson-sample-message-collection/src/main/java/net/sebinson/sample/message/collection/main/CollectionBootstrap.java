@@ -28,9 +28,9 @@ public class CollectionBootstrap extends ContextLoaderListener {
     private void initBillCollect(WebApplicationContext wac, ServletContextEvent event, CollectionBootstrap _this, long from) {
         final SingleTransportServerFactory singleTransportServer = new SingleTransportServerFactory("collectionServer", 8888, true, 0);
         try {
-            LoginProcessor loginProcessor = (LoginProcessor) wac.getBean("loginProcessor");
-            RequestProcessor minitorRequestProcessor = (RequestProcessor) wac.getBean("minitorRequestProcessor");
-            singleTransportServer.registerLongConnectProcessor("loginProcessor", loginProcessor, "minitorRequestProcessor", minitorRequestProcessor);
+            LoginProcessor loginProcessor = (LoginProcessor) wac.getBean("xxx000Login");
+            RequestProcessor minitorRequestProcessor = (RequestProcessor) wac.getBean("xxx000Monitor");
+            singleTransportServer.registerLongConnectProcessor("xxx000Login", loginProcessor, "xxx000Monitor", minitorRequestProcessor);
             singleTransportServer.registerPRCHook(wac.getBean("commonRpcHook", RPCHook.class));
             singleTransportServer.start();
             long to = System.currentTimeMillis();

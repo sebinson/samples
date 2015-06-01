@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
 
-@Service("xxx000")
+@Service("xxx000Login")
 public class Xxx000LoginRequestProcessorServiceImpl extends AbstractLoginRequestProcessorService {
     
     @Override
