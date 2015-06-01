@@ -6,7 +6,7 @@ import net.sebinson.sample.message.collection.core.service.impl.processor.Abstra
 
 import org.springframework.stereotype.Service;
 
-@Service("Xxx000_" + "V001")
+@Service("xxx000_" + "v001")
 public class Xxx000_V001_LoginRequestProcessorServiceImpl extends AbstractLoginRequestProcessorService{
 
     @Override

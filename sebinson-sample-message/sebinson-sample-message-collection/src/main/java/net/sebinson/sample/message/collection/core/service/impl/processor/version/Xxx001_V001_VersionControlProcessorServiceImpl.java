@@ -6,7 +6,7 @@ import net.sebinson.sample.message.collection.core.service.impl.processor.Abstra
 
 import org.springframework.stereotype.Service;
 
-@Service("Xxx003_" + "V001")
+@Service("xxx001_" + "v001")
 public class Xxx001_V001_VersionControlProcessorServiceImpl extends AbstractVersionControlProcessorService{
 
     @Override
