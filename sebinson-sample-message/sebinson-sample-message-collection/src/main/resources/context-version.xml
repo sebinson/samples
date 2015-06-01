@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation=" 
 	  http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
-      http://www.springframework.org/schema/context
-      http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+      http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-	<bean id="xxx01_version" class="java.util.ArrayList">
+	<bean id="xxx000_login_version" class="java.util.ArrayList">
 		<constructor-arg>
 			<list>
 				<value>1</value>
 			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="xxx000_monitor_version" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="xxx001_version" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="xxx002_version" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="xxx003_version" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<value>1</value>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="versionMap" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="xxx000Login" value-ref="xxx000_login_version"></entry>
+				<entry key="xxx000Monitor" value-ref="xxx000_monitor_version"></entry>
+				<entry key="xxx001" value-ref="xxx001_version"></entry>
+				<entry key="xxx002" value-ref="xxx002_version"></entry>
+				<entry key="xxx003" value-ref="xxx003_version"></entry>
+			</map>
 		</constructor-arg>
 	</bean>
 </beans>
