@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="collection_system" version="2.5">
 	<display-name>collection</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext-base.xml</param-value>
+		<param-value>classpath:application-context.xml</param-value>
 	</context-param>
 
 	<listener>
 		<listener-class>net.sebinson.sample.message.collection.main.BillCollectBootstrap</listener-class>
 	</listener>
+
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>net.sebinson.sample.web.common.servlets.EncodingDispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-servlet.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
 </web-app>
