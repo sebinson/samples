@@ -7,8 +7,7 @@ public class LogUtil {
     /**
      * 获得Logger
      * 
-     * @param clazz
-     *            日志发出的类
+     * @param clazz 日志发出的类
      * @return Logger
      */
     public static Logger get(Class<?> clazz) {
@@ -18,8 +17,7 @@ public class LogUtil {
     /**
      * 获得Logger
      * 
-     * @param name
-     *            自定义的日志发出者名称
+     * @param name 自定义的日志发出者名称
      * @return Logger
      */
     public static Logger get(String name) {
@@ -41,10 +39,8 @@ public class LogUtil {
      * Trace等级日志，小于debug<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void trace(String format, Object... arguments) {
         trace(innerGet(), format, arguments);
@@ -53,12 +49,9 @@ public class LogUtil {
     /**
      * Trace等级日志，小于Debug
      * 
-     * @param log
-     *            日志对象
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void trace(Logger log, String format, Object... arguments) {
         log.trace(format, arguments);
@@ -69,10 +62,8 @@ public class LogUtil {
      * Debug等级日志，小于Info<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void debug(String format, Object... arguments) {
         debug(innerGet(), format, arguments);
@@ -81,12 +72,9 @@ public class LogUtil {
     /**
      * Debug等级日志，小于Info
      * 
-     * @param log
-     *            日志对象
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void debug(Logger log, String format, Object... arguments) {
         log.debug(format, arguments);
@@ -97,10 +85,8 @@ public class LogUtil {
      * Info等级日志，小于Warn<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void info(String format, Object... arguments) {
         info(innerGet(), format, arguments);
@@ -109,12 +95,9 @@ public class LogUtil {
     /**
      * Info等级日志，小于Warn
      * 
-     * @param log
-     *            日志对象
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void info(Logger log, String format, Object... arguments) {
         log.info(format, arguments);
@@ -125,10 +108,8 @@ public class LogUtil {
      * Warn等级日志，小于Error<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void warn(String format, Object... arguments) {
         warn(innerGet(), format, arguments);
@@ -137,12 +118,9 @@ public class LogUtil {
     /**
      * Warn等级日志，小于Error
      * 
-     * @param log
-     *            日志对象
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void warn(Logger log, String format, Object... arguments) {
         log.warn(format, arguments);
@@ -152,12 +130,9 @@ public class LogUtil {
      * Warn等级日志，小于Error<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param e
-     *            需在日志中堆栈打印的异常
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param e 需在日志中堆栈打印的异常
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void warn(Throwable e, String format, Object... arguments) {
         warn(innerGet(), e, format(format, arguments));
@@ -166,14 +141,10 @@ public class LogUtil {
     /**
      * Warn等级日志，小于Error
      * 
-     * @param log
-     *            日志对象
-     * @param e
-     *            需在日志中堆栈打印的异常
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param e 需在日志中堆栈打印的异常
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void warn(Logger log, Throwable e, String format, Object... arguments) {
         log.warn(format(format, arguments), e);
@@ -184,10 +155,8 @@ public class LogUtil {
      * Error等级日志<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void error(String format, Object... arguments) {
         error(innerGet(), format, arguments);
@@ -196,12 +165,9 @@ public class LogUtil {
     /**
      * Error等级日志<br>
      * 
-     * @param log
-     *            日志对象
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void error(Logger log, String format, Object... arguments) {
         log.error(format, arguments);
@@ -211,12 +177,9 @@ public class LogUtil {
      * Error等级日志<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param e
-     *            需在日志中堆栈打印的异常
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param e 需在日志中堆栈打印的异常
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void error(Throwable e, String format, Object... arguments) {
         error(innerGet(), e, format(format, arguments));
@@ -226,31 +189,20 @@ public class LogUtil {
      * Error等级日志<br>
      * 由于动态获取Logger，效率较低，建议在非频繁调用的情况下使用！！
      * 
-     * @param log
-     *            日志对象
-     * @param e
-     *            需在日志中堆栈打印的异常
-     * @param format
-     *            格式文本，{} 代表变量
-     * @param arguments
-     *            变量对应的参数
+     * @param log 日志对象
+     * @param e 需在日志中堆栈打印的异常
+     * @param format 格式文本，{} 代表变量
+     * @param arguments 变量对应的参数
      */
     public static void error(Logger log, Throwable e, String format, Object... arguments) {
         log.error(format(format, arguments), e);
     }
 
-    // ----------------------------------------------------------- Logger method
-    // end
-
-    // ----------------------------------------------------------- Private
-    // method start
     /**
      * 格式化文本
      * 
-     * @param template
-     *            文本模板，被替换的部分用 {} 表示
-     * @param values
-     *            参数值
+     * @param template 文本模板，被替换的部分用 {} 表示
+     * @param values 参数值
      * @return 格式化后的文本
      */
     private static String format(String template, Object... values) {
@@ -264,6 +216,4 @@ public class LogUtil {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         return LoggerFactory.getLogger(stackTrace[3].getClassName());
     }
-    // ----------------------------------------------------------- Private
-    // method end
 }
