@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.processors;
+package net.sebinson.sample.message.collection.core.service.impl.processor;
 
 import net.sebinson.common.utils.SpringBeanUtil;
 import net.sebinson.framework.message.transport.exception.TransportException;

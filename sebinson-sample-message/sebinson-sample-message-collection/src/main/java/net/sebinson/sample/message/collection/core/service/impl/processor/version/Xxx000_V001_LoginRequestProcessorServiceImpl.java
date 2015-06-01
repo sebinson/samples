@@ -1,8 +1,8 @@
-package net.sebinson.sample.message.collection.core.service.impl.processors.versions;
+package net.sebinson.sample.message.collection.core.service.impl.processor.version;
 
 import net.sebinson.framework.message.transport.exception.TransportException;
 import net.sebinson.framework.message.transport.protocol.RemotingCommand;
-import net.sebinson.sample.message.collection.core.service.impl.processors.AbstractLoginRequestProcessorService;
+import net.sebinson.sample.message.collection.core.service.impl.processor.AbstractLoginRequestProcessorService;
 
 import org.springframework.stereotype.Service;
 

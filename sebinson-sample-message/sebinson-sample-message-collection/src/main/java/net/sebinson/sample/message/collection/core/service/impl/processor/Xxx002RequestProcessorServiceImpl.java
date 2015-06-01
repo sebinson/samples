@@ -1,4 +1,4 @@
-package net.sebinson.sample.message.collection.core.service.impl.processors;
+package net.sebinson.sample.message.collection.core.service.impl.processor;
 
 public class Xxx002RequestProcessorServiceImpl extends AbstractBusinessRequestProcessorService {
 
