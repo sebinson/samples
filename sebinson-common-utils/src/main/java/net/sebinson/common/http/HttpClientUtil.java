@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.sebinson.common.log.Log;
 import net.sebinson.common.utils.UUIDUtil;
 
 import org.apache.http.HttpEntity;
@@ -68,7 +69,7 @@ public class HttpClientUtil {
             }
             obj = (TransData<T>) transferObj(code, url, nvps);
         } catch (Exception e) {
-            //GooagooLog.error("web层通过此方法调用interface层异常", e);
+            Log.error("web层通过此方法调用interface层异常", e);
         }
         if (obj == null) {
             obj = new TransData<T>(defHead);
@@ -103,7 +104,7 @@ public class HttpClientUtil {
             }
             httpPost.abort();
         } catch (Exception e) {
-            //GooagooLog.error("http error", e);
+            Log.error("http error", e);
         } finally {
             httpclient.getConnectionManager().shutdown();
         }
@@ -121,12 +122,11 @@ public class HttpClientUtil {
 
     private static void log(Object object, String head) {
         if (object instanceof String) {
-            //GooagooLog.debug(head + object);
+            Log.debug(head + object);
         } else {
             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-            @SuppressWarnings("unused")
             String json = gson.toJson(object);
-            //GooagooLog.debug(head + json);
+            Log.debug(head + json);
         }
     }
 
@@ -162,13 +162,13 @@ public class HttpClientUtil {
             }
             fileStr = sb.toString();
         } catch (Exception e) {
-            //GooagooLog.error("从URL指定位置加载资源失败，url=" + url, e);
+            Log.error("从URL指定位置加载资源失败，url=" + url, e);
         } finally {
             if (null != in) {
                 try {
                     in.close();
                 } catch (Exception e) {
-                    //GooagooLog.error("从URL指定位置加载资源异常时关闭文件流失败，url=" + url, e);
+                    Log.error("从URL指定位置加载资源异常时关闭文件流失败，url=" + url, e);
                 }
             }
         }
